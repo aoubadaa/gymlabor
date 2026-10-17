@@ -1,0 +1,2960 @@
+/* GYM LABORATORY — Exercise Library v5
+   Page-specific layer. Shared site styles remain in style.css.
+*/
+
+body.exlib-v5 {
+  --ex-blue: #0877a5;
+  --ex-blue-2: #3795bb;
+  --ex-ink: #082b3a;
+  --ex-muted: #607d89;
+  --ex-surface: rgba(255,255,255,.82);
+  --ex-line: rgba(8,119,165,.13);
+  --ex-shadow: 0 18px 52px rgba(3,65,89,.08);
+  overflow-x: clip;
+}
+
+body.exlib-v5.dark {
+  --ex-ink: #eefaff;
+  --ex-muted: #a7c5d0;
+  --ex-surface: rgba(18,52,65,.78);
+  --ex-line: rgba(87,167,201,.16);
+  --ex-shadow: 0 20px 54px rgba(0,0,0,.26);
+}
+
+/* Header logo compatibility */
+.exlib-site-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: .58rem;
+}
+
+.exlib-site-logo-img,
+.exlib-footer-logo-img {
+  display: block;
+  object-fit: cover;
+  flex: 0 0 auto;
+}
+
+.exlib-site-logo-img {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+}
+
+.exlib-footer-logo-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+}
+
+.exlib-footer-brand-title {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+}
+
+/* ========== Hero ========== */
+
+.exlib-page {
+  background: var(--secondary-bg);
+}
+
+body.dark .exlib-page {
+  background: var(--dark-bg);
+}
+
+.exlib-hero {
+  position: relative;
+  padding: 4.5rem 0 1.65rem;
+  background:
+    radial-gradient(circle at 10% 15%, rgba(55,149,187,.13), transparent 25rem),
+    radial-gradient(circle at 90% 8%, rgba(8,119,165,.08), transparent 22rem),
+    var(--secondary-bg);
+}
+
+body.dark .exlib-hero {
+  background:
+    radial-gradient(circle at 10% 15%, rgba(87,167,201,.10), transparent 25rem),
+    radial-gradient(circle at 90% 8%, rgba(8,119,165,.08), transparent 22rem),
+    var(--dark-bg);
+}
+
+.exlib-intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+  margin-bottom: 1.35rem;
+}
+
+.exlib-intro-copy {
+  max-width: 650px;
+}
+
+.exlib-kicker,
+.exlib-results-kicker {
+  margin: 0 0 .38rem;
+  color: var(--ex-blue-2);
+  font-family: "Cairo", sans-serif;
+  font-size: .65rem;
+  font-weight: 900;
+  letter-spacing: .13em;
+  direction: ltr;
+}
+
+.exlib-intro h1 {
+  margin: 0;
+  color: var(--ex-ink);
+  font-family: "Cairo", sans-serif;
+  font-size: clamp(2.35rem, 4.2vw, 4rem);
+  line-height: 1.06;
+  letter-spacing: -.035em;
+}
+
+.exlib-intro-copy > p:last-child {
+  margin: .58rem 0 0;
+  color: var(--ex-muted);
+  font-size: .93rem;
+  line-height: 1.7;
+}
+
+.exlib-stats {
+  display: flex;
+  gap: .55rem;
+  flex: 0 0 auto;
+}
+
+.exlib-stat {
+  min-width: 92px;
+  padding: .72rem .8rem;
+  border: 1px solid var(--ex-line);
+  border-radius: 15px;
+  background: rgba(255,255,255,.54);
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+body.dark .exlib-stat {
+  background: rgba(255,255,255,.025);
+}
+
+.exlib-stat strong,
+.exlib-stat span {
+  display: block;
+}
+
+.exlib-stat strong {
+  color: var(--ex-blue);
+  font-family: "Cairo", sans-serif;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.exlib-stat span {
+  margin-top: .24rem;
+  color: var(--ex-muted);
+  font-size: .58rem;
+  font-weight: 800;
+}
+
+/* ========== Search + filters ========== */
+
+.exlib-controls {
+  width: 100%;
+  padding: .78rem;
+  border: 1px solid var(--ex-line);
+  border-radius: 20px;
+  background: var(--ex-surface);
+  box-shadow: var(--ex-shadow);
+  backdrop-filter: blur(15px);
+}
+
+.exlib-control-top {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto;
+  gap: .6rem;
+}
+
+.exlib-search-wrap {
+  position: relative;
+}
+
+.exlib-search {
+  width: 100%;
+  min-height: 52px;
+  padding: .72rem 3rem .72rem 2.7rem;
+  border: 1px solid rgba(8,119,165,.16);
+  border-radius: 14px;
+  outline: 0;
+  background: rgba(255,255,255,.78);
+  color: var(--ex-ink);
+  font: 700 .86rem/1.4 "Tajawal", sans-serif;
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+body.dark .exlib-search {
+  background: rgba(6,26,34,.42);
+  border-color: rgba(87,167,201,.18);
+}
+
+.exlib-search::placeholder {
+  color: var(--ex-muted);
+  opacity: .65;
+}
+
+.exlib-search:focus {
+  border-color: var(--ex-blue-2);
+  box-shadow: 0 0 0 4px rgba(55,149,187,.10);
+  background: rgba(255,255,255,.95);
+}
+
+body.dark .exlib-search:focus {
+  background: rgba(6,26,34,.66);
+}
+
+.exlib-search-icon {
+  position: absolute;
+  z-index: 3;
+  right: .9rem;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  color: var(--ex-blue);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.exlib-search-icon svg,
+.exlib-filter-toggle-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.exlib-clear {
+  position: absolute;
+  z-index: 4;
+  left: .7rem;
+  top: 50%;
+  width: 31px;
+  height: 31px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 10px;
+  background: rgba(8,119,165,.08);
+  color: var(--ex-blue);
+  font-size: 1rem;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.exlib-clear[hidden] {
+  display: none;
+}
+
+.exlib-suggestions {
+  position: absolute;
+  z-index: 50;
+  top: calc(100% + .4rem);
+  right: 0;
+  left: 0;
+  max-height: 300px;
+  overflow-y: auto;
+  margin: 0;
+  padding: .35rem;
+  list-style: none;
+  border: 1px solid var(--ex-line);
+  border-radius: 14px;
+  background: rgba(255,255,255,.98);
+  box-shadow: 0 20px 48px rgba(3,65,89,.15);
+}
+
+body.dark .exlib-suggestions {
+  background: rgba(14,42,53,.98);
+}
+
+.exlib-suggestions[hidden] {
+  display: none;
+}
+
+.exlib-suggestions li {
+  margin: 0;
+}
+
+.exlib-suggestions button {
+  width: 100%;
+  padding: .68rem .75rem;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--ex-ink);
+  font: 800 .78rem/1.4 "Tajawal", sans-serif;
+  text-align: right;
+  cursor: pointer;
+}
+
+.exlib-suggestions button:hover,
+.exlib-suggestions button:focus-visible {
+  background: rgba(55,149,187,.10);
+}
+
+.exlib-filter-toggle {
+  min-width: 115px;
+  min-height: 52px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: .45rem;
+  padding: .7rem .85rem;
+  border: 1px solid var(--ex-line);
+  border-radius: 14px;
+  background: rgba(211,234,238,.34);
+  color: var(--ex-ink);
+  font-family: "Tajawal", sans-serif;
+  font-size: .78rem;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.exlib-filter-toggle-icon {
+  width: 19px;
+  height: 19px;
+  color: var(--ex-blue);
+}
+
+.exlib-filter-toggle b {
+  min-width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  padding: 0 .25rem;
+  border-radius: 999px;
+  background: var(--ex-blue);
+  color: #fff;
+  font-size: .58rem;
+}
+
+.exlib-filter-panel {
+  margin-top: .7rem;
+  padding-top: .15rem;
+}
+
+.exlib-filter-row {
+  display: grid;
+  grid-template-columns: 130px minmax(0,1fr);
+  gap: .8rem;
+  align-items: center;
+  padding: .55rem .25rem;
+}
+
+.exlib-filter-row + .exlib-filter-row {
+  border-top: 1px solid rgba(8,119,165,.07);
+}
+
+.exlib-filter-label strong,
+.exlib-filter-label small {
+  display: block;
+}
+
+.exlib-filter-label strong {
+  color: var(--ex-ink);
+  font-size: .78rem;
+}
+
+.exlib-filter-label small {
+  margin-top: .08rem;
+  color: var(--ex-muted);
+  font-size: .58rem;
+}
+
+.exlib-chips {
+  display: flex;
+  gap: .38rem;
+  overflow-x: auto;
+  padding: .12rem 0 .28rem;
+  scrollbar-width: none;
+  scroll-snap-type: x proximity;
+}
+
+.exlib-chips::-webkit-scrollbar {
+  display: none;
+}
+
+.exlib-chip {
+  flex: 0 0 auto;
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  gap: .38rem;
+  padding: .42rem .62rem;
+  border: 1px solid rgba(8,119,165,.13);
+  border-radius: 999px;
+  background: rgba(255,255,255,.56);
+  color: var(--ex-ink);
+  font: 800 .68rem/1 "Tajawal", sans-serif;
+  white-space: nowrap;
+  cursor: pointer;
+  scroll-snap-align: start;
+  transition: transform .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
+}
+
+body.dark .exlib-chip {
+  background: rgba(255,255,255,.025);
+  border-color: rgba(87,167,201,.14);
+}
+
+.exlib-chip small {
+  min-width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  padding: 0 .22rem;
+  border-radius: 999px;
+  background: rgba(8,119,165,.07);
+  color: var(--ex-muted);
+  font-size: .52rem;
+}
+
+.exlib-chip:hover {
+  transform: translateY(-1px);
+  border-color: rgba(8,119,165,.26);
+}
+
+.exlib-chip.active {
+  background: var(--ex-blue);
+  border-color: var(--ex-blue);
+  color: #fff;
+}
+
+.exlib-chip.active small {
+  background: rgba(255,255,255,.16);
+  color: #fff;
+}
+
+.exlib-legend-details {
+  margin: .38rem .25rem 0;
+  border-top: 1px solid rgba(8,119,165,.07);
+  padding-top: .55rem;
+}
+
+.exlib-legend-details summary {
+  width: fit-content;
+  color: var(--ex-muted);
+  font-size: .64rem;
+  font-weight: 800;
+  cursor: pointer;
+  list-style: none;
+}
+
+.exlib-legend-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.exlib-legend-details summary::before {
+  content: "+";
+  display: inline-block;
+  margin-left: .28rem;
+  color: var(--ex-blue);
+  font-weight: 900;
+}
+
+.exlib-legend-details[open] summary::before {
+  content: "−";
+}
+
+.exlib-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-top: .5rem;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  color: var(--ex-muted);
+  font-size: .64rem;
+  font-weight: 700;
+}
+
+.legend-dot,
+.exlib-role-dot {
+  width: 8px;
+  height: 8px;
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.legend-dot--target,
+.exlib-role--target .exlib-role-dot {
+  background: #ef4444;
+}
+
+.legend-dot--syn,
+.exlib-role--syn .exlib-role-dot {
+  background: #f59e0b;
+}
+
+.legend-dot--stab,
+.exlib-role--stab .exlib-role-dot {
+  background: #eab308;
+}
+
+.exlib-control-bottom {
+  min-height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .65rem;
+  margin-top: .52rem;
+  padding: .58rem .25rem 0;
+  border-top: 1px solid rgba(8,119,165,.08);
+}
+
+.exlib-active-filters {
+  min-width: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .3rem;
+}
+
+.exlib-active-chip {
+  min-height: 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  padding: .3rem .5rem;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(55,149,187,.10);
+  color: var(--ex-blue);
+  font: 800 .62rem/1 "Tajawal", sans-serif;
+  cursor: pointer;
+}
+
+.exlib-active-chip span {
+  font-size: .8rem;
+  line-height: 1;
+}
+
+.exlib-meta {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  color: var(--ex-muted);
+  font-size: .68rem;
+  font-weight: 800;
+}
+
+.exlib-reset {
+  padding: .3rem .5rem;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--ex-blue);
+  font-family: inherit;
+  font-size: .64rem;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.exlib-reset:hover {
+  background: rgba(55,149,187,.08);
+}
+
+/* ========== Results ========== */
+
+.exlib-section {
+  padding: 2.1rem 0 4.5rem;
+  background: var(--secondary-bg);
+}
+
+body.dark .exlib-section {
+  background: var(--dark-bg);
+}
+
+.exlib-results-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  scroll-margin-top: 90px;
+}
+
+.exlib-results-heading h2 {
+  margin: 0;
+  color: var(--ex-ink);
+  font-family: "Cairo", sans-serif;
+  font-size: clamp(1.55rem, 2.6vw, 2.25rem);
+  line-height: 1.2;
+}
+
+.exlib-browser-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: .75rem;
+}
+
+.exlib-muscle-card {
+  position: relative;
+  min-height: 96px;
+  display: grid;
+  grid-template-columns: 58px minmax(0,1fr) 32px;
+  align-items: center;
+  gap: .7rem;
+  padding: .75rem;
+  overflow: hidden;
+  border: 1px solid var(--ex-line);
+  border-radius: 16px;
+  background: var(--ex-surface);
+  color: var(--ex-ink);
+  text-align: right;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(3,65,89,.04);
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+
+.exlib-muscle-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(8,119,165,.24);
+  box-shadow: 0 15px 34px rgba(3,65,89,.09);
+}
+
+.exlib-muscle-card-image {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 13px;
+  background: linear-gradient(145deg, rgba(211,234,238,.85), rgba(255,255,255,.70));
+}
+
+body.dark .exlib-muscle-card-image {
+  background: rgba(87,167,201,.08);
+}
+
+.exlib-muscle-card-image img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.exlib-muscle-card-image i {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--ex-blue);
+  font-family: "Cairo", sans-serif;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.exlib-muscle-card-image:not(.missing) i {
+  opacity: 0;
+}
+
+.exlib-muscle-card-copy {
+  min-width: 0;
+}
+
+.exlib-muscle-card-copy strong,
+.exlib-muscle-card-copy small {
+  display: block;
+}
+
+.exlib-muscle-card-copy strong {
+  color: var(--ex-ink);
+  font-family: "Cairo", sans-serif;
+  font-size: .9rem;
+  line-height: 1.3;
+}
+
+.exlib-muscle-card-copy small {
+  margin-top: .12rem;
+  overflow: hidden;
+  color: var(--ex-muted);
+  font-size: .58rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.exlib-muscle-card-arrow {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--ex-line);
+  border-radius: 9px;
+  color: var(--ex-blue);
+  font-size: .8rem;
+  transition: background .2s ease, color .2s ease;
+}
+
+.exlib-muscle-card:hover .exlib-muscle-card-arrow {
+  background: var(--ex-blue);
+  color: #fff;
+}
+
+.exlib-results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: .85rem;
+}
+
+.exlib-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--ex-line);
+  border-radius: 18px;
+  background: var(--ex-surface);
+  box-shadow: 0 9px 28px rgba(3,65,89,.045);
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+
+.exlib-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(8,119,165,.23);
+  box-shadow: 0 18px 42px rgba(3,65,89,.10);
+}
+
+.exlib-ex-img {
+  position: relative;
+  height: 205px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(255,255,255,.86), transparent 55%),
+    rgba(211,234,238,.55);
+}
+
+body.dark .exlib-ex-img {
+  background:
+    radial-gradient(circle at 50% 35%, rgba(87,167,201,.10), transparent 55%),
+    rgba(7,29,37,.35);
+}
+
+.exlib-ex-img img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  transition: transform .35s ease;
+}
+
+.exlib-card:hover .exlib-ex-img img {
+  transform: scale(1.025);
+}
+
+.exlib-ex-placeholder {
+  position: absolute;
+  color: var(--ex-blue);
+  font-family: "Cairo", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 900;
+  opacity: .35;
+}
+
+.exlib-ex-img:not(.missing) .exlib-ex-placeholder {
+  display: none;
+}
+
+.exlib-ex-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: .85rem .9rem .9rem;
+}
+
+.exlib-card-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .55rem;
+  margin-bottom: .42rem;
+}
+
+.exlib-card-eyebrow > span {
+  color: var(--ex-blue-2);
+  font-size: .59rem;
+  font-weight: 900;
+}
+
+.exlib-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: .25rem;
+}
+
+.exlib-tag {
+  min-height: 25px;
+  padding: .25rem .42rem;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(55,149,187,.08);
+  color: var(--ex-blue);
+  font-family: inherit;
+  font-size: .57rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.exlib-tag:hover {
+  background: rgba(55,149,187,.14);
+}
+
+.exlib-ex-name {
+  margin: 0;
+  color: var(--ex-ink);
+  font-family: "Cairo", sans-serif;
+  font-size: .95rem;
+  line-height: 1.35;
+  direction: ltr;
+  text-align: right;
+}
+
+.exlib-ex-desc {
+  display: -webkit-box;
+  margin: .42rem 0 .68rem;
+  overflow: hidden;
+  color: var(--ex-muted);
+  font-size: .71rem;
+  font-weight: 600;
+  line-height: 1.6;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.exlib-primary-roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .28rem;
+  margin-top: auto;
+}
+
+.exlib-role {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  min-height: 26px;
+  padding: .27rem .45rem;
+  border-radius: 999px;
+  background: rgba(8,119,165,.04);
+  color: var(--ex-muted);
+  font-size: .58rem;
+  font-weight: 800;
+}
+
+.exlib-role-details {
+  margin-top: .58rem;
+  padding-top: .55rem;
+  border-top: 1px solid rgba(8,119,165,.07);
+}
+
+.exlib-role-details summary {
+  color: var(--ex-blue);
+  font-size: .6rem;
+  font-weight: 900;
+  cursor: pointer;
+  list-style: none;
+}
+
+.exlib-role-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.exlib-role-details summary::after {
+  content: "+";
+  margin-right: .32rem;
+}
+
+.exlib-role-details[open] summary::after {
+  content: "−";
+}
+
+.exlib-role-details-body {
+  display: grid;
+  gap: .45rem;
+  margin-top: .5rem;
+}
+
+.exlib-role-details-body > div {
+  display: grid;
+  gap: .3rem;
+}
+
+.exlib-role-details-body b {
+  color: var(--ex-muted);
+  font-size: .57rem;
+}
+
+.exlib-role-details-body > div > span {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .28rem;
+}
+
+.exlib-empty {
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.exlib-empty-icon {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto .7rem;
+  border-radius: 15px;
+  background: rgba(55,149,187,.09);
+  color: var(--ex-blue);
+  font-size: 1.5rem;
+}
+
+.exlib-empty h3 {
+  margin: 0;
+  color: var(--ex-ink);
+  font-family: "Cairo", sans-serif;
+  font-size: 1.2rem;
+}
+
+.exlib-empty p {
+  margin: .3rem 0 .8rem;
+  color: var(--ex-muted);
+  font-size: .78rem;
+}
+
+.exlib-empty-reset {
+  min-height: 38px;
+  padding: .55rem .8rem;
+  border: 0;
+  border-radius: 10px;
+  background: var(--ex-blue);
+  color: #fff;
+  font-family: inherit;
+  font-size: .72rem;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.exlib-note {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.35rem;
+  padding: .85rem 1rem;
+  border: 1px solid var(--ex-line);
+  border-radius: 14px;
+  background: rgba(55,149,187,.055);
+}
+
+.exlib-note strong,
+.exlib-note span {
+  display: block;
+}
+
+.exlib-note strong {
+  color: var(--ex-ink);
+  font-size: .75rem;
+}
+
+.exlib-note span {
+  margin-top: .12rem;
+  color: var(--ex-muted);
+  font-size: .64rem;
+  line-height: 1.45;
+}
+
+.exlib-note a {
+  flex: 0 0 auto;
+  padding: .5rem .65rem;
+  border-radius: 9px;
+  background: var(--ex-blue);
+  color: #fff;
+  font-size: .65rem;
+  font-weight: 900;
+}
+
+/* ========== Responsive ========== */
+
+@media (max-width: 1080px) {
+  .exlib-browser-grid {
+    grid-template-columns: repeat(3, minmax(0,1fr));
+  }
+
+  .exlib-results-grid {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .exlib-hero {
+    padding: 3.4rem 0 1.15rem;
+  }
+
+  .exlib-intro {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: .9rem;
+    margin-bottom: 1rem;
+  }
+
+  .exlib-intro h1 {
+    font-size: clamp(2rem, 10vw, 2.8rem);
+  }
+
+  .exlib-intro-copy > p:last-child {
+    font-size: .82rem;
+  }
+
+  .exlib-stats {
+    width: 100%;
+    gap: .4rem;
+  }
+
+  .exlib-stat {
+    flex: 1;
+    min-width: 0;
+    padding: .58rem .42rem;
+    border-radius: 12px;
+  }
+
+  .exlib-stat strong {
+    font-size: 1rem;
+  }
+
+  .exlib-stat span {
+    font-size: .52rem;
+  }
+
+  .exlib-controls {
+    padding: .62rem;
+    border-radius: 16px;
+  }
+
+  .exlib-control-top {
+    grid-template-columns: minmax(0,1fr) auto;
+  }
+
+  .exlib-search {
+    min-height: 48px;
+    padding-right: 2.7rem;
+    font-size: 16px; /* prevents iOS input zoom */
+  }
+
+  .exlib-filter-toggle {
+    min-width: 96px;
+    min-height: 48px;
+    display: inline-flex;
+  }
+
+  .exlib-filter-panel {
+    display: none;
+    margin-top: .55rem;
+    padding: .4rem .1rem .1rem;
+    border-top: 1px solid rgba(8,119,165,.08);
+  }
+
+  .exlib-filter-panel.is-open {
+    display: block;
+  }
+
+  .exlib-filter-row {
+    grid-template-columns: 1fr;
+    gap: .35rem;
+    padding: .5rem .1rem;
+  }
+
+  .exlib-filter-label small {
+    display: none;
+  }
+
+  .exlib-chips {
+    margin-left: -.62rem;
+    margin-right: -.62rem;
+    padding-inline: .62rem;
+  }
+
+  .exlib-chip {
+    min-height: 36px;
+    font-size: .66rem;
+  }
+
+  .exlib-legend-details {
+    margin-inline: .1rem;
+  }
+
+  .exlib-control-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .exlib-meta {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .exlib-section {
+    padding: 1.6rem 0 3.6rem;
+  }
+
+  .exlib-results-heading {
+    margin-bottom: .75rem;
+  }
+
+  .exlib-results-heading h2 {
+    font-size: 1.45rem;
+  }
+
+  .exlib-browser-grid {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: .55rem;
+  }
+
+  .exlib-muscle-card {
+    min-height: 86px;
+    grid-template-columns: 48px minmax(0,1fr);
+    gap: .55rem;
+    padding: .6rem;
+    border-radius: 14px;
+  }
+
+  .exlib-muscle-card-image {
+    width: 48px;
+    height: 48px;
+    border-radius: 11px;
+  }
+
+  .exlib-muscle-card-arrow {
+    display: none;
+  }
+
+  .exlib-muscle-card-copy strong {
+    font-size: .78rem;
+  }
+
+  .exlib-muscle-card-copy small {
+    font-size: .52rem;
+  }
+
+  .exlib-results-grid {
+    grid-template-columns: 1fr;
+    gap: .7rem;
+  }
+
+  .exlib-card {
+    display: grid;
+    grid-template-columns: 120px minmax(0,1fr);
+    border-radius: 15px;
+  }
+
+  .exlib-ex-img {
+    height: 100%;
+    min-height: 170px;
+  }
+
+  .exlib-ex-body {
+    padding: .72rem;
+  }
+
+  .exlib-card-eyebrow {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: .3rem;
+  }
+
+  .exlib-tags {
+    justify-content: flex-start;
+  }
+
+  .exlib-ex-name {
+    font-size: .86rem;
+  }
+
+  .exlib-ex-desc {
+    margin: .35rem 0 .5rem;
+    font-size: .66rem;
+  }
+
+  .exlib-role {
+    min-height: 24px;
+    font-size: .54rem;
+  }
+
+  .exlib-note {
+    align-items: stretch;
+    flex-direction: column;
+    gap: .6rem;
+    padding: .75rem;
+  }
+
+  .exlib-note a {
+    width: 100%;
+    text-align: center;
+  }
+
+  .exlib-site-logo-img {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (max-width: 430px) {
+  .exlib-control-top {
+    grid-template-columns: 1fr;
+  }
+
+  .exlib-filter-toggle {
+    width: 100%;
+  }
+
+  .exlib-browser-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .exlib-card {
+    grid-template-columns: 105px minmax(0,1fr);
+  }
+
+  .exlib-ex-img {
+    min-height: 155px;
+  }
+}
+
+@media (max-width: 360px) {
+  .exlib-browser-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .exlib-card {
+    grid-template-columns: 1fr;
+  }
+
+  .exlib-ex-img {
+    height: 190px;
+  }
+}
+
+/* Accessible focus */
+.exlib-v5 button:focus-visible,
+.exlib-v5 input:focus-visible,
+.exlib-v5 a:focus-visible,
+.exlib-v5 summary:focus-visible {
+  outline: 3px solid rgba(55,149,187,.30);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .exlib-v5 *,
+  .exlib-v5 *::before,
+  .exlib-v5 *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .001ms !important;
+    animation-duration: .001ms !important;
+  }
+}
+
+
+/* =====================================================================
+   EXERCISE LIBRARY V6
+   Desktop: sticky vertical filters + results beside them.
+   Mobile/tablet: filters collapse above results.
+   ===================================================================== */
+
+.exlib-v6 {
+  --ex-sidebar: 270px;
+}
+
+/* ---------- Intro ---------- */
+
+.exlib-v6 .exlib-hero {
+  padding: 2.8rem 0 1.35rem;
+}
+
+.exlib-v6 .exlib-intro {
+  max-width: none;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 2rem;
+  text-align: right;
+}
+
+.exlib-v6 .exlib-intro-copy {
+  max-width: 660px;
+}
+
+.exlib-v6 .exlib-intro-copy h1 {
+  font-size: clamp(2.25rem, 4vw, 3.7rem);
+}
+
+.exlib-v6 .exlib-intro-copy > p:last-child {
+  max-width: 520px;
+  margin-top: .45rem;
+  font-size: .9rem;
+}
+
+.exlib-v6 .exlib-stats {
+  flex: 0 0 auto;
+}
+
+/* ---------- Main app layout ---------- */
+
+.exlib-v6 .exlib-workspace {
+  padding: 1rem 0 4.5rem;
+  background: var(--secondary-bg);
+}
+
+body.dark.exlib-v6 .exlib-workspace {
+  background: var(--dark-bg);
+}
+
+.exlib-v6 .exlib-workspace-grid {
+  display: grid;
+  grid-template-columns: var(--ex-sidebar) minmax(0, 1fr);
+  gap: 1.35rem;
+  align-items: start;
+  direction: ltr;
+}
+
+/* Restore RTL inside each side. */
+.exlib-v6 .exlib-sidebar,
+.exlib-v6 .exlib-results-area {
+  direction: rtl;
+}
+
+/* ---------- Sidebar ---------- */
+
+.exlib-v6 .exlib-sidebar {
+  position: sticky;
+  top: 84px;
+  z-index: 20;
+}
+
+.exlib-v6 .exlib-sidebar-card {
+  max-height: calc(100vh - 104px);
+  overflow-y: auto;
+  padding: .85rem;
+  border: 1px solid var(--ex-line);
+  border-radius: 20px;
+  background: var(--ex-surface);
+  box-shadow: 0 14px 38px rgba(3,65,89,.07);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(8,119,165,.18) transparent;
+}
+
+.exlib-v6 .exlib-sidebar-card::-webkit-scrollbar {
+  width: 6px;
+}
+
+.exlib-v6 .exlib-sidebar-card::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(8,119,165,.18);
+}
+
+.exlib-v6 .exlib-sidebar-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  padding: .15rem .15rem .75rem;
+}
+
+.exlib-v6 .exlib-sidebar-heading span:first-child {
+  display: block;
+  color: var(--ex-blue-2);
+  font-family: "Cairo", sans-serif;
+  font-size: .56rem;
+  font-weight: 900;
+  letter-spacing: .12em;
+  direction: ltr;
+}
+
+.exlib-v6 .exlib-sidebar-heading h2 {
+  margin: .08rem 0 0;
+  color: var(--ex-ink);
+  font-family: "Cairo", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.3;
+}
+
+/* Search is part of the sidebar. */
+.exlib-v6 .exlib-search-wrap {
+  max-width: none;
+  margin: 0;
+}
+
+.exlib-v6 .exlib-search {
+  min-height: 44px;
+  padding: .65rem 2.5rem .65rem 2.2rem;
+  border-radius: 12px;
+  font-size: .76rem;
+}
+
+.exlib-v6 .exlib-search-icon {
+  right: .72rem;
+}
+
+.exlib-v6 .exlib-clear {
+  left: .55rem;
+}
+
+/* Desktop filter toggle is unnecessary. */
+.exlib-v6 .exlib-filter-toggle {
+  display: none;
+}
+
+/* Filters always open on desktop. */
+.exlib-v6 .exlib-filter-panel {
+  display: block;
+  margin-top: .8rem;
+  padding: .1rem 0 0;
+  border-top: 1px solid rgba(8,119,165,.08);
+}
+
+/* Vertical filter groups. */
+.exlib-v6 .exlib-filter-row {
+  display: block;
+  margin: 0;
+  padding: .85rem 0;
+  border-bottom: 1px solid rgba(8,119,165,.08);
+  text-align: right;
+}
+
+.exlib-v6 .exlib-filter-label {
+  margin-bottom: .55rem;
+}
+
+.exlib-v6 .exlib-filter-label strong {
+  display: block;
+  color: var(--ex-ink);
+  font-size: .78rem;
+}
+
+.exlib-v6 .exlib-filter-label small {
+  display: block;
+  margin-top: .1rem;
+  color: var(--ex-muted);
+  font-size: .57rem;
+}
+
+.exlib-v6 .exlib-chips {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: .32rem;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+}
+
+/* Vertical menu-style chips. */
+.exlib-v6 .exlib-chip {
+  position: relative;
+  width: 100%;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: .48rem .65rem .48rem 2rem;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  box-shadow: none;
+  color: var(--ex-ink);
+  font-size: .68rem;
+  text-align: right;
+  transition:
+    background .18s ease,
+    color .18s ease,
+    border-color .18s ease,
+    transform .18s ease;
+}
+
+.exlib-v6 .exlib-chip::after {
+  content: "";
+  position: absolute;
+  left: .65rem;
+  width: 7px;
+  height: 7px;
+  border: 1.5px solid rgba(8,119,165,.28);
+  border-radius: 50%;
+}
+
+.exlib-v6 .exlib-chip:hover {
+  transform: none;
+  background: rgba(55,149,187,.07);
+  box-shadow: none;
+}
+
+.exlib-v6 .exlib-chip.active {
+  background: rgba(8,119,165,.10);
+  border-color: rgba(8,119,165,.16);
+  color: var(--ex-blue);
+  box-shadow: none;
+}
+
+.exlib-v6 .exlib-chip.active::after {
+  border-color: var(--ex-blue);
+  background: var(--ex-blue);
+  box-shadow: 0 0 0 3px rgba(8,119,165,.10);
+}
+
+body.dark.exlib-v6 .exlib-chip {
+  color: var(--dark-text);
+  background: transparent;
+}
+
+body.dark.exlib-v6 .exlib-chip:hover {
+  background: rgba(87,167,201,.08);
+}
+
+body.dark.exlib-v6 .exlib-chip.active {
+  color: var(--dark-accent);
+  background: rgba(87,167,201,.11);
+  border-color: rgba(87,167,201,.16);
+}
+
+/* Legend becomes small utility block. */
+.exlib-v6 .exlib-legend-details {
+  margin-top: .75rem;
+  border-radius: 11px;
+}
+
+.exlib-v6 .exlib-legend-details summary {
+  font-size: .67rem;
+}
+
+.exlib-v6 .exlib-legend {
+  display: grid;
+  gap: .38rem;
+  margin-top: .5rem;
+}
+
+.exlib-v6 .legend-item {
+  justify-content: flex-start;
+  font-size: .6rem;
+}
+
+/* Active filters / result count at bottom of sidebar. */
+.exlib-v6 .exlib-sidebar-bottom {
+  margin-top: .8rem;
+  padding-top: .7rem;
+  border-top: 1px solid rgba(8,119,165,.08);
+}
+
+.exlib-v6 .exlib-active-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .3rem;
+}
+
+.exlib-v6 .exlib-active-chip {
+  min-height: 27px;
+  padding: .28rem .45rem;
+  font-size: .55rem;
+}
+
+.exlib-v6 .exlib-meta {
+  width: 100%;
+  margin-top: .55rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  font-size: .64rem;
+}
+
+/* ---------- Results side ---------- */
+
+.exlib-v6 .exlib-results-area {
+  min-width: 0;
+}
+
+.exlib-v6 .exlib-results-heading {
+  min-height: 62px;
+  align-items: center;
+  margin-bottom: .8rem;
+  padding: .2rem .1rem;
+}
+
+.exlib-v6 .exlib-results-heading h2 {
+  font-size: clamp(1.45rem, 2.3vw, 2rem);
+}
+
+.exlib-v6 .exlib-results-kicker {
+  font-size: .6rem;
+}
+
+/* Muscle browser */
+.exlib-v6 .exlib-browser-grid {
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: .7rem;
+}
+
+.exlib-v6 .exlib-muscle-card {
+  min-height: 92px;
+}
+
+/* Exercise grid gets more room next to sidebar. */
+.exlib-v6 .exlib-results-grid {
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: .8rem;
+}
+
+.exlib-v6 .exlib-ex-img {
+  height: 190px;
+}
+
+/* Keep note compact. */
+.exlib-v6 .exlib-note {
+  margin-top: 1rem;
+}
+
+/* Large desktop can comfortably show 3 exercise cards. */
+@media (min-width: 1500px) {
+  .exlib-v6 {
+    --ex-sidebar: 285px;
+  }
+
+  .exlib-v6 .exlib-results-grid {
+    grid-template-columns: repeat(3, minmax(0,1fr));
+  }
+
+  .exlib-v6 .exlib-browser-grid {
+    grid-template-columns: repeat(4, minmax(0,1fr));
+  }
+}
+
+/* ---------- Tablet / mobile ---------- */
+
+@media (max-width: 900px) {
+  .exlib-v6 .exlib-hero {
+    padding-top: 2.2rem;
+  }
+
+  .exlib-v6 .exlib-intro {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .exlib-v6 .exlib-workspace {
+    padding-top: .4rem;
+  }
+
+  .exlib-v6 .exlib-workspace-grid {
+    display: block;
+  }
+
+  .exlib-v6 .exlib-sidebar {
+    position: static;
+    margin-bottom: 1rem;
+  }
+
+  .exlib-v6 .exlib-sidebar-card {
+    max-height: none;
+    overflow: visible;
+    padding: .75rem;
+    border-radius: 17px;
+  }
+
+  .exlib-v6 .exlib-sidebar-heading {
+    padding-bottom: .6rem;
+  }
+
+  .exlib-v6 .exlib-sidebar-heading > div {
+    display: none;
+  }
+
+  .exlib-v6 .exlib-filter-toggle {
+    width: 100%;
+    min-height: 42px;
+    display: inline-flex;
+    justify-content: center;
+  }
+
+  .exlib-v6 .exlib-search {
+    min-height: 47px;
+    font-size: 16px; /* prevent iOS input zoom */
+  }
+
+  .exlib-v6 .exlib-filter-panel {
+    display: none;
+    margin-top: .55rem;
+    padding-top: .2rem;
+  }
+
+  .exlib-v6 .exlib-filter-panel.is-open {
+    display: block;
+  }
+
+  /* Vertical filters stay clean on tablet/mobile too,
+     but use two columns where space permits. */
+  .exlib-v6 .exlib-chips {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: .35rem;
+  }
+
+  .exlib-v6 .exlib-chip {
+    min-height: 38px;
+  }
+
+  .exlib-v6 .exlib-sidebar-bottom {
+    margin-top: .65rem;
+  }
+
+  .exlib-v6 .exlib-results-grid {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+
+  .exlib-v6 .exlib-browser-grid {
+    grid-template-columns: repeat(3, minmax(0,1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .exlib-v6 .exlib-hero {
+    padding: 1.8rem 0 .9rem;
+  }
+
+  .exlib-v6 .exlib-intro-copy h1 {
+    font-size: 2rem;
+  }
+
+  .exlib-v6 .exlib-stats {
+    width: 100%;
+  }
+
+  .exlib-v6 .exlib-chips {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .exlib-v6 .exlib-results-heading {
+    min-height: 0;
+    margin-bottom: .65rem;
+  }
+
+  .exlib-v6 .exlib-browser-grid {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+
+  .exlib-v6 .exlib-results-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .exlib-v6 .exlib-card {
+    grid-template-columns: 115px minmax(0,1fr);
+  }
+
+  .exlib-v6 .exlib-ex-img {
+    height: auto;
+    min-height: 165px;
+  }
+}
+
+@media (max-width: 390px) {
+  .exlib-v6 .exlib-chips {
+    grid-template-columns: 1fr;
+  }
+
+  .exlib-v6 .exlib-card {
+    grid-template-columns: 1fr;
+  }
+
+  .exlib-v6 .exlib-ex-img {
+    min-height: 190px;
+  }
+}
+
+
+/* =====================================================================
+   EXERCISE LIBRARY V7
+   Desktop = RTL sticky sidebar.
+   Mobile = sticky search bar + native-style bottom-sheet filters.
+   ===================================================================== */
+
+/* Desktop sidebar belongs on the right in an RTL interface. */
+.exlib-v7 .exlib-workspace-grid {
+  direction: rtl;
+  grid-template-columns: var(--ex-sidebar) minmax(0, 1fr);
+}
+
+.exlib-v7 .exlib-sidebar,
+.exlib-v7 .exlib-results-area {
+  direction: rtl;
+}
+
+/* Sheet-only UI is hidden on desktop. */
+.exlib-v7 .exlib-sheet-head,
+.exlib-v7 .exlib-sheet-footer,
+.exlib-v7 .exlib-filter-backdrop {
+  display: none;
+}
+
+/* Desktop sidebar feels lighter and more like a real filter rail. */
+@media (min-width: 901px) {
+  .exlib-v7 .exlib-sidebar-card {
+    padding: .7rem;
+    border-radius: 18px;
+    box-shadow: 0 12px 32px rgba(3,65,89,.055);
+  }
+
+  .exlib-v7 .exlib-sidebar-heading {
+    padding: .2rem .2rem .65rem;
+  }
+
+  .exlib-v7 .exlib-search {
+    background: rgba(255,255,255,.82);
+  }
+
+  body.dark.exlib-v7 .exlib-search {
+    background: rgba(255,255,255,.035);
+  }
+
+  .exlib-v7 .exlib-filter-row {
+    padding: .75rem 0;
+  }
+
+  .exlib-v7 .exlib-chip {
+    min-height: 34px;
+    border-radius: 9px;
+  }
+
+  .exlib-v7 .exlib-sheet-scroll {
+    display: contents;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Tablet + mobile
+   ------------------------------------------------------------------ */
+@media (max-width: 900px) {
+  body.exlib-v7.exlib-filter-sheet-open {
+    overflow: hidden;
+  }
+
+  .exlib-v7 .exlib-workspace {
+    padding-top: .2rem;
+  }
+
+  /* Compact tools stay within reach while scrolling results. */
+  .exlib-v7 .exlib-sidebar {
+    position: sticky;
+    top: 62px;
+    z-index: 80;
+    margin: 0 0 .75rem;
+    padding: .45rem 0;
+    background:
+      linear-gradient(
+        to bottom,
+        var(--secondary-bg) 72%,
+        rgba(235,245,247,0)
+      );
+  }
+
+  body.dark.exlib-v7 .exlib-sidebar {
+    background:
+      linear-gradient(
+        to bottom,
+        var(--dark-bg) 72%,
+        rgba(10,32,41,0)
+      );
+  }
+
+  .exlib-v7 .exlib-sidebar-card {
+    display: grid;
+    grid-template-columns: minmax(0,1fr) auto;
+    gap: .5rem;
+    align-items: center;
+    max-height: none;
+    overflow: visible;
+    padding: .5rem;
+    border-radius: 15px;
+    background: rgba(255,255,255,.90);
+    box-shadow: 0 10px 28px rgba(3,65,89,.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  body.dark.exlib-v7 .exlib-sidebar-card {
+    background: rgba(14,43,54,.92);
+  }
+
+  .exlib-v7 .exlib-sidebar-heading {
+    grid-column: 2;
+    grid-row: 1;
+    display: block;
+    padding: 0;
+  }
+
+  .exlib-v7 .exlib-sidebar-heading > div {
+    display: none;
+  }
+
+  .exlib-v7 .exlib-filter-toggle {
+    width: auto;
+    min-width: 92px;
+    min-height: 44px;
+    display: inline-flex;
+    padding: .6rem .72rem;
+    border-radius: 11px;
+    justify-content: center;
+    white-space: nowrap;
+  }
+
+  .exlib-v7 .exlib-filter-toggle b {
+    min-width: 18px;
+    height: 18px;
+    font-size: .56rem;
+  }
+
+  .exlib-v7 .exlib-search-wrap {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+  }
+
+  .exlib-v7 .exlib-search {
+    min-height: 44px;
+    padding-block: .55rem;
+    border-radius: 11px;
+    background: rgba(247,252,253,.86);
+    font-size: 16px; /* prevents iOS zoom */
+  }
+
+  body.dark.exlib-v7 .exlib-search {
+    background: rgba(255,255,255,.035);
+  }
+
+  /* Active chips are a horizontal strip instead of adding height. */
+  .exlib-v7 .exlib-sidebar-bottom {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .exlib-v7 .exlib-active-filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: .3rem;
+    padding-top: .05rem;
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
+  }
+
+  .exlib-v7 .exlib-active-filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .exlib-v7 .exlib-active-chip {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+
+  .exlib-v7 .exlib-meta {
+    display: none;
+  }
+
+  /* The filter panel becomes a real bottom sheet. */
+  .exlib-v7 .exlib-filter-panel {
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1102;
+    display: flex !important;
+    flex-direction: column;
+    width: min(100%, 620px);
+    max-height: min(82dvh, 760px);
+    margin: 0 auto;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid rgba(8,119,165,.14);
+    border-bottom: 0;
+    border-radius: 24px 24px 0 0;
+    background: #f9fcfd;
+    box-shadow: 0 -20px 60px rgba(3,38,52,.20);
+    transform: translateY(105%);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      transform .32s cubic-bezier(.2,.75,.25,1),
+      opacity .22s ease,
+      visibility .32s ease;
+  }
+
+  body.dark.exlib-v7 .exlib-filter-panel {
+    background: #102c37;
+    border-color: rgba(87,167,201,.17);
+    box-shadow: 0 -22px 62px rgba(0,0,0,.48);
+  }
+
+  .exlib-v7 .exlib-filter-panel.is-open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .exlib-v7 .exlib-sheet-head {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex: 0 0 auto;
+    padding: .9rem 1rem .75rem;
+    border-bottom: 1px solid rgba(8,119,165,.09);
+  }
+
+  .exlib-v7 .exlib-sheet-head::before {
+    content: "";
+    position: absolute;
+    top: .42rem;
+    left: 50%;
+    width: 42px;
+    height: 4px;
+    border-radius: 999px;
+    background: rgba(8,42,57,.15);
+    transform: translateX(-50%);
+  }
+
+  body.dark.exlib-v7 .exlib-sheet-head::before {
+    background: rgba(255,255,255,.16);
+  }
+
+  .exlib-v7 .exlib-sheet-head > div {
+    padding-top: .35rem;
+  }
+
+  .exlib-v7 .exlib-sheet-head small,
+  .exlib-v7 .exlib-sheet-head strong {
+    display: block;
+  }
+
+  .exlib-v7 .exlib-sheet-head small {
+    color: var(--ex-blue-2);
+    font-family: "Cairo", sans-serif;
+    font-size: .54rem;
+    font-weight: 900;
+    letter-spacing: .11em;
+    direction: ltr;
+  }
+
+  .exlib-v7 .exlib-sheet-head strong {
+    margin-top: .08rem;
+    color: var(--ex-ink);
+    font-size: .95rem;
+  }
+
+  .exlib-v7 .exlib-sheet-close {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    border: 1px solid rgba(8,119,165,.12);
+    border-radius: 11px;
+    background: rgba(211,234,238,.35);
+    color: var(--ex-ink);
+    font-size: 1.15rem;
+    cursor: pointer;
+  }
+
+  .exlib-v7 .exlib-sheet-scroll {
+    min-height: 0;
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding: .2rem 1rem 1rem;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .exlib-v7 .exlib-filter-row {
+    padding: .85rem 0;
+  }
+
+  .exlib-v7 .exlib-filter-label {
+    margin-bottom: .6rem;
+  }
+
+  .exlib-v7 .exlib-filter-label strong {
+    font-size: .82rem;
+  }
+
+  .exlib-v7 .exlib-filter-label small {
+    font-size: .62rem;
+  }
+
+  /* In the sheet, filters become compact selectable tiles. */
+  .exlib-v7 .exlib-chips {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: .4rem;
+  }
+
+  .exlib-v7 .exlib-chip {
+    min-height: 41px;
+    justify-content: flex-start;
+    padding: .55rem .7rem .55rem 2rem;
+    border: 1px solid rgba(8,119,165,.10);
+    border-radius: 11px;
+    background: rgba(211,234,238,.20);
+    font-size: .7rem;
+  }
+
+  body.dark.exlib-v7 .exlib-chip {
+    background: rgba(255,255,255,.025);
+  }
+
+  .exlib-v7 .exlib-chip.active {
+    color: #fff;
+    background: var(--ex-blue);
+    border-color: var(--ex-blue);
+  }
+
+  .exlib-v7 .exlib-chip.active::after {
+    border-color: #fff;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(255,255,255,.12);
+  }
+
+  body.dark.exlib-v7 .exlib-chip.active {
+    color: #fff;
+    background: var(--ex-blue-2);
+    border-color: var(--ex-blue-2);
+  }
+
+  .exlib-v7 .exlib-sheet-footer {
+    display: block;
+    flex: 0 0 auto;
+    padding: .7rem 1rem calc(.7rem + env(safe-area-inset-bottom));
+    border-top: 1px solid rgba(8,119,165,.09);
+    background: rgba(249,252,253,.96);
+    backdrop-filter: blur(14px);
+  }
+
+  body.dark.exlib-v7 .exlib-sheet-footer {
+    background: rgba(16,44,55,.97);
+  }
+
+  .exlib-v7 .exlib-sheet-apply {
+    width: 100%;
+    min-height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .55rem;
+    border: 0;
+    border-radius: 12px;
+    background: var(--ex-blue);
+    color: #fff;
+    font-family: inherit;
+    font-size: .8rem;
+    font-weight: 900;
+    cursor: pointer;
+  }
+
+  .exlib-v7 .exlib-sheet-apply b {
+    min-width: 24px;
+    height: 24px;
+    display: grid;
+    place-items: center;
+    padding: 0 .35rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,.16);
+    font-size: .65rem;
+  }
+
+  /* Backdrop */
+  .exlib-v7 .exlib-filter-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1101;
+    display: block;
+    border: 0;
+    background: rgba(5,24,32,.42);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .22s ease, visibility .22s ease;
+  }
+
+  body.exlib-filter-sheet-open .exlib-filter-backdrop {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  /* Results sit naturally below sticky tools. */
+  .exlib-v7 .exlib-results-heading {
+    scroll-margin-top: 150px;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Phones
+   ------------------------------------------------------------------ */
+@media (max-width: 640px) {
+  .exlib-v7 .exlib-hero {
+    padding: 1.25rem 0 .65rem;
+  }
+
+  .exlib-v7 .exlib-intro {
+    gap: .7rem;
+  }
+
+  .exlib-v7 .exlib-kicker {
+    font-size: .58rem;
+  }
+
+  .exlib-v7 .exlib-intro-copy h1 {
+    font-size: 1.8rem;
+  }
+
+  .exlib-v7 .exlib-intro-copy > p:last-child {
+    margin-top: .3rem;
+    font-size: .78rem;
+    line-height: 1.55;
+  }
+
+  /* Stats become tiny info chips rather than big cards. */
+  .exlib-v7 .exlib-stats {
+    gap: .35rem;
+  }
+
+  .exlib-v7 .exlib-stat {
+    min-width: 0;
+    min-height: 48px;
+    padding: .45rem .65rem;
+    border-radius: 12px;
+  }
+
+  .exlib-v7 .exlib-stat strong {
+    font-size: 1rem;
+  }
+
+  .exlib-v7 .exlib-stat span {
+    font-size: .57rem;
+  }
+
+  .exlib-v7 .exlib-sidebar {
+    top: 58px;
+    padding: .35rem 0;
+  }
+
+  .exlib-v7 .exlib-sidebar-card {
+    padding: .4rem;
+    gap: .4rem;
+    border-radius: 13px;
+  }
+
+  .exlib-v7 .exlib-filter-toggle {
+    min-width: 76px;
+    min-height: 42px;
+    padding: .5rem .6rem;
+    border-radius: 10px;
+    font-size: .7rem;
+  }
+
+  .exlib-v7 .exlib-filter-toggle-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .exlib-v7 .exlib-search {
+    min-height: 42px;
+    border-radius: 10px;
+  }
+
+  /* Browsing muscle tiles should be quick to scan with the thumb. */
+  .exlib-v7 .exlib-browser-grid {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: .5rem;
+  }
+
+  .exlib-v7 .exlib-muscle-card {
+    min-height: 82px;
+    padding: .6rem;
+    border-radius: 14px;
+  }
+
+  .exlib-v7 .exlib-muscle-card-image {
+    width: 48px;
+    height: 48px;
+    flex-basis: 48px;
+    border-radius: 12px;
+  }
+
+  .exlib-v7 .exlib-muscle-card-copy strong {
+    font-size: .8rem;
+  }
+
+  .exlib-v7 .exlib-muscle-card-copy small {
+    font-size: .56rem;
+  }
+
+  .exlib-v7 .exlib-muscle-card-arrow {
+    display: none;
+  }
+
+  /* Exercise result: full-width, image above content.
+     This avoids cramped text next to a tiny photo. */
+  .exlib-v7 .exlib-results-grid {
+    grid-template-columns: 1fr;
+    gap: .65rem;
+  }
+
+  .exlib-v7 .exlib-card {
+    display: block;
+    padding: .5rem;
+    border-radius: 16px;
+  }
+
+  .exlib-v7 .exlib-ex-img {
+    width: 100%;
+    min-height: 0;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    border-radius: 12px;
+  }
+
+  .exlib-v7 .exlib-ex-img img {
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    object-fit: contain;
+  }
+
+  .exlib-v7 .exlib-ex-body {
+    padding: .7rem .35rem .3rem;
+  }
+
+  .exlib-v7 .exlib-ex-name {
+    font-size: 1rem;
+  }
+
+  .exlib-v7 .exlib-ex-desc {
+    margin-top: .35rem;
+    font-size: .72rem;
+    line-height: 1.55;
+  }
+
+  .exlib-v7 .exlib-card-eyebrow {
+    gap: .35rem;
+  }
+
+  .exlib-v7 .exlib-tag,
+  .exlib-v7 .exlib-primary-role {
+    font-size: .58rem;
+  }
+
+  .exlib-v7 .exlib-role-details summary {
+    font-size: .64rem;
+  }
+
+  .exlib-v7 .exlib-note {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: .8rem;
+    border-radius: 14px;
+  }
+
+  .exlib-v7 .exlib-note a {
+    width: 100%;
+    text-align: center;
+  }
+
+  .exlib-v7 .exlib-filter-panel {
+    max-height: 86dvh;
+    border-radius: 21px 21px 0 0;
+  }
+}
+
+@media (max-width: 380px) {
+  .exlib-v7 .exlib-browser-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .exlib-v7 .exlib-chips {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Motion-safe sheet transition. */
+@media (prefers-reduced-motion: reduce) {
+  .exlib-v7 .exlib-filter-panel,
+  .exlib-v7 .exlib-filter-backdrop {
+    transition: none !important;
+  }
+}
+
+
+/* =====================================================================
+   EXERCISE LIBRARY V8 — clear return/reset navigation
+   ===================================================================== */
+
+/* The results header becomes a compact navigation bar only after filtering. */
+.exlib-v8 .exlib-results-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .9rem;
+  transition:
+    background .2s ease,
+    border-color .2s ease,
+    box-shadow .2s ease;
+}
+
+.exlib-v8 .exlib-results-heading-copy {
+  min-width: 0;
+}
+
+.exlib-v8 .exlib-results-heading.has-active {
+  position: sticky;
+  top: 82px;
+  z-index: 45;
+  margin: 0 0 .85rem;
+  padding: .65rem .75rem;
+  border: 1px solid rgba(8,119,165,.10);
+  border-radius: 15px;
+  background: rgba(241,248,250,.92);
+  box-shadow: 0 9px 28px rgba(3,65,89,.07);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+body.dark.exlib-v8 .exlib-results-heading.has-active {
+  background: rgba(13,39,49,.92);
+  border-color: rgba(87,167,201,.13);
+  box-shadow: 0 10px 30px rgba(0,0,0,.24);
+}
+
+.exlib-v8 .exlib-results-heading.has-active .exlib-results-kicker {
+  margin-bottom: .12rem;
+}
+
+.exlib-v8 .exlib-results-heading.has-active h2 {
+  font-size: clamp(1.25rem, 2vw, 1.7rem);
+}
+
+.exlib-v8 .exlib-results-actions {
+  flex: 0 0 auto;
+}
+
+.exlib-v8 .exlib-results-back {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .48rem;
+  padding: .55rem .72rem;
+  border: 1px solid rgba(8,119,165,.16);
+  border-radius: 11px;
+  background: #fff;
+  color: var(--ex-blue);
+  font-family: inherit;
+  font-size: .7rem;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 5px 16px rgba(3,65,89,.045);
+  transition:
+    transform .18s ease,
+    background .18s ease,
+    color .18s ease,
+    border-color .18s ease;
+}
+
+.exlib-v8 .exlib-results-back[hidden] {
+  display: none !important;
+}
+
+.exlib-v8 .exlib-results-back:hover {
+  transform: translateY(-2px);
+  background: var(--ex-blue);
+  border-color: var(--ex-blue);
+  color: #fff;
+}
+
+body.dark.exlib-v8 .exlib-results-back {
+  background: rgba(255,255,255,.035);
+  color: var(--dark-accent);
+  border-color: rgba(87,167,201,.18);
+}
+
+body.dark.exlib-v8 .exlib-results-back:hover {
+  background: var(--ex-blue-2);
+  color: #fff;
+}
+
+.exlib-v8 .exlib-results-back-icon {
+  font-size: .95rem;
+  line-height: 1;
+}
+
+.exlib-v8 .exlib-results-back-short {
+  display: none;
+}
+
+/* Keep count + reset reachable even after scrolling a long desktop filter list. */
+@media (min-width: 901px) {
+  .exlib-v8 .exlib-sidebar-bottom {
+    position: sticky;
+    bottom: -.7rem;
+    z-index: 8;
+    margin: .7rem -.7rem -.7rem;
+    padding: .65rem .7rem .7rem;
+    border-top: 1px solid rgba(8,119,165,.09);
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(249,252,253,.93),
+        rgba(249,252,253,.99) 36%
+      );
+    backdrop-filter: blur(12px);
+  }
+
+  body.dark.exlib-v8 .exlib-sidebar-bottom {
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(16,44,55,.93),
+        rgba(16,44,55,.99) 36%
+      );
+    border-top-color: rgba(87,167,201,.11);
+  }
+
+  .exlib-v8 .exlib-meta {
+    margin-top: .45rem;
+  }
+
+  .exlib-v8 .exlib-reset:not([hidden]) {
+    display: inline-flex;
+    min-height: 31px;
+    align-items: center;
+    justify-content: center;
+    padding: .35rem .55rem;
+    border: 1px solid rgba(8,119,165,.13);
+    border-radius: 9px;
+    background: rgba(8,119,165,.07);
+  }
+}
+
+/* Mobile/tablet:
+   Search/filter tools are already sticky, so this bar sits directly beneath them. */
+@media (max-width: 900px) {
+  .exlib-v8 .exlib-results-heading.has-active {
+    top: 126px;
+    z-index: 60;
+    padding: .55rem .62rem;
+    border-radius: 13px;
+  }
+
+  .exlib-v8 .exlib-results-heading.has-active h2 {
+    font-size: 1.15rem;
+  }
+
+  .exlib-v8 .exlib-results-heading.has-active .exlib-results-kicker {
+    font-size: .55rem;
+  }
+
+  .exlib-v8 .exlib-results-back {
+    min-height: 38px;
+    padding: .48rem .6rem;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 640px) {
+  .exlib-v8 .exlib-results-heading.has-active {
+    top: 112px;
+    gap: .5rem;
+    margin-bottom: .65rem;
+  }
+
+  .exlib-v8 .exlib-results-heading.has-active h2 {
+    max-width: 58vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 1rem;
+  }
+
+  .exlib-v8 .exlib-results-back-full {
+    display: none;
+  }
+
+  .exlib-v8 .exlib-results-back-short {
+    display: inline;
+  }
+
+  .exlib-v8 .exlib-results-back {
+    min-width: 72px;
+    padding-inline: .55rem;
+    font-size: .67rem;
+  }
+}
+
+/* Very small phones: keep the sticky controls from consuming too much space. */
+@media (max-width: 380px) {
+  .exlib-v8 .exlib-results-heading.has-active {
+    top: 108px;
+    padding: .48rem .52rem;
+  }
+
+  .exlib-v8 .exlib-results-back {
+    min-width: 64px;
+  }
+}
+
+
+/* =====================================================================
+   EXERCISE LIBRARY V9 — movement-first exercise imagery
+   Every exercise image is fully visible and can be expanded.
+   ===================================================================== */
+
+body.exlib-v9.exlib-viewer-open {
+  overflow: hidden;
+}
+
+/* Give movements enough room. 4:3 is deliberately taller than the previous
+   panoramic crop and works well for horizontal and vertical exercises. */
+.exlib-v9 .exlib-ex-img {
+  width: 100%;
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: 4 / 3;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: .45rem;
+  border: 0;
+  border-radius: 15px 15px 0 0;
+  background:
+    radial-gradient(circle at 50% 48%, rgba(255,255,255,.70), transparent 64%),
+    #d4ebef;
+  appearance: none;
+  cursor: zoom-in;
+}
+
+body.dark.exlib-v9 .exlib-ex-img {
+  background:
+    radial-gradient(circle at 50% 48%, rgba(87,167,201,.08), transparent 64%),
+    #102f3a;
+}
+
+/* Strict no-crop rendering.
+   !important intentionally wins over all older card-image rules. */
+.exlib-v9 .exlib-ex-img img {
+  position: relative;
+  z-index: 2;
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  display: block;
+  padding: 0;
+  transform: none !important;
+  transition: filter .22s ease, opacity .22s ease;
+}
+
+.exlib-v9 .exlib-card:hover .exlib-ex-img img {
+  transform: none !important;
+}
+
+/* The image itself should never zoom on card hover. */
+.exlib-v9 .exlib-ex-media:hover img,
+.exlib-v9 .exlib-ex-media:focus-visible img {
+  filter: saturate(1.03);
+}
+
+/* Expand affordance */
+.exlib-v9 .exlib-image-expand {
+  position: absolute;
+  z-index: 5;
+  left: .65rem;
+  bottom: .65rem;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(8,119,165,.13);
+  border-radius: 11px;
+  background: rgba(255,255,255,.86);
+  color: var(--ex-blue);
+  box-shadow: 0 7px 20px rgba(3,65,89,.09);
+  backdrop-filter: blur(10px);
+  opacity: .88;
+  transition: transform .18s ease, background .18s ease, color .18s ease;
+}
+
+.exlib-v9 .exlib-image-expand svg {
+  width: 17px;
+  height: 17px;
+}
+
+.exlib-v9 .exlib-ex-media:hover .exlib-image-expand,
+.exlib-v9 .exlib-ex-media:focus-visible .exlib-image-expand {
+  transform: scale(1.06);
+  background: var(--ex-blue);
+  color: #fff;
+}
+
+body.dark.exlib-v9 .exlib-image-expand {
+  background: rgba(14,43,54,.90);
+  border-color: rgba(87,167,201,.16);
+  color: var(--dark-accent);
+}
+
+/* Prevent inherited button text/browser styles. */
+.exlib-v9 button.exlib-ex-img {
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+}
+
+/* Slightly larger movement preview on desktop cards. */
+@media (min-width: 901px) {
+  .exlib-v9 .exlib-results-grid {
+    align-items: start;
+  }
+
+  .exlib-v9 .exlib-card {
+    align-self: start;
+  }
+
+  .exlib-v9 .exlib-ex-img {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* On very wide screens 3-column cards still get enough image height. */
+@media (min-width: 1500px) {
+  .exlib-v9 .exlib-ex-img {
+    aspect-ratio: 5 / 4;
+  }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .exlib-v9 .exlib-ex-img {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* Mobile gets an even taller canvas so the full ROM stays readable. */
+@media (max-width: 640px) {
+  .exlib-v9 .exlib-card {
+    padding: .42rem !important;
+  }
+
+  .exlib-v9 .exlib-ex-img {
+    aspect-ratio: 4 / 3 !important;
+    padding: .3rem;
+    border-radius: 13px;
+  }
+
+  .exlib-v9 .exlib-image-expand {
+    left: .5rem;
+    bottom: .5rem;
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Full movement viewer
+   ------------------------------------------------------------------ */
+
+.exlib-v9 .exlib-image-viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .22s ease, visibility .22s ease;
+}
+
+.exlib-v9 .exlib-image-viewer.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.exlib-v9 .exlib-image-viewer-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: rgba(4,22,30,.72);
+  backdrop-filter: blur(8px);
+  cursor: zoom-out;
+}
+
+.exlib-v9 .exlib-image-viewer-dialog {
+  position: relative;
+  z-index: 2;
+  width: min(96vw, 1100px);
+  max-height: min(94dvh, 900px);
+  display: grid;
+  grid-template-rows: auto minmax(0,1fr) auto;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 22px;
+  background: #f8fcfd;
+  box-shadow: 0 32px 90px rgba(0,0,0,.34);
+  transform: translateY(12px) scale(.985);
+  transition: transform .25s cubic-bezier(.2,.75,.25,1);
+}
+
+.exlib-v9 .exlib-image-viewer.is-open .exlib-image-viewer-dialog {
+  transform: translateY(0) scale(1);
+}
+
+body.dark.exlib-v9 .exlib-image-viewer-dialog {
+  background: #102c37;
+  border-color: rgba(87,167,201,.18);
+}
+
+.exlib-v9 .exlib-image-viewer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .75rem .9rem;
+  border-bottom: 1px solid rgba(8,119,165,.10);
+}
+
+.exlib-v9 .exlib-image-viewer-head h3 {
+  margin: 0;
+  color: var(--ex-ink);
+  font-family: "Cairo", sans-serif;
+  font-size: 1rem;
+}
+
+.exlib-v9 .exlib-image-viewer-close {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border: 1px solid rgba(8,119,165,.12);
+  border-radius: 11px;
+  background: rgba(211,234,238,.34);
+  color: var(--ex-ink);
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.exlib-v9 .exlib-image-viewer-stage {
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  overflow: auto;
+  padding: 1rem;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,.70), transparent 66%),
+    #d4ebef;
+  overscroll-behavior: contain;
+}
+
+body.dark.exlib-v9 .exlib-image-viewer-stage {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(87,167,201,.07), transparent 66%),
+    #0c2731;
+}
+
+.exlib-v9 .exlib-image-viewer-stage img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: calc(94dvh - 150px);
+  object-fit: contain;
+  display: block;
+}
+
+.exlib-v9 .exlib-image-viewer-hint {
+  margin: 0;
+  padding: .6rem .9rem;
+  color: var(--ex-muted);
+  font-size: .67rem;
+  text-align: center;
+  border-top: 1px solid rgba(8,119,165,.08);
+}
+
+@media (max-width: 640px) {
+  .exlib-v9 .exlib-image-viewer {
+    padding: .4rem;
+  }
+
+  .exlib-v9 .exlib-image-viewer-dialog {
+    width: 100%;
+    max-height: 95dvh;
+    border-radius: 18px;
+  }
+
+  .exlib-v9 .exlib-image-viewer-head {
+    padding: .6rem .65rem;
+  }
+
+  .exlib-v9 .exlib-image-viewer-head h3 {
+    max-width: calc(100vw - 90px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: .88rem;
+  }
+
+  .exlib-v9 .exlib-image-viewer-close {
+    width: 35px;
+    height: 35px;
+  }
+
+  .exlib-v9 .exlib-image-viewer-stage {
+    padding: .45rem;
+  }
+
+  .exlib-v9 .exlib-image-viewer-stage img {
+    max-height: calc(95dvh - 125px);
+  }
+
+  .exlib-v9 .exlib-image-viewer-hint {
+    font-size: .6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .exlib-v9 .exlib-image-viewer,
+  .exlib-v9 .exlib-image-viewer-dialog {
+    transition: none !important;
+  }
+}

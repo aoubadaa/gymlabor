@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GYM LABORATORY – مكتبة التمارين</title>
+<!-- GYM LABORATORY favicon -->
+<link href="favicon.ico?v=4" rel="icon" sizes="any"/>
+<link href="favicon-32x32.png?v=4" rel="icon" sizes="32x32" type="image/png"/>
+<link href="favicon-16x16.png?v=4" rel="icon" sizes="16x16" type="image/png"/>
+<link href="apple-touch-icon.png?v=4" rel="apple-touch-icon" sizes="180x180"/>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&amp;family=Tajawal:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+<link href="exercises_library_addons.css" rel="stylesheet"/>
+<script defer="" src="locale.js"></script>
+</link></link></link></link><link href="site-shell.css" rel="stylesheet"/><script defer="True" src="site-shell.js"></script></head>
+<body class="exlib-v5 exlib-v6 exlib-v7 exlib-v8 exlib-v9">
+<div id="top"></div>
+<!-- Header navigation (same as باقي الصفحات) -->
+<header class="site-header shared-site-header">
+<div class="container nav-wrapper">
+<a aria-label="GYM LABORATORY - الرئيسية" class="logo home-logo" href="index.html#home">
+<img alt="GYM LABORATORY logo" class="site-logo-img" src="images/logo.webp"/>
+<span class="logo-wordmark">GYM LABORATORY</span>
+</a>
+<button aria-controls="mainNav" aria-expanded="false" aria-label="فتح القائمة" class="mobile-menu-toggle" type="button">
+<span></span><span></span><span></span>
+</button>
+<nav aria-label="التنقل" class="nav-menu" id="mainNav">
+<a class="nav-link" href="index.html#home">الرئيسية</a>
+<a class="nav-link" href="index.html#ebook">كتاب</a>
+<a class="nav-link" href="index.html#online">التدريب</a>
+<a class="nav-link" href="exercises.html">مكتبة التمارين</a>
+<!-- Link to dedicated blog listing page -->
+<a class="nav-link" href="blog.html">مدونة</a>
+<!-- Link to free guides section -->
+<a class="nav-link" href="index.html#free-guides">كتب مجانية</a>
+<!-- Link to BMR calculator section -->
+<a class="nav-link" href="index.html#bmr">حاسبة السعرات</a>
+</nav>
+<!-- Dark mode toggle -->
+<!-- Dark mode switch -->
+<label class="theme-switch theme-switch--floating" title="الوضع الليلي">
+<input aria-label="تغيير الوضع" id="themeToggle" type="checkbox"/>
+<span aria-hidden="true" class="theme-slider">
+<span class="theme-icon theme-icon--sun">☀️</span>
+<span class="theme-icon theme-icon--moon">🌙</span>
+</span>
+</label>
+</div>
+</header>
+<!-- Exercise Library v5 -->
+<main class="exlib-page">
+<section class="exlib-hero">
+<div class="container">
+<div class="exlib-intro" data-animate="fade-in">
+<div class="exlib-intro-copy">
+<p class="exlib-kicker">EXERCISE LIBRARY</p>
+<h1>مكتبة التمارين</h1>
+<p>اختار العضلة أو العتاد، ولقى التمرين المناسب بسرعة.</p>
+</div>
+<div aria-label="إحصائيات المكتبة" class="exlib-stats">
+<div class="exlib-stat">
+<strong id="totalExerciseCount">—</strong>
+<span>تمرين</span>
+</div>
+<div class="exlib-stat">
+<strong id="totalMuscleCount">—</strong>
+<span>عضلة</span>
+</div>
+<div class="exlib-stat">
+<strong id="totalEquipCount">—</strong>
+<span>عتاد</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="exlib-workspace">
+<div class="container exlib-workspace-grid">
+<!-- Desktop vertical sidebar / mobile collapsible filters -->
+<aside aria-label="البحث والفلاتر" class="exlib-sidebar">
+<div class="exlib-sidebar-card">
+<div class="exlib-sidebar-heading">
+<div>
+<span>FILTERS</span>
+<h2>فلتر التمارين</h2>
+</div>
+<button aria-controls="filterPanel" aria-expanded="false" class="exlib-filter-toggle" id="filterPanelToggle" type="button">
+<span aria-hidden="true" class="exlib-filter-toggle-icon">
+<svg fill="none" viewbox="0 0 24 24">
+<path d="M4 7h16M7 12h10M10 17h4" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path>
+</svg>
+</span>
+<span>الفلاتر</span>
+<b hidden="" id="activeFilterCount">0</b>
+</button>
+</div>
+<div class="exlib-search-wrap">
+<span aria-hidden="true" class="exlib-search-icon">
+<svg fill="none" viewbox="0 0 24 24">
+<circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.8"></circle>
+<path d="m16 16 4 4" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path>
+</svg>
+</span>
+<input aria-label="ابحث عن تمرين" autocomplete="off" class="exlib-search" id="exSearch" placeholder="بحث عن تمرين..." type="search"/>
+<button aria-label="مسح البحث" class="exlib-clear" hidden="" id="clearSearch" type="button">×</button>
+<ul class="exlib-suggestions" hidden="" id="searchSuggestions"></ul>
+</div>
+<div class="exlib-filter-panel" id="filterPanel">
+<div class="exlib-sheet-head">
+<div>
+<small>FILTERS</small>
+<strong>فلتر التمارين</strong>
+</div>
+<button aria-label="إغلاق الفلاتر" class="exlib-sheet-close" id="closeFilterPanel" type="button">×</button>
+</div>
+<div class="exlib-sheet-scroll">
+<div class="exlib-filter-row">
+<div class="exlib-filter-label">
+<strong>العضلة</strong>
+<small>اختار عضلة أو أكثر</small>
+</div>
+<div aria-label="فلتر العضلات" class="exlib-chips" id="muscleChips" role="group"></div>
+</div>
+<div class="exlib-filter-row">
+<div class="exlib-filter-label">
+<strong>العتاد</strong>
+<small>شنو متوفر عندك؟</small>
+</div>
+<div aria-label="فلتر العتاد" class="exlib-chips" id="equipChips" role="group"></div>
+</div>
+<details class="exlib-legend-details">
+<summary>ألوان العضلات</summary>
+<div class="exlib-legend">
+<span class="legend-item">
+<i class="legend-dot legend-dot--target"></i>
+                        مستهدفة
+                      </span>
+<span class="legend-item">
+<i class="legend-dot legend-dot--syn"></i>
+                        مساعدة
+                      </span>
+<span class="legend-item">
+<i class="legend-dot legend-dot--stab"></i>
+                        مثبتة
+                      </span>
+</div>
+</details>
+</div>
+<div class="exlib-sheet-footer">
+<button class="exlib-sheet-apply" id="mobileShowResults" type="button">
+<span>عرض النتائج</span>
+<b data-mobile-result-count="">—</b>
+</button>
+</div>
+</div>
+<button aria-label="إغلاق الفلاتر" class="exlib-filter-backdrop" id="filterBackdrop" tabindex="-1" type="button"></button>
+<div class="exlib-sidebar-bottom">
+<div aria-live="polite" class="exlib-active-filters" id="activeFilters"></div>
+<div class="exlib-meta">
+<span id="resultCount">—</span>
+<button class="exlib-reset" hidden="" id="resetFilters" type="button">
+                    مسح الكل
+                  </button>
+</div>
+</div>
+</div>
+</aside>
+<!-- Results -->
+<div class="exlib-results-area">
+<div class="exlib-results-heading">
+<div class="exlib-results-heading-copy">
+<p class="exlib-results-kicker" id="resultsKicker">
+                  تصفح حسب العضلة
+                </p>
+<h2 id="resultsTitle">
+                  اختار العضلة اللي باغي تمرّن
+                </h2>
+</div>
+<div class="exlib-results-actions">
+<button class="exlib-results-back" hidden="" id="resultsBack" type="button">
+<span aria-hidden="true" class="exlib-results-back-icon">→</span>
+<span class="exlib-results-back-full">رجوع لكل العضلات</span>
+<span class="exlib-results-back-short">رجوع</span>
+</button>
+</div>
+</div>
+<div aria-live="polite" class="exlib-browser-grid" id="muscleSections"></div>
+<div class="exlib-empty" hidden="" id="emptyState">
+<div aria-hidden="true" class="exlib-empty-icon">⌕</div>
+<h3>ما لقّيناش هاد التمرين</h3>
+<p>جرّب كلمة أخرى أو حيّد شي فلتر.</p>
+<button class="exlib-empty-reset" data-reset-all="" type="button">
+                مسح الفلاتر
+              </button>
+</div>
+<div class="exlib-note">
+<div>
+<strong>باغي برنامج كامل؟</strong>
+<span>
+                  المكتبة كتعاونك تختار التمارين، والتدريب الشخصي كينظم لك البرنامج كامل.
+                </span>
+</div>
+<a href="index.html#online">التدريب الشخصي</a>
+</div>
+</div>
+</div>
+</section>
+<div aria-hidden="true" class="exlib-image-viewer" id="exerciseImageViewer">
+<button aria-label="إغلاق الصورة" class="exlib-image-viewer-backdrop" data-close-exercise-viewer="" type="button"></button>
+<div aria-labelledby="exerciseViewerTitle" aria-modal="true" class="exlib-image-viewer-dialog" role="dialog">
+<div class="exlib-image-viewer-head">
+<h3 id="exerciseViewerTitle">الحركة كاملة</h3>
+<button aria-label="إغلاق" class="exlib-image-viewer-close" data-close-exercise-viewer="" type="button">×</button>
+</div>
+<div class="exlib-image-viewer-stage">
+<img alt="" id="exerciseViewerImage" src=""/>
+</div>
+<p class="exlib-image-viewer-hint">
+            الصورة كاملة بدون قص — كبّر الشاشة إذا احتجت تشوف التفاصيل.
+          </p>
+</div>
+</div>
+</main>
+<!-- Footer (نفس ستايل الموقع) -->
+<footer class="site-footer site-footer-v3 shared-site-footer">
+<div class="container footer-card footer-v3-card">
+<div class="footer-v3-main">
+<div class="footer-v3-brand">
+<a aria-label="GYM LABORATORY" class="footer-v3-logo" href="index.html#top">
+<img alt="GYM LABORATORY logo" class="footer-logo-img" src="images/logo.webp"/>
+<span>GYM LABORATORY</span>
+</a>
+<p class="footer-v3-tagline">
+              محتوى عملي عن التدريب والتغذية، ببساطة.
+            </p>
+<div aria-label="حسابات التواصل الاجتماعي" class="footer-v3-social">
+<a href="https://www.instagram.com/gym.labooo" rel="noopener" target="_blank">Instagram</a>
+<a href="https://www.tiktok.com/@gymlaboo" rel="noopener" target="_blank">TikTok</a>
+<a href="https://www.youtube.com/@gymlabo" rel="noopener" target="_blank">YouTube</a>
+<a href="https://www.facebook.com/profile.php?id=61576849801264" rel="noopener" target="_blank">Facebook</a>
+</div>
+<div class="footer-v3-contact">
+<a aria-label="نسخ البريد الإلكتروني" data-copy-email="contact.labooo@gmail.com" href="#">البريد الإلكتروني</a>
+<span aria-hidden="true">•</span>
+<a href="https://wa.me/212657994110" rel="noopener" target="_blank">WhatsApp</a>
+</div>
+</div>
+<nav aria-label="روابط الموقع" class="footer-v3-nav">
+<h4>روابط سريعة</h4>
+<div class="footer-v3-link-grid">
+<a href="index.html#ebook">الكتاب</a>
+<a href="index.html#online">التدريب الشخصي</a>
+<a href="exercises.html">مكتبة التمارين</a>
+<a href="blog.html">المدونة</a>
+<a href="index.html#free-guides">كتب مجانية</a>
+<a href="index.html#bmr">حاسبة السعرات</a>
+</div>
+</nav>
+<div class="footer-v3-newsletter">
+<h4>خليك على اطلاع</h4>
+<p>نصائح مختصرة حول التدريب والتغذية مباشرة لبريدك.</p>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSf1J3YBh-Xstf0M2CuExO_WGVY75-u4iBIj2NMQHoWoRmXLrg/formResponse" class="newsletter footer-v3-newsletter-form" method="POST" onsubmit="newsletterSuccess()" target="hidden_iframe">
+<input aria-label="البريد الإلكتروني" autocomplete="email" name="entry.364924139" placeholder="البريد الإلكتروني" required="" type="email"/>
+<button type="submit">اشترك</button>
+</form>
+<iframe name="hidden_iframe" style="display:none;"></iframe>
+<p class="newsletter-success" id="newsletter-success" style="display:none;"></p>
+</div>
+</div>
+<div class="footer-bottom footer-v3-bottom">
+<span>© 2026 GYM LABORATORY</span>
+<div class="footer-v3-legal">
+<a href="#" id="terms-link">شروط الخدمة</a>
+<a href="#" id="privacy-link">سياسة الخصوصية</a>
+<a class="footer-backtop" href="index.html#top">للأعلى ↑</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- Legal modal overlay and container -->
+<div class="legal-modal-overlay" id="legalOverlay" style="display: none;"></div>
+<div class="legal-modal" id="legalModal" style="display: none;">
+<div class="legal-modal-content">
+<span class="legal-close" id="legalCloseBtn">×</span>
+<h3 id="legalModalTitle"></h3>
+<div class="legal-modal-body" id="legalModalBody"></div>
+</div>
+</div>
+<!-- Hidden detailed legal content for Terms of Service and Privacy Policy -->
+<div id="terms-content" style="display:none;">
+<p><strong>آخر تحديث:</strong> 07 يناير 2026</p>
+<p>مرحباً بك في موقع GYM LABORATORY. باستخدامك لهذا الموقع أو أي من خدماته، فإنك تقرّ بأنك قرأت وفهمت ووافقت على هذه الشروط والأحكام.</p>
+<p><strong>1) التعريفات</strong></p>
+<p><strong>الموقع:</strong> منصة GYM LABORATORY والمحتوى المرتبط بها.</p>
+<p><strong>الخدمات:</strong> تشمل المحتوى التعليمي، مكتبة التمارين، المدونة، حاسبة السعرات، التدريب أونلاين، والكتب الرقمية (E‑book).</p>
+<p><strong>المستخدم:</strong> كل شخص يقوم بزيارة الموقع أو استخدام أي خدمة.</p>
+<p><strong>المحتوى:</strong> كل النصوص، الصور، البرامج التدريبية، المقالات، الفيديوهات، التمارين، والمواد التعليمية المتاحة على الموقع.</p>
+<p><strong>2) قبول الشروط</strong><br/>باستخدامك للموقع، أنت توافق على الالتزام بهذه الشروط. إذا كنت لا توافق عليها، يجب عليك التوقف عن استخدام الموقع والخدمات فوراً.</p>
+<p><strong>3) طبيعة الخدمات وعدم ضمان النتائج</strong><br/>يقدم موقع GYM LABORATORY محتوى تعليمي وإرشادي في مجال اللياقة والتغذية، ولكن:<br/>النتائج تختلف من شخص لآخر حسب الالتزام، العمر، الجينات، الحالة الصحية، نمط الحياة، وغيرها.<br/>أي توصيات أو برامج تعتبر توجيهاً عاماً أو مبنية على البيانات المقدمة منك في التدريب الخاص.</p>
+<p><strong>4) التحذير الصحي والمسؤولية الطبية (مهم جداً)</strong><br/>الموقع ليس بديلاً عن الطبيب أو المختص الصحي. باستخدامك لخدماتنا، أنت تقرّ وتوافق على ما يلي:<br/>إذا كنت تعاني من أي مرض أو مشكلة صحية (مثل أمراض القلب، الضغط، السكري، إصابات، أو أي حالة طبية) فيجب عليك استشارة طبيبك قبل البدء بأي برنامج أو تمرين أو تغيير غذائي.<br/>أنت تستخدم محتوى الموقع والخدمات على مسؤوليتك الشخصية.<br/>لا نتحمل أي مسؤولية عن إصابات أو أضرار ناتجة عن سوء التطبيق أو عدم استشارة مختص أو استخدام غير مناسب للمعلومات.</p>
+<p><strong>5) الكتب الرقمية والتدريب الأونلاين</strong><br/>قد نوفر منتجات وخدمات رقمية مثل:<br/>كتاب إلكتروني (E‑book)<br/>تدريب شخصي/برنامج تدريبي أونلاين<br/>وعليه:<br/>تعتبر هذه الخدمات رقمية وغير ملموسة.<br/>بعد تسليم/إرسال المنتج أو البرنامج للمستخدم، لا يمكن ضمان استرجاعه لأنه محتوى رقمي.</p>
+<p><strong>6) الدفع وطرق الدفع</strong><br/>قد يتم قبول الدفع عبر: PayPal، تحويل بنكي، Western Union (وقد تضاف طرق أخرى مستقبلاً).<br/>المستخدم مسؤول عن إدخال البيانات الصحيحة أثناء الدفع وتحمل رسوم التحويل إن وجدت.</p>
+<p><strong>7) سياسة الاسترجاع (Refund Policy)</strong><br/>في الوقت الحالي، لا نقدم سياسة استرجاع واضحة بسبب طبيعة المحتوى الرقمي والخدمات الأونلاين. ومع ذلك، قد يتم النظر في أي طلب في ظروف استثنائية حسب تقديرنا.</p>
+<p><strong>8) حقوق الملكية الفكرية</strong><br/>جميع المحتويات الموجودة على موقع GYM LABORATORY (المقالات، البرامج، التصميم، النصوص، الصور…) هي ملك للموقع. لا يحق نسخ المحتوى أو إعادة نشره أو بيعه دون إذن. يسمح باستخدام النصائح والمعلومات لأغراض شخصية أو تعليمية بهدف نشر الوعي وتحسين مستوى اللياقة في المغرب والعالم العربي، بشرط عدم نسب المحتوى لنفسك أو استخدامه تجارياً.</p>
+<p><strong>9) الاستخدام الممنوع</strong><br/>يمنع على المستخدم استخدام المحتوى في أغراض تجارية دون إذن؛ أو إرسال بيانات أو رسائل مزعجة أو ضارة.</p>
+<p><strong>10) روابط خارجية</strong><br/>قد يحتوي الموقع على روابط لمنصات أخرى مثل Instagram، TikTok، YouTube. نحن غير مسؤولين عن محتوى أو سياسات تلك المواقع.</p>
+<p><strong>11) تحديث الشروط</strong><br/>نحتفظ بحق تعديل شروط الخدمة في أي وقت. يعتبر استمرار استخدامك للموقع بعد التحديث موافقة ضمنية على الشروط الجديدة.</p>
+<p><strong>12) التواصل والدعم</strong><br/>لأي استفسار أو طلب متعلق بالخدمات، يمكنك التواصل معنا عبر البريد الإلكتروني:<br/>📩 contact.labooo@gmail.com<br/>مدة الرد المتوقعة: من 24 إلى 72 ساعة.</p>
+</div>
+<div id="privacy-content" style="display:none;">
+<p><strong>آخر تحديث:</strong> 07 يناير 2026</p>
+<p>نحن في GYM LABORATORY نحترم خصوصيتك ونلتزم بحماية بياناتك. توضح هذه السياسة ما نقوم بجمعه من معلومات وكيفية استخدامه.</p>
+<p><strong>1) المعلومات التي نجمعها</strong></p>
+<p>نقوم بجمع الحد الأدنى من البيانات فقط، مثل:</p>
+<p><strong>أ) البريد الإلكتروني (Newsletter)</strong><br/>عند اشتراكك في النشرة البريدية، قد نجمع البريد الإلكتروني فقط. ويستخدم ذلك لإرسال نصائح حول التغذية والتمارين وتحديثات حول المقالات والمحتوى الجديد.</p>
+<p><strong>ب) بيانات التدريب الأونلاين (Coaching)</strong><br/>عند ملء استمارة التدريب، قد تقدم معلومات مثل الهدف، الطول والوزن، العمر، مستوى النشاط، معلومات حول التغذية والتمارين، معلومات صحية إن قمت بذكرها. ⚠️ هذه المعلومات تستخدم فقط لتصميم برنامج مناسب لك.</p>
+<p><strong>2) كيف نستخدم بياناتك</strong><br/>نستخدم بياناتك فقط من أجل تقديم خدمات التدريب وبرامج التغذية، إرسال النشرة البريدية لمن وافق عليها، التواصل معك بخصوص خدماتنا.</p>
+<p><strong>3) عدم مشاركة البيانات</strong><br/>نحن لا نبيع ولا نشارك بياناتك الشخصية مع أي طرف ثالث؛ بياناتك تظل خاصة وسرية. قد تكون هناك مشاركة تقنية فقط عند الدفع (مثل PayPal أو التحويل البنكي) لأن تلك الخدمات تحتاج بيانات الدفع لإتمام المعاملة.</p>
+<p><strong>4) حماية البيانات</strong><br/>نلتزم باتخاذ إجراءات أمنية مناسبة لحماية بياناتك من الوصول غير المصرح به أو التسريب أو التعديل.</p>
+<p><strong>5) ملفات تعريف الارتباط (Cookies)</strong><br/>قد يستخدم الموقع ملفات تعريف ارتباط (Cookies) لتحسين تجربة المستخدم، مثل تذكر الوضع الليلي (Dark Mode) وتحسين أداء الموقع.</p>
+<p><strong>6) حقوق المستخدم</strong><br/>يمكنك طلب حذف بريدك من النشرة البريدية في أي وقت، وطلب حذف معلوماتك المتعلقة بالتدريب من خلال مراسلتنا.</p>
+<p><strong>7) تحديث السياسة</strong><br/>قد نقوم بتحديث سياسة الخصوصية عند إضافة خدمات أو ميزات جديدة (مثل الحسابات مستقبلاً). سيتم نشر أي تحديث على هذه الصفحة.</p>
+<p><strong>8) التواصل</strong><br/>لأي طلب متعلق بالخصوصية أو البيانات: 📩 contact.labooo@gmail.com<br/>وسيتم الرد خلال 24 إلى 72 ساعة.</p>
+</div>
+<script>
+      // Newsletter success handler function to show a thank you message after form submission.
+      function newsletterSuccess() {
+        const msgEl = document.getElementById('newsletter-success');
+        if (msgEl) {
+          msgEl.textContent = 'شكراً على الاشتراك!';
+          msgEl.style.display = 'block';
+          setTimeout(() => {
+            msgEl.style.display = 'none';
+          }, 4000);
+        }
+      }
+
+      // =========================
+      // 1) Theme + small UX
+      // =========================
+      document.addEventListener("DOMContentLoaded", () => {
+      // reveal animated elements on this page
+      document.querySelectorAll('[data-animate]').forEach(el => el.classList.add('revealed'));
+
+        const toggle = document.getElementById("themeToggle");
+        const saved = localStorage.getItem("theme");
+        const startDark =
+          saved === "dark" ||
+          (!saved && window.matchMedia("(prefers-color-scheme: dark)").matches);
+
+        document.body.classList.toggle("dark", startDark);
+        toggle.checked = startDark;
+
+        toggle.addEventListener("change", () => {
+          const isDark = toggle.checked;
+          document.body.classList.toggle("dark", isDark);
+          localStorage.setItem("theme", isDark ? "dark" : "light");
+        });
+
+        // Newsletter form submission is handled by Google Form. The thank-you
+        // message is displayed by the newsletterSuccess() handler on submit.
+
+        // Back-to-top button (نفس الموقع)
+        const backBtn = document.createElement("button");
+        backBtn.className = "back-to-top";
+        backBtn.setAttribute("aria-label", "عودة للأعلى");
+        backBtn.innerHTML = "↑";
+        document.body.appendChild(backBtn);
+
+        backBtn.addEventListener("click", () => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 400) backBtn.classList.add("show");
+          else backBtn.classList.remove("show");
+        });
+      });
+
+      // =========================
+      // 2) Exercises library data
+      // =========================
+      // 🔥 مكان الصور (أنت غادي تزيدهم): ضع الصور في:
+      // images/muscles/
+      // بالأسماء التالية:
+      // chest.webp, back.webp, shoulders.webp, legs.webp, glutes.webp, biceps.webp, triceps.webp,
+      // abs.webp, calves.webp, forearms.webp, traps.webp, quads.webp
+      // (تقدر تزيد صور أخرى بنفس النمط)
+
+      const MUSCLES = [
+        { key: "all", ar: "الكل", en: "All", img: "" },
+        { key: "chest", ar: "صدر", en: "Chest", img: "images/muscles/chest.webp" },
+        { key: "back", ar: "ظهر", en: "Back", img: "images/muscles/back.webp" },
+        { key: "shoulders", ar: "كتاف", en: "Shoulders", img: "images/muscles/shoulders.webp" },
+        { key: "legs", ar: "رجل", en: "Legs (Compound)", img: "images/muscles/legs.webp" },
+        // ✅ New quads section: isolated exercises for the quadriceps (الفخذ الأمامية)
+        { key: "quads", ar: "كوادز", en: "Quads", img: "images/muscles/quads.webp" },
+        { key: "glutes", ar: "مؤخرة", en: "Glutes", img: "images/muscles/glutes.webp" },
+        { key: "biceps", ar: "بايسبس", en: "Biceps", img: "images/muscles/biceps.webp" },
+        { key: "triceps", ar: "ترايسبس", en: "Triceps", img: "images/muscles/triceps.webp" },
+        { key: "abs", ar: "بطن", en: "Abs", img: "images/muscles/abs.webp" },
+        { key: "calves", ar: "سمانة", en: "Calves", img: "images/muscles/calves.webp" },
+        { key: "forearms", ar: "ساعد", en: "Forearms", img: "images/muscles/forearms.webp" },
+        { key: "traps", ar: "ترابيس", en: "Traps", img: "images/muscles/traps.webp" },
+      ];
+
+      const EQUIPMENT = [
+        { key: "all", ar: "الكل" },
+        { key: "barbell", ar: "بار" },
+        { key: "dumbbell", ar: "دمبل" },
+        { key: "cable", ar: "كابل" },
+        { key: "machine", ar: "آلة" },
+        { key: "bands", ar: "مطاط" },
+        { key: "bodyweight", ar: "وزن الجسم" },
+        { key: "kettlebell", ar: "كيتل" },
+      ];
+
+      // ✅ كل تمرين: الاسم + العضلة الأساسية + وسوم العتاد + العضلات المستهدفة (Primary/Secondary)
+      const EXERCISES = [
+        {"name": "Bench Press", "muscle": "chest", "equip": ["barbell"], "desc": "ضغط بار على البنش لبناء قوة وحجم الصدر مع إمكانية تحميل تدريجي قوية.", "image": "images/exercises/bench-press.webp", "targets": ["الصدر"], "synergists": ["الترايسبس", "الأكتاف الأمامية"], "stabilizers": ["الظهر العلوي", "الكور"], "keywords": ["bench", "press", "بار", "صدر", "barbell"]},
+        {"name": "Incline Bench Press", "muscle": "chest", "equip": ["barbell"], "desc": "ضغط مائل يستهدف الجزء العلوي من الصدر أكثر مع دعم الكتف الأمامي.", "image": "images/exercises/incline-bench-press.webp", "targets": ["الصدر العلوي"], "synergists": ["الترايسبس", "الأكتاف الأمامية"], "stabilizers": ["الظهر العلوي", "الكور"], "keywords": ["incline", "bench", "بار", "صدر", "مائل"]},
+        {"name": "Decline Bench Press", "muscle": "chest", "equip": ["barbell"], "desc": "ضغط مائل للأسفل يركز على الصدر السفلي ويخفف الضغط عن الكتف لبعض الناس.", "image": "images/exercises/decline-bench-press.webp", "targets": ["الصدر السفلي"], "synergists": ["الترايسبس", "الأكتاف الأمامية"], "stabilizers": ["الظهر العلوي", "الكور"], "keywords": ["decline", "bench", "صدر", "بار"]},
+        {"name": "Dumbbell Bench Press", "muscle": "chest", "equip": ["dumbbell"], "desc": "ضغط دمبل على البنش يزيد مدى الحركة ويوازن بين الجانبين.", "image": "images/exercises/dumbbell-bench-press.webp", "targets": ["الصدر"], "synergists": ["الترايسبس", "الأكتاف الأمامية"], "stabilizers": ["الظهر العلوي", "الكور"], "keywords": ["dumbbell", "press", "دمبل", "صدر"]},
+        {"name": "Incline Dumbbell Press", "muscle": "chest", "equip": ["dumbbell"], "desc": "ضغط دمبل مائل يركز على الصدر العلوي مع مدى حركة ممتاز.", "image": "images/exercises/incline-dumbbell-press.webp", "targets": ["الصدر العلوي"], "synergists": ["الترايسبس", "الأكتاف الأمامية"], "stabilizers": ["الظهر العلوي", "الكور"], "keywords": ["incline", "dumbbell", "دمبل", "صدر", "مائل"]},
+        {"name": "Dumbbell Fly", "muscle": "chest", "equip": ["dumbbell"], "desc": "رفرفة دمبل لزيادة تمدد الصدر (حافظ على انحناء بسيط في المرفق).", "image": "images/exercises/dumbbell-fly.webp", "targets": ["الصدر"], "synergists": ["الأكتاف الأمامية"], "stabilizers": ["البايسبس", "الكور"], "keywords": ["fly", "دمبل", "صدر"]},
+        {"name": "Cable Fly", "muscle": "chest", "equip": ["cable"], "desc": "رفرفة كابل تعطي شد ثابت طول الحركة وتسمح بتعديل الزاوية بسهولة.", "image": "images/exercises/cable-fly.webp", "targets": ["الصدر"], "synergists": ["الأكتاف الأمامية"], "stabilizers": ["الكور"], "keywords": ["cable", "fly", "كابل", "صدر"]},
+        {"name": "High-to-Low Cable Fly", "muscle": "chest", "equip": ["cable"], "desc": "رفرفة كابل من أعلى لأسفل تركّز على الصدر السفلي وإحساس شد قوي.", "image": "images/exercises/high-to-low-cable-fly.webp", "targets": ["الصدر السفلي"], "synergists": ["الأكتاف الأمامية"], "stabilizers": ["الكور"], "keywords": ["high to low", "كابل", "fly", "صدر"]},
+        {"name": "Low-to-High Cable Fly", "muscle": "chest", "equip": ["cable"], "desc": "رفرفة كابل من أسفل لأعلى لاستهداف الصدر العلوي.", "image": "images/exercises/low-to-high-cable-fly.webp", "targets": ["الصدر العلوي"], "synergists": ["الأكتاف الأمامية"], "stabilizers": ["الكور"], "keywords": ["low to high", "كابل", "fly", "صدر"]},
+        {"name": "Pec Deck Machine Fly", "muscle": "chest", "equip": ["machine"], "desc": "آلة البيك ديك تعزل الصدر وتُسهّل الحفاظ على المسار الصحيح.", "image": "images/exercises/pec-deck-machine-fly.webp", "targets": ["الصدر"], "synergists": ["الأكتاف الأمامية"], "stabilizers": ["الكور"], "keywords": ["pec deck", "machine", "آلة", "صدر"]},
+        {"name": "Push-Up", "muscle": "chest", "equip": ["bodyweight"], "desc": "تمرين وزن جسم ممتاز للصدر والترايسبس ويمكن ترقيته بزيادة الميل/الوزن.", "image": "images/exercises/push-up.webp", "targets": ["الصدر"], "synergists": ["الترايسبس", "الأكتاف الأمامية"], "stabilizers": ["الكور", "الظهر العلوي"], "keywords": ["push up", "وزن الجسم", "صدر"]},
+        {"name": "Weighted Push-Up", "muscle": "chest", "equip": ["bodyweight"], "desc": "ضغط وزن جسم مع مقاومة إضافية (حزام/حقيبة) لزيادة التحميل.", "image": "images/exercises/weighted-push-up.webp", "targets": ["الصدر"], "synergists": ["الترايسبس", "الأكتاف الأمامية"], "stabilizers": ["الكور", "الظهر العلوي"], "keywords": ["weighted", "push up", "صدر"]},
+        {"name": "Dips (Chest Focus)", "muscle": "chest", "equip": ["bodyweight"], "desc": "ديبس مع ميل للأمام لإبراز الصدر (حسب القدرة والكتف).", "image": "images/exercises/dips-chest-focus.webp", "targets": ["الصدر السفلي"], "synergists": ["الترايسبس", "الأكتاف الأمامية"], "stabilizers": ["الكور", "الظهر العلوي"], "keywords": ["dips", "وزن الجسم", "صدر"]},
+        {"name": "Pull-Up", "muscle": "back", "equip": ["bodyweight"], "desc": "سحب عمودي قوي لللاتس. حافظ على كتف لأسفل وخلف.", "image": "images/exercises/pull-up.webp", "targets": ["اللاتس"], "synergists": ["البايسبس", "الظهر العلوي"], "stabilizers": ["الكور", "الساعد"], "keywords": ["pull up", "chin up", "وزن الجسم", "ظهر", "لاتس"]},
+        {"name": "Lat Pulldown", "muscle": "back", "equip": ["cable", "machine"], "desc": "سحب عالي للكابل يستهدف اللاتس مع تحكم ممتاز.", "image": "images/exercises/lat-pulldown.webp", "targets": ["اللاتس"], "synergists": ["البايسبس", "الظهر العلوي"], "stabilizers": ["الكور", "الساعد"], "keywords": ["lat pulldown", "سحب عالي", "كابل", "ظهر"]},
+        {"name": "Seated Cable Row", "muscle": "back", "equip": ["cable"], "desc": "سحب أفقي للكابل يركز على منتصف الظهر مع شد للكتف للخلف.", "image": "images/exercises/seated-cable-row.webp", "targets": ["منتصف الظهر", "اللاتس"], "synergists": ["البايسبس"], "stabilizers": ["الكور", "الساعد"], "keywords": ["row", "cable row", "سحب", "كابل", "ظهر"]},
+        {"name": "Barbell Row", "muscle": "back", "equip": ["barbell"], "desc": "رو بار يضيف سماكة للظهر. حافظ على ظهر محايد.", "image": "images/exercises/barbell-row.webp", "targets": ["منتصف الظهر", "اللاتس"], "synergists": ["البايسبس"], "stabilizers": ["أوتار خلفية", "الكور"], "keywords": ["barbell row", "رو", "بار", "ظهر"]},
+        {"name": "One-Arm Dumbbell Row", "muscle": "back", "equip": ["dumbbell"], "desc": "رو دمبل بيد واحدة لتصحيح الفروقات وزيادة مدى الحركة.", "image": "images/exercises/one-arm-dumbbell-row.webp", "targets": ["اللاتس", "منتصف الظهر"], "synergists": ["البايسبس"], "stabilizers": ["الكور", "الساعد"], "keywords": ["one arm row", "dumbbell row", "دمبل", "ظهر"]},
+        {"name": "Chest-Supported Row", "muscle": "back", "equip": ["dumbbell", "machine"], "desc": "رو مدعوم على بنش/آلة يقلل الغش ويزيد عزل الظهر.", "image": "images/exercises/chest-supported-row.webp", "targets": ["منتصف الظهر"], "synergists": ["البايسبس"], "stabilizers": ["الكور", "الساعد"], "keywords": ["supported row", "row", "ظهر"]},
+        {"name": "T-Bar Row", "muscle": "back", "equip": ["barbell", "machine"], "desc": "رو تي بار لزيادة سماكة الظهر (زاوية قوية لمنتصف الظهر).", "image": "images/exercises/t-bar-row.webp", "targets": ["منتصف الظهر"], "synergists": ["البايسبس"], "stabilizers": ["الكور", "أوتار خلفية"], "keywords": ["t-bar row", "ظهر", "رو"]},
+        {"name": "Straight-Arm Pulldown", "muscle": "back", "equip": ["cable"], "desc": "سحب ذراع مستقيم يعزل اللاتس بدون اعتماد كبير على البايسبس.", "image": "images/exercises/straight-arm-pulldown.webp", "targets": ["اللاتس"], "synergists": ["الكتف الخلفي", "الترابيس"], "stabilizers": ["الكور"], "keywords": ["straight arm", "pulldown", "كابل", "لاتس"]},
+        {"name": "Face Pull", "muscle": "back", "equip": ["cable", "bands"], "desc": "Face Pull يقوي الظهر العلوي ويحسن وضعية الكتف.", "image": "images/exercises/face-pull.webp", "targets": ["الكتف الخلفي", "الترابيس"], "synergists": ["منتصف الظهر"], "stabilizers": ["الكور"], "keywords": ["face pull", "كابل", "مطاط", "ظهر", "كتف خلفي"]},
+        {"name": "Back Extension", "muscle": "back", "equip": ["bodyweight", "machine"], "desc": "تمديد الظهر يقوي أسفل الظهر والهامسترينغ/المؤخرة حسب التركيز.", "image": "images/exercises/back-extension.webp", "targets": ["أسفل الظهر"], "synergists": ["المؤخرة", "أوتار خلفية"], "stabilizers": ["الكور"], "keywords": ["back extension", "hyperextension", "ظهر"]},
+        {"name": "Deadlift", "muscle": "back", "equip": ["barbell"], "desc": "ديدليفت تمرين شامل للقوة يبني الظهر السفلي/العلوي مع الساقين.", "image": "images/exercises/deadlift.webp", "targets": ["أسفل الظهر", "اللاتس"], "synergists": ["المؤخرة", "أوتار خلفية", "الترابيس"], "stabilizers": ["الكور", "الساعد"], "keywords": ["deadlift", "بار", "ظهر", "سحب"]},
+        {"name": "Romanian Deadlift", "muscle": "back", "equip": ["barbell", "dumbbell"], "desc": "RDL يركز على الهامسترينغ مع مساهمة قوية لأسفل الظهر.", "image": "images/exercises/romanian-deadlift.webp", "targets": ["أوتار خلفية", "أسفل الظهر"], "synergists": ["المؤخرة"], "stabilizers": ["الكور", "الساعد"], "keywords": ["rdl", "romanian", "بار", "دمبل"]},
+        {"name": "Shoulder Press", "muscle": "shoulders", "equip": ["dumbbell", "machine", "barbell"], "desc": "ضغط كتف لبناء القوة والحجم (مستقيم أو دمبل/آلة).", "image": "images/exercises/shoulder-press.webp", "targets": ["الأكتاف الأمامية", "الأكتاف الجانبية"], "synergists": ["الترايسبس"], "stabilizers": ["الكور", "الظهر العلوي"], "keywords": ["shoulder press", "press", "كتف", "دمبل", "بار"]},
+        {"name": "Seated Dumbbell Press", "muscle": "shoulders", "equip": ["dumbbell"], "desc": "ضغط كتف جلوس يقلل الغش ويزيد التحكم.", "image": "images/exercises/seated-dumbbell-press.webp", "targets": ["الأكتاف الأمامية"], "synergists": ["الترايسبس", "الأكتاف الجانبية"], "stabilizers": ["الكور"], "keywords": ["seated", "dumbbell", "press", "كتف"]},
+        {"name": "Arnold Press", "muscle": "shoulders", "equip": ["dumbbell"], "desc": "ضغط أرنولد يمر بدوران يزيد مدى الحركة للكتف الأمامي/الجانبي.", "image": "images/exercises/arnold-press.webp", "targets": ["الأكتاف الأمامية"], "synergists": ["الأكتاف الجانبية", "الترايسبس"], "stabilizers": ["الكور"], "keywords": ["arnold", "press", "دمبل", "كتف"]},
+        {"name": "Lateral Raise", "muscle": "shoulders", "equip": ["dumbbell"], "desc": "رفرفة جانبية لبناء عرض الكتف (بدون تأرجح).", "image": "images/exercises/lateral-raise.webp", "targets": ["الأكتاف الجانبية"], "synergists": ["الأكتاف الأمامية"], "stabilizers": ["الترابيس", "الكور"], "keywords": ["lateral raise", "رفرفة", "دمبل", "كتف جانبي"]},
+        {"name": "Cable Lateral Raise", "muscle": "shoulders", "equip": ["cable"], "desc": "رفرفة كابل تعطي شد ثابت وتساعد على مسار أدق.", "image": "images/exercises/cable-lateral-raise.webp", "targets": ["الأكتاف الجانبية"], "synergists": ["الأكتاف الأمامية"], "stabilizers": ["الترابيس", "الكور"], "keywords": ["cable lateral", "رفرفة", "كابل", "كتف"]},
+        {"name": "Machine Lateral Raise", "muscle": "shoulders", "equip": ["machine"], "desc": "آلة الرفرفة الجانبية لعزل الدلتويد الجانبي بسهولة.", "image": "images/exercises/machine-lateral-raise.webp", "targets": ["الأكتاف الجانبية"], "synergists": [""], "stabilizers": ["الكور"], "keywords": ["machine lateral", "آلة", "كتف"]},
+        {"name": "Front Raise", "muscle": "shoulders", "equip": ["dumbbell", "cable", "barbell"], "desc": "رفرفة أمامية تستهدف الكتف الأمامي (لا تفرط إذا ضغطك عالي).", "image": "images/exercises/front-raise.webp", "targets": ["الأكتاف الأمامية"], "synergists": ["الكتف الجانبي"], "stabilizers": ["الكور"], "keywords": ["front raise", "أمامي", "كتف"]},
+        {"name": "Rear Delt Fly", "muscle": "shoulders", "equip": ["dumbbell", "machine", "cable"], "desc": "رفرفة خلفية لتوازن الكتف وتقوية الدلتويد الخلفي.", "image": "images/exercises/rear-delt-fly.webp", "targets": ["الأكتاف الخلفية"], "synergists": ["منتصف الظهر"], "stabilizers": ["الكور"], "keywords": ["rear delt fly", "reverse fly", "كتف خلفي"]},
+        {"name": "Reverse Pec Deck", "muscle": "shoulders", "equip": ["machine"], "desc": "Reverse Pec Deck يعزل الدلتويد الخلفي مع مسار ثابت.", "image": "images/exercises/reverse-pec-deck.webp", "targets": ["الأكتاف الخلفية"], "synergists": ["منتصف الظهر"], "stabilizers": ["الكور"], "keywords": ["reverse pec deck", "machine", "كتف خلفي"]},
+        {"name": "Upright Row", "muscle": "shoulders", "equip": ["barbell", "cable"], "desc": "رو عمودي يستهدف الدلتويد الجانبي/الترابيس (اختَر قبضة مريحة).", "image": "images/exercises/upright-row.webp", "targets": ["الأكتاف الجانبية", "الترابيس"], "synergists": ["الأكتاف الأمامية"], "stabilizers": ["الكور"], "keywords": ["upright row", "رو عمودي", "كتف"]},
+        {"name": "Landmine Press", "muscle": "shoulders", "equip": ["barbell"], "desc": "ضغط لاندماين زاوية لطيفة على الكتف وتناسب الكثيرين.", "image": "images/exercises/landmine-press.webp", "targets": ["الأكتاف الأمامية"], "synergists": ["الأكتاف الجانبية", "الترايسبس"], "stabilizers": ["الكور"], "keywords": ["landmine", "press", "بار", "كتف"]},
+        {"name": "Barbell Curl", "muscle": "biceps", "equip": ["barbell"], "desc": "كيرل بار كلاسيكي لبناء البايسبس مع إمكانية تحميل جيدة.", "image": "images/exercises/barbell-curl.webp", "targets": ["البايسبس"], "synergists": ["الساعد"], "stabilizers": ["الكور", "الكتف الأمامي"], "keywords": ["curl", "barbell", "بايسبس", "بار"]},
+        {"name": "Dumbbell Curl", "muscle": "biceps", "equip": ["dumbbell"], "desc": "كيرل دمبل يسمح بتدوير المعصم وتحكم أفضل لكل ذراع.", "image": "images/exercises/dumbbell-curl.webp", "targets": ["البايسبس"], "synergists": ["الساعد"], "stabilizers": ["الكور"], "keywords": ["curl", "dumbbell", "دمبل", "بايسبس"]},
+        {"name": "Incline Dumbbell Curl", "muscle": "biceps", "equip": ["dumbbell"], "desc": "كيرل مائل يزيد التمدد في البايسبس ويقوي الرأس الطويل.", "image": "images/exercises/incline-dumbbell-curl.webp", "targets": ["البايسبس"], "synergists": ["الساعد"], "stabilizers": ["الكور"], "keywords": ["incline curl", "مائل", "بايسبس", "دمبل"]},
+        {"name": "Hammer Curl", "muscle": "biceps", "equip": ["dumbbell"], "desc": "هامر كيرل يركز على العضلة العضدية والساعد.", "image": "images/exercises/hammer-curl.webp", "targets": ["البايسبس", "العضدية"], "synergists": ["الساعد"], "stabilizers": ["الكور"], "keywords": ["hammer", "curl", "دمبل", "ساعد"]},
+        {"name": "Cable Curl", "muscle": "biceps", "equip": ["cable"], "desc": "كيرل كابل يعطي شد ثابت طول الحركة.", "image": "images/exercises/cable-curl.webp", "targets": ["البايسبس"], "synergists": ["الساعد"], "stabilizers": ["الكور"], "keywords": ["cable curl", "كابل", "بايسبس"]},
+        {"name": "Preacher Curl", "muscle": "biceps", "equip": ["barbell", "machine", "dumbbell"], "desc": "كيرل بريتشر يقلل الغش ويثبت الذراع لعزل البايسبس.", "image": "images/exercises/preacher-curl.webp", "targets": ["البايسبس"], "synergists": ["الساعد"], "stabilizers": ["الكور"], "keywords": ["preacher", "curl", "بايسبس"]},
+        {"name": "Concentration Curl", "muscle": "biceps", "equip": ["dumbbell"], "desc": "كيرل تركيز لعزل قوي وتحكم عالي بالتمرين.", "image": "images/exercises/concentration-curl.webp", "targets": ["البايسبس"], "synergists": ["الساعد"], "stabilizers": ["الكور"], "keywords": ["concentration", "curl", "بايسبس", "دمبل"]},
+        {"name": "Chin-Up (Biceps)", "muscle": "biceps", "equip": ["bodyweight"], "desc": "شين أب قبضة ضيقة/مقلوبة تزيد مساهمة البايسبس.", "image": "images/exercises/chin-up-biceps.webp", "targets": ["البايسبس"], "synergists": ["اللاتس"], "stabilizers": ["الكور", "الساعد"], "keywords": ["chin up", "وزن الجسم", "بايسبس"]},
+        {"name": "Close-Grip Bench Press", "muscle": "triceps", "equip": ["barbell"], "desc": "ضغط بنش قبضة ضيقة يرفع تحميل الترايسبس مع الصدر.", "image": "images/exercises/close-grip-bench-press.webp", "targets": ["الترايسبس"], "synergists": ["الصدر", "الأكتاف الأمامية"], "stabilizers": ["الكور", "الظهر العلوي"], "keywords": ["close grip", "bench", "ترايسبس", "بار"]},
+        {"name": "Triceps Pushdown", "muscle": "triceps", "equip": ["cable"], "desc": "دفع كابل للأسفل لعزل الترايسبس (حافظ على مرفق ثابت).", "image": "images/exercises/triceps-pushdown.webp", "targets": ["الترايسبس"], "synergists": ["الساعد"], "stabilizers": ["الكور"], "keywords": ["pushdown", "cable", "ترايسبس", "كابل"]},
+        {"name": "Overhead Triceps Extension", "muscle": "triceps", "equip": ["dumbbell", "cable"], "desc": "تمديد فوق الرأس يستهدف الرأس الطويل للترايسبس.", "image": "images/exercises/overhead-triceps-extension.webp", "targets": ["الترايسبس (الرأس الطويل)"], "synergists": ["الساعد"], "stabilizers": ["الكور"], "keywords": ["overhead", "extension", "ترايسبس"]},
+        {"name": "Skull Crushers", "muscle": "triceps", "equip": ["barbell", "dumbbell"], "desc": "سكَل كراشرز تمرين قوي للترايسبس (تحكم بالمرفق).", "image": "images/exercises/skull-crushers.webp", "targets": ["الترايسبس"], "synergists": ["الساعد"], "stabilizers": ["الكور"], "keywords": ["skull crushers", "ترايسبس", "بار", "دمبل"]},
+        {"name": "Dips (Triceps Focus)", "muscle": "triceps", "equip": ["bodyweight"], "desc": "ديبس بجذع عمودي يركز على الترايسبس أكثر.", "image": "images/exercises/dips-triceps-focus.webp", "targets": ["الترايسبس"], "synergists": ["الصدر", "الأكتاف الأمامية"], "stabilizers": ["الكور", "الظهر العلوي"], "keywords": ["dips", "ترايسبس", "وزن الجسم"]},
+        {"name": "Diamond Push-Up", "muscle": "triceps", "equip": ["bodyweight"], "desc": "ضغط ماسّي يزيد استهداف الترايسبس.", "image": "images/exercises/diamond-push-up.webp", "targets": ["الترايسبس"], "synergists": ["الصدر"], "stabilizers": ["الكور"], "keywords": ["diamond", "push up", "ترايسبس"]},
+        {"name": "Cable Overhead Extension (Rope)", "muscle": "triceps", "equip": ["cable"], "desc": "تمديد كابل فوق الرأس بالحبل لشد مستمر وراحة للمعصم.", "image": "images/exercises/cable-overhead-extension-rope.webp", "targets": ["الترايسبس (الرأس الطويل)"], "synergists": ["الساعد"], "stabilizers": ["الكور"], "keywords": ["rope", "overhead", "cable", "ترايسبس"]},
+        {"name": "Squat", "muscle": "legs", "equip": ["barbell"], "desc": "سكوات أساس لبناء القوة للكوادر والمقعدة. حافظ على عمق مريح.", "image": "images/exercises/squat.webp", "targets": ["الكوادر", "المؤخرة"], "synergists": ["أوتار خلفية"], "stabilizers": ["الكور", "أسفل الظهر"], "keywords": ["squat", "سكوات", "بار", "أرجل"]},
+        {"name": "Front Squat", "muscle": "legs", "equip": ["barbell"], "desc": "فرونت سكوات يركز أكثر على الكوادر مع وضعية عمودية.", "image": "images/exercises/front-squat.webp", "targets": ["الكوادر"], "synergists": ["المؤخرة"], "stabilizers": ["الكور", "أعلى الظهر"], "keywords": ["front squat", "سكوات أمامي", "بار"]},
+        {"name": "Leg Press", "muscle": "legs", "equip": ["machine"], "desc": "ليغ برس يسمح بحجم عالي للكوادر/المؤخرة بدون ضغط كبير على التوازن.", "image": "images/exercises/leg-press.webp", "targets": ["الكوادر"], "synergists": ["المؤخرة"], "stabilizers": ["الكور"], "keywords": ["leg press", "آلة", "أرجل"]},
+        {"name": "Hack Squat", "muscle": "legs", "equip": ["machine"], "desc": "هاك سكوات آلة تركّز على الكوادر وتثبّت المسار.", "image": "images/exercises/hack-squat.webp", "targets": ["الكوادر"], "synergists": ["المؤخرة"], "stabilizers": ["الكور"], "keywords": ["hack squat", "آلة", "كوادر"]},
+        {"name": "Lunge", "muscle": "legs", "equip": ["dumbbell", "bodyweight"], "desc": "لانج يزيد الاستقرار ويعالج الفروقات بين الرجلين.", "image": "images/exercises/lunge.webp", "targets": ["الكوادر", "المؤخرة"], "synergists": ["أوتار خلفية"], "stabilizers": ["الكور", "المثبتات"], "keywords": ["lunge", "لانج", "دمبل", "أرجل"]},
+        {"name": "Bulgarian Split Squat", "muscle": "legs", "equip": ["dumbbell", "bodyweight"], "desc": "بلغاري سبليت سكوات تمرين قوي للكوادر والمقعدة وتوازن.", "image": "images/exercises/bulgarian-split-squat.webp", "targets": ["الكوادر", "المؤخرة"], "synergists": ["أوتار خلفية"], "stabilizers": ["الكور", "المثبتات"], "keywords": ["bulgarian", "split squat", "بلغاري", "دمبل"]},
+        {"name": "Leg Extension", "muscle": "legs", "equip": ["machine"], "desc": "تمديد رجل آلة لعزل الكوادر (تحكم بالمدى).", "image": "images/exercises/leg-extension.webp", "targets": ["الكوادر"], "synergists": [""], "stabilizers": ["الكور"], "keywords": ["leg extension", "آلة", "كوادر"]},
+        {"name": "Leg Curl", "muscle": "legs", "equip": ["machine"], "desc": "ليغ كيرل لعزل أوتار الخلف (ممتاز للتحكم والتحميل).", "image": "images/exercises/leg-curl.webp", "targets": ["أوتار خلفية"], "synergists": [""], "stabilizers": ["الكور"], "keywords": ["leg curl", "آلة", "هامسترينغ"]},
+        {"name": "Hip Hinge Good Morning", "muscle": "legs", "equip": ["barbell"], "desc": "غود مورنينغ يحفز أوتار الخلف/أسفل الظهر (للمتقدمين وبوزن مناسب).", "image": "images/exercises/hip-hinge-good-morning.webp", "targets": ["أوتار خلفية", "أسفل الظهر"], "synergists": ["المؤخرة"], "stabilizers": ["الكور"], "keywords": ["good morning", "بار", "هامسترينغ"]},
+        {"name": "Calf Raise (Standing)", "muscle": "calves", "equip": ["machine", "bodyweight"], "desc": "رفع سمانة واقف لبناء عضلة السمانة (وقفات قصيرة بالأعلى).", "image": "images/exercises/calf-raise-standing.webp", "targets": ["السمانة"], "synergists": [""], "stabilizers": ["القدم/الكاحل"], "keywords": ["calf raise", "standing", "سمانة"]},
+        {"name": "Calf Raise (Seated)", "muscle": "calves", "equip": ["machine"], "desc": "رفع سمانة جلوس يركز على عضلة السوليوس.", "image": "images/exercises/calf-raise-seated.webp", "targets": ["السمانة (سوليوس)"], "synergists": [""], "stabilizers": ["القدم/الكاحل"], "keywords": ["seated calf", "سمانة", "آلة"]},
+        {"name": "Hip Thrust", "muscle": "glutes", "equip": ["barbell", "machine"], "desc": "هيب ثرست أقوى تمارين المقعدة مع شد عالي بالأعلى.", "image": "images/exercises/hip-thrust.webp", "targets": ["المؤخرة"], "synergists": ["أوتار خلفية", "الكوادر"], "stabilizers": ["الكور", "أسفل الظهر"], "keywords": ["hip thrust", "مؤخرة", "بار"]},
+        {"name": "Glute Bridge", "muscle": "glutes", "equip": ["bodyweight", "barbell"], "desc": "غلوت بريدج بديل أبسط للهيب ثرست ويمكن ترقيته بسهولة.", "image": "images/exercises/glute-bridge.webp", "targets": ["المؤخرة"], "synergists": ["أوتار خلفية"], "stabilizers": ["الكور"], "keywords": ["glute bridge", "مؤخرة"]},
+        {"name": "Cable Kickback", "muscle": "glutes", "equip": ["cable"], "desc": "كيك باك كابل لعزل المقعدة مع تحكم بالزاوية.", "image": "images/exercises/cable-kickback.webp", "targets": ["المؤخرة"], "synergists": ["أوتار خلفية"], "stabilizers": ["الكور"], "keywords": ["kickback", "cable", "مؤخرة", "كابل"]},
+        {"name": "Step-Up", "muscle": "glutes", "equip": ["dumbbell", "bodyweight"], "desc": "ستيب أب يبني المقعدة والكوادر مع عمل قوي للاستقرار.", "image": "images/exercises/step-up.webp", "targets": ["المؤخرة"], "synergists": ["الكوادر"], "stabilizers": ["الكور", "المثبتات"], "keywords": ["step up", "مؤخرة", "أرجل"]},
+        {"name": "Cable Crunch", "muscle": "abs", "equip": ["cable"], "desc": "كرنش كابل يسمح بتحميل تدريجي وبمدى حركة كامل للجذع.", "image": "images/exercises/cable-crunch.webp", "targets": ["البطن"], "synergists": [""], "stabilizers": ["مثنيات الورك", "أسفل الظهر"], "keywords": ["cable crunch", "كرنش", "كابل", "بطن"]},
+        {"name": "Weighted Crunch", "muscle": "abs", "equip": ["bodyweight", "machine"], "desc": "كرنش مع وزن لبناء عضلات البطن مثل أي عضلة.", "image": "images/exercises/weighted-crunch.webp", "targets": ["البطن"], "synergists": [""], "stabilizers": ["مثنيات الورك"], "keywords": ["weighted crunch", "بطن"]},
+        {"name": "Hanging Leg Raise", "muscle": "abs", "equip": ["bodyweight"], "desc": "رفع رجلين معلّق يستهدف البطن السفلية ويقوي القبضة.", "image": "images/exercises/hanging-leg-raise.webp", "targets": ["البطن"], "synergists": ["مثنيات الورك"], "stabilizers": ["الساعد", "اللاتس"], "keywords": ["hanging leg raise", "وزن الجسم", "بطن"]},
+        {"name": "Ab Wheel Rollout", "muscle": "abs", "equip": ["bodyweight"], "desc": "رول آوت عجلة للبطن يركز على الاستقرار ضد التمدد.", "image": "images/exercises/ab-wheel-rollout.webp", "targets": ["البطن"], "synergists": ["اللاتس"], "stabilizers": ["الأكتاف", "أسفل الظهر"], "keywords": ["ab wheel", "rollout", "بطن"]},
+        {"name": "Plank", "muscle": "abs", "equip": ["bodyweight"], "desc": "بلانك انقباض ثابت ممتاز لقوة الجذع والثبات.", "image": "images/exercises/plank.webp", "targets": ["البطن", "الكور"], "synergists": ["الكتف"], "stabilizers": ["أسفل الظهر"], "keywords": ["plank", "بلانك", "بطن"]},
+        {"name": "Side Plank", "muscle": "abs", "equip": ["bodyweight"], "desc": "سايد بلانك لتقوية المائلين وثبات الحوض.", "image": "images/exercises/side-plank.webp", "targets": ["المائلين"], "synergists": ["الألوية المتوسطة"], "stabilizers": ["الكتف"], "keywords": ["side plank", "مائلين", "بطن"]},
+        {"name": "Pallof Press", "muscle": "abs", "equip": ["cable", "bands"], "desc": "بالوف برس مقاومة دوران ممتازة للكور وحماية أسفل الظهر.", "image": "images/exercises/pallof-press.webp", "targets": ["الكور"], "synergists": ["المائلين"], "stabilizers": ["الأكتاف"], "keywords": ["pallof", "press", "كابل", "مطاط", "كور"]},
+        {"name": "Wrist Curl", "muscle": "forearms", "equip": ["dumbbell", "barbell"], "desc": "كيرل معصم لعضلات الساعد الأمامية (تحكم بطيء).", "image": "images/exercises/wrist-curl.webp", "targets": ["الساعد"], "synergists": [""], "stabilizers": [""], "keywords": ["wrist curl", "ساعد", "معصم"]},
+        {"name": "Reverse Curl", "muscle": "forearms", "equip": ["barbell", "dumbbell"], "desc": "كيرل عكسي يركز على الساعد والعضدية.", "image": "images/exercises/reverse-curl.webp", "targets": ["الساعد"], "synergists": ["البايسبس"], "stabilizers": ["الكور"], "keywords": ["reverse curl", "ساعد"]},
+        {"name": "Farmer's Carry", "muscle": "forearms", "equip": ["dumbbell", "kettlebell"], "desc": "حمل مزارع يقوي القبضة والساعد والكور.", "image": "images/exercises/farmer-s-carry.webp", "targets": ["الساعد", "القبضة"], "synergists": ["الترابيس"], "stabilizers": ["الكور"], "keywords": ["farmers carry", "carry", "ساعد", "قبضة"]},
+        {"name": "Dead Hang", "muscle": "forearms", "equip": ["bodyweight"], "desc": "تعليق ثابت لتقوية القبضة والساعد مع وقت تحت شد.", "image": "images/exercises/dead-hang.webp", "targets": ["الساعد", "القبضة"], "synergists": ["اللاتس"], "stabilizers": ["الكور"], "keywords": ["dead hang", "قبضة", "ساعد"]},
+        {"name": "Barbell Shrug", "muscle": "traps", "equip": ["barbell"], "desc": "شراگ بار لزيادة حجم الترابيس (رفع كتف للأعلى بدون دوران).", "image": "images/exercises/barbell-shrug.webp", "targets": ["الترابيس"], "synergists": ["الساعد"], "stabilizers": ["الكور"], "keywords": ["shrug", "barbell", "ترابيس", "بار"]},
+        {"name": "Dumbbell Shrug", "muscle": "traps", "equip": ["dumbbell"], "desc": "شراگ دمبل يسمح بمدى حركة أفضل حسب الشخص.", "image": "images/exercises/dumbbell-shrug.webp", "targets": ["الترابيس"], "synergists": ["الساعد"], "stabilizers": ["الكور"], "keywords": ["shrug", "dumbbell", "ترابيس", "دمبل"]},
+        // Added new exercises to expand the library
+        {"name": "Flat Chest Press Machine", "muscle": "chest", "equip": ["machine"], "desc": "ضغط صدر على آلة مسطحة يعزل عضلات الصدر ويوفر مسار حركة ثابت مع دعم للظهر.", "image": "images/exercises/flat-chest-press-machine.webp", "targets": ["الصدر"], "synergists": ["الترايسبس", "الأكتاف الأمامية"], "stabilizers": ["الكور"], "keywords": ["machine press", "flat press", "صدر", "آلة"]},
+        {"name": "Incline Chest Press Machine", "muscle": "chest", "equip": ["machine"], "desc": "ضغط صدر مائل على آلة يركز على الجزء العلوي من الصدر مع تحكم سهل في الوزن.", "image": "images/exercises/incline-chest-press-machine.webp", "targets": ["الصدر العلوي"], "synergists": ["الترايسبس", "الأكتاف الأمامية"], "stabilizers": ["الكور"], "keywords": ["incline machine", "صدر", "آلة"]},
+        {"name": "Decline Chest Press Machine", "muscle": "chest", "equip": ["machine"], "desc": "ضغط صدر مائل للأسفل على آلة يستهدف الجزء السفلي من الصدر مع تقليل الضغط على الكتفين.", "image": "images/exercises/decline-chest-press-machine.webp", "targets": ["الصدر السفلي"], "synergists": ["الترايسبس", "الأكتاف الأمامية"], "stabilizers": ["الكور"], "keywords": ["decline machine", "صدر", "آلة"]},
+        {"name": "Cable Crossover", "muscle": "chest", "equip": ["cable"], "desc": "تقاطع كابل يقوي عضلات الصدر عبر شد متقاطع مع إمكانية تغيير الزاوية.", "image": "images/exercises/cable-crossover.webp", "targets": ["الصدر"], "synergists": ["الأكتاف الأمامية"], "stabilizers": ["الكور"], "keywords": ["cable crossover", "كابل", "صدر"]},
+        {"name": "Decline Dumbbell Fly", "muscle": "chest", "equip": ["dumbbell"], "desc": "رفرفة دمبل على بنش مائل للأسفل تستهدف الصدر السفلي بمدى حركة كبير.", "image": "images/exercises/decline-dumbbell-fly.webp", "targets": ["الصدر السفلي"], "synergists": ["الأكتاف الأمامية"], "stabilizers": ["البايسبس", "الكور"], "keywords": ["decline fly", "دمبل", "صدر"]},
+        {"name": "Inverted Row", "muscle": "back", "equip": ["bodyweight"], "desc": "تمرين سحب أفقي باستخدام وزن الجسم يعزز قوة منتصف الظهر واللاتس.", "image": "images/exercises/inverted-row.webp", "targets": ["منتصف الظهر", "اللاتس"], "synergists": ["البايسبس"], "stabilizers": ["الكور", "المؤخرة"], "keywords": ["inverted row", "row", "وزن الجسم", "ظهر"]},
+        {"name": "Reverse Fly", "muscle": "back", "equip": ["dumbbell"], "desc": "رفرفة عكسية لعضلات الكتف الخلفية والظهر العلوي، تُنفّذ بالانحناء للأمام.", "image": "images/exercises/reverse-fly.webp", "targets": ["الكتف الخلفي", "الترابيس"], "synergists": ["منتصف الظهر"], "stabilizers": ["الكور"], "keywords": ["reverse fly", "دمبل", "كتف خلفي"]},
+        {"name": "Lateral Raise", "muscle": "shoulders", "equip": ["dumbbell"], "desc": "رفع جانبي لليدين لتقوية الأكتاف الجانبية بمدى حركة كامل.", "image": "images/exercises/lateral-raise.webp", "targets": ["الأكتاف الجانبية"], "synergists": [], "stabilizers": ["الكور"], "keywords": ["lateral raise", "raise", "دمبل", "كتف"]},
+        {"name": "Front Raise", "muscle": "shoulders", "equip": ["dumbbell"], "desc": "رفع أمامي يعمل على تقوية الأكتاف الأمامية مع الحفاظ على استقامة الجذع.", "image": "images/exercises/front-raise.webp", "targets": ["الأكتاف الأمامية"], "synergists": [], "stabilizers": ["الكور"], "keywords": ["front raise", "دمبل", "كتف"]},
+        {"name": "Rear Delt Fly", "muscle": "shoulders", "equip": ["dumbbell"], "desc": "رفرفة خلفية لعزل العضلات الخلفية للكتف وتحسين وضعية الظهر.", "image": "images/exercises/rear-delt-fly.webp", "targets": ["الأكتاف الخلفية"], "synergists": ["الترابيس", "منتصف الظهر"], "stabilizers": ["الكور"], "keywords": ["rear delt", "fly", "دمبل", "كتف"]},
+        {"name": "Upright Row", "muscle": "shoulders", "equip": ["barbell", "dumbbell"], "desc": "صف رأسي يرفع الوزن بمحاذاة الجسم لاستهداف الترابيس والأكتاف الجانبية.", "image": "images/exercises/upright-row.webp", "targets": ["الترابيس", "الأكتاف الجانبية"], "synergists": ["البايسبس"], "stabilizers": ["الكور"], "keywords": ["upright row", "row", "كتف", "بار", "دمبل"]},
+        {"name": "Goblet Squat", "muscle": "legs", "equip": ["dumbbell", "kettlebell"], "desc": "سكوات غوبلت يحمل فيه الوزن أمام الصدر ويُركز على الكوادر والمقعدة.", "image": "images/exercises/goblet-squat.webp", "targets": ["الكوادر", "المؤخرة"], "synergists": ["أوتار خلفية"], "stabilizers": ["الكور", "أسفل الظهر"], "keywords": ["goblet squat", "سكوات", "دمبل", "كيتل"]},
+        {"name": "Sumo Deadlift", "muscle": "legs", "equip": ["barbell"], "desc": "ديدليفت سومو بقاعدة واسعة يركز على المقعدة والأوتار الخلفية مع حمل ثقيل.", "image": "images/exercises/sumo-deadlift.webp", "targets": ["المؤخرة", "أوتار خلفية"], "synergists": ["الكوادر"], "stabilizers": ["الكور", "الظهر السفلي"], "keywords": ["sumo deadlift", "ديدليفت", "أرجل", "بار"]},
+        {"name": "Stiff-Leg Deadlift", "muscle": "legs", "equip": ["barbell", "dumbbell"], "desc": "ديدليفت بأرجل شبه مستقيمة يعزل الأوتار الخلفية وأسفل الظهر.", "image": "images/exercises/stiff-leg-deadlift.webp", "targets": ["أوتار خلفية", "أسفل الظهر"], "synergists": ["المؤخرة"], "stabilizers": ["الكور"], "keywords": ["stiff leg deadlift", "ديدليفت", "هامسترينغ", "بار"]},
+        {"name": "Glute-Ham Raise", "muscle": "legs", "equip": ["machine"], "desc": "تمرين غلوت-هام يطور قوة الأوتار الخلفية والمقعدة عبر جهاز خاص.", "image": "images/exercises/glute-ham-raise.webp", "targets": ["أوتار خلفية", "المؤخرة"], "synergists": ["السمانة"], "stabilizers": ["الكور"], "keywords": ["glute ham raise", "ghr", "آلة", "أرجل"]},
+        {"name": "Kettlebell Swing", "muscle": "legs", "equip": ["kettlebell"], "desc": "تأرجح الكيتل يستهدف المقعدة والهامسترينغ ويُدرّب الحركة الانفجارية.", "image": "images/exercises/kettlebell-swing.webp", "targets": ["المؤخرة", "أوتار خلفية"], "synergists": ["اللاتس", "الترابيس"], "stabilizers": ["الكور"], "keywords": ["kettlebell swing", "كيتل", "تأرجح"]},
+        {"name": "Donkey Calf Raise", "muscle": "calves", "equip": ["bodyweight", "machine"], "desc": "رفع سمانة بحمل منحني للأمام يمنح مدى حركة أكبر لعزل عضلة الساق.", "image": "images/exercises/donkey-calf-raise.webp", "targets": ["السمانة"], "synergists": [""], "stabilizers": ["القدم/الكاحل"], "keywords": ["donkey calf", "raise", "سمانة"]},
+        {"name": "Hip Abduction Machine", "muscle": "glutes", "equip": ["machine"], "desc": "آلة خطف الفخذين تقوّي الألوية المتوسطة وتساهم في استقرار الورك.", "image": "images/exercises/hip-abduction-machine.webp", "targets": ["الألوية المتوسطة"], "synergists": ["المؤخرة"], "stabilizers": ["الكور"], "keywords": ["hip abduction", "machine", "مؤخرة"]},
+        {"name": "Spider Curl", "muscle": "biceps", "equip": ["dumbbell", "barbell"], "desc": "سبايدر كيرل يؤدى على مقعد مائل بالعكس لعزل رأس البايسبس القصير.", "image": "images/exercises/spider-curl.webp", "targets": ["البايسبس"], "synergists": ["الساعد"], "stabilizers": ["الكور"], "keywords": ["spider curl", "بايسبس", "دمبل"]},
+        {"name": "Cable Hammer Curl", "muscle": "biceps", "equip": ["cable"], "desc": "هامر كيرل بالكابل يمنح شدًا ثابتًا ويعمل على العضدية والبايسبس.", "image": "images/exercises/cable-hammer-curl.webp", "targets": ["البايسبس", "العضدية"], "synergists": ["الساعد"], "stabilizers": ["الكور"], "keywords": ["hammer curl", "cable", "بايسبس"]},
+        {"name": "Triceps Kickback", "muscle": "triceps", "equip": ["dumbbell"], "desc": "ركل دمبل للخلف لتقوية الترايسبس مع الحفاظ على الذراع ثابتة.", "image": "images/exercises/triceps-kickback.webp", "targets": ["الترايسبس"], "synergists": ["الساعد"], "stabilizers": ["الكور"], "keywords": ["triceps kickback", "دمبل", "ترايسبس"]},
+        {"name": "Mountain Climber", "muscle": "abs", "equip": ["bodyweight"], "desc": "متسلق الجبال تمرين ديناميكي للبطن والكور يحسن اللياقة والتحمل.", "image": "images/exercises/mountain-climber.webp", "targets": ["البطن", "الكور"], "synergists": ["الأكتاف", "الكوادر"], "stabilizers": ["اليدين"], "keywords": ["mountain climber", "بطن", "وزن الجسم"]},
+        {"name": "Russian Twist", "muscle": "abs", "equip": ["bodyweight", "dumbbell"], "desc": "لف روسي يجلس فيه الشخص ويحرك الجذع يميناً ويساراً لتقوية المائلين.", "image": "images/exercises/russian-twist.webp", "targets": ["المائلين", "البطن"], "synergists": [""], "stabilizers": ["الكور"], "keywords": ["russian twist", "twist", "بطن"]},
+        {"name": "Bicycle Crunch", "muscle": "abs", "equip": ["bodyweight"], "desc": "تمرين دراجة يعمل على تقوية البطن العلوي والسفلي والمائلين.", "image": "images/exercises/bicycle-crunch.webp", "targets": ["البطن"], "synergists": ["المائلين"], "stabilizers": ["الكتف"], "keywords": ["bicycle crunch", "بطن"]},
+        {"name": "V-Up", "muscle": "abs", "equip": ["bodyweight"], "desc": "في آب يجمع الجسم على شكل حرف V لتمرين شامل لعضلات البطن.", "image": "images/exercises/v-up.webp", "targets": ["البطن"], "synergists": ["مثنيات الورك"], "stabilizers": ["الكور"], "keywords": ["v up", "بطن", "كور"]},
+        {"name": "Renegade Row", "muscle": "abs", "equip": ["dumbbell", "bodyweight"], "desc": "رو رينيغيد يجمع بين بلانك وصف دمبل لتقوية الكور والظهر.", "image": "images/exercises/renegade-row.webp", "targets": ["الكور", "منتصف الظهر"], "synergists": ["البايسبس", "الأكتاف الأمامية"], "stabilizers": ["الكور", "الكاحل"], "keywords": ["renegade row", "رو", "بطن", "دمبل"]},
+
+        // ==== Quads-focused exercises ====
+        {"name": "Leg Extension", "muscle": "quads", "equip": ["machine"], "desc": "تمديد الأرجل (Leg Extension) لعزل عضلة الكوادز مع تحكم في الوزن.", "image": "images/exercises/leg-extension.webp", "targets": ["الكوادز"], "synergists": [], "stabilizers": ["الكور"], "keywords": ["leg extension", "machine", "quads", "كوادز"]},
+        {"name": "Bulgarian Split Squat", "muscle": "quads", "equip": ["dumbbell", "barbell"], "desc": "سكوات بلغاري مع رجل خلف على مقعد لزيادة التحدي على الكوادز والتوازن.", "image": "images/exercises/bulgarian-split-squat.webp", "targets": ["الكوادز", "المؤخرة"], "synergists": ["أوتار خلفية"], "stabilizers": ["الكور"], "keywords": ["bulgarian split squat", "split squat", "quads", "سكوات", "بلغاري"]},
+        {"name": "Walking Lunge", "muscle": "quads", "equip": ["bodyweight", "dumbbell", "barbell"], "desc": "لونج مشي يقوي الكوادز والمقعدة ويضيف عنصر توازن.", "image": "images/exercises/walking-lunge.webp", "targets": ["الكوادز"], "synergists": ["المؤخرة", "أوتار خلفية"], "stabilizers": ["الكور"], "keywords": ["walking lunge", "lunge", "quads", "لونج"]},
+        {"name": "Step-Up", "muscle": "quads", "equip": ["bodyweight", "dumbbell", "barbell"], "desc": "صعود على مقعد لزيادة قوة الكوادز والأرجل.", "image": "images/exercises/step-up.webp", "targets": ["الكوادز"], "synergists": ["المؤخرة"], "stabilizers": ["الكور"], "keywords": ["step up", "quads", "صعود"]},
+        {"name": "Sissy Squat", "muscle": "quads", "equip": ["bodyweight"], "desc": "سيسي سكوات يعزل الكوادز بزاوية ضيقة للركبة ويتطلب توازنًا.", "image": "images/exercises/sissy-squat.webp", "targets": ["الكوادز"], "synergists": [], "stabilizers": ["الكور"], "keywords": ["sissy squat", "quads", "سكوات"]}
+
+        // ==== Additional exercises across muscle groups ====
+        // Glutes
+        ,{"name": "Barbell Hip Thrust", "muscle": "glutes", "equip": ["barbell"], "desc": "تمرين هيب ثراست بالبار يعمل على تقوية عضلات المؤخرة والأوتار الخلفية مع دعم للكور.", "image": "images/exercises/barbell-hip-thrust.webp", "targets": ["المؤخرة", "أوتار خلفية"], "synergists": ["الكوادر"], "stabilizers": ["الكور"], "keywords": ["hip thrust", "مؤخرة", "بار"]}
+        // Legs (compound)
+        ,{"name": "Leg Press", "muscle": "legs", "equip": ["machine"], "desc": "ضغط الأرجل على آلة لتمرين الكوادر والأوتار الخلفية والمقعدة مع تقليل الضغط على الظهر.", "image": "images/exercises/leg-press.webp", "targets": ["الكوادر", "أوتار خلفية", "المؤخرة"], "synergists": [], "stabilizers": ["الكور"], "keywords": ["leg press", "آلة", "أرجل"]}
+        // Biceps
+        ,{"name": "Concentration Curl", "muscle": "biceps", "equip": ["dumbbell"], "desc": "كونسنترشن كيرل يعزل البايسبس باستخدام دمبل مع وضع الكوع على الفخذ للحصول على تركيز عالٍ.", "image": "images/exercises/concentration-curl.webp", "targets": ["البايسبس"], "synergists": ["العضدية"], "stabilizers": ["الساعد"], "keywords": ["concentration curl", "بايسبس", "دمبل"]}
+        // Triceps
+        ,{"name": "Skull Crusher", "muscle": "triceps", "equip": ["barbell", "dumbbell"], "desc": "سكول كراشر (تمديد الترايسبس أثناء الاستلقاء) يركز على جميع رؤوس الترايسبس ويزيد من قوة الذراع.", "image": "images/exercises/skull-crusher.webp", "targets": ["الترايسبس"], "synergists": ["الساعد"], "stabilizers": ["الكور"], "keywords": ["skull crusher", "triceps", "بار", "دمبل"]}
+        // Abs
+        ,{"name": "Hanging Leg Raise", "muscle": "abs", "equip": ["bodyweight"], "desc": "رفع الأرجل أثناء التعليق يقوي عضلات البطن ومثنيات الورك بتحدي وزن الجسم.", "image": "images/exercises/hanging-leg-raise.webp", "targets": ["البطن"], "synergists": ["مثنيات الورك"], "stabilizers": ["الكور", "اليدين"], "keywords": ["hanging leg raise", "رفع الأرجل", "بطن"]}
+        // Calves
+        ,{"name": "Standing Calf Raise", "muscle": "calves", "equip": ["bodyweight", "machine"], "desc": "رفع السمانة في وضع الوقوف باستخدام وزن الجسم أو آلة لتقوية عضلات الساق.", "image": "images/exercises/standing-calf-raise.webp", "targets": ["السمانة"], "synergists": [], "stabilizers": ["القدم/الكاحل"], "keywords": ["standing calf raise", "سمانة", "رفع"]}
+        // Back
+        ,{"name": "Single-Arm Cable Row", "muscle": "back", "equip": ["cable"], "desc": "سحب كابل بذراع واحدة يطور قوة الظهر مع شد مستمر ويصحح الاختلالات بين الجانبين.", "image": "images/exercises/single-arm-cable-row.webp", "targets": ["اللاتس", "منتصف الظهر"], "synergists": ["البايسبس"], "stabilizers": ["الكور"], "keywords": ["single arm row", "cable row", "كابل", "ظهر"]}
+        // Shoulders
+        ,{"name": "Cable Lateral Raise", "muscle": "shoulders", "equip": ["cable"], "desc": "رفع جانبي بالكابل يمنح مقاومة ثابتة ويقوي الأكتاف الجانبية وعضلات الكفة المدورة.", "image": "images/exercises/cable-lateral-raise.webp", "targets": ["الأكتاف الجانبية"], "synergists": [], "stabilizers": ["الكور"], "keywords": ["cable lateral raise", "كابل", "كتف"]}
+        // Legs (hamstrings)
+        ,{"name": "Nordic Curl", "muscle": "legs", "equip": ["bodyweight"], "desc": "نورديك كورل يستخدم وزن الجسم لتقوية أوتار الركبة عبر النزول البطيء للأمام مع الحفاظ على الوركين ممتدين.", "image": "images/exercises/nordic-curl.webp", "targets": ["أوتار خلفية"], "synergists": ["المؤخرة"], "stabilizers": ["الكور"], "keywords": ["nordic curl", "أوتار خلفية", "وزن الجسم"]}
+        // ==== New Chest exercises ====
+        ,{"name": "Incline Dumbbell Fly", "muscle": "chest", "equip": ["dumbbell"], "desc": "رفرفة دمبل مائلة لتطوير الجزء العلوي من الصدر مع مدى حركة كبير.", "image": "images/exercises/incline-dumbbell-fly.webp", "targets": ["الصدر العلوي"], "synergists": ["الأكتاف الأمامية"], "stabilizers": ["البايسبس", "الكور"], "keywords": ["incline dumbbell fly", "رفرفة مائلة", "دمبل", "صدر"]}
+        ,{"name": "Guillotine Press", "muscle": "chest", "equip": ["barbell"], "desc": "ضغط بار نحو الرقبة لزيادة تحفيز الصدر العلوي (استعمل وزنًا خفيفًا وحافظ على الكتفين).", "image": "images/exercises/guillotine-press.webp", "targets": ["الصدر العلوي"], "synergists": ["الترايسبس", "الأكتاف الأمامية"], "stabilizers": ["الظهر العلوي", "الكور"], "keywords": ["guillotine press", "بار", "صدر"]}
+        ,{"name": "Dumbbell Squeeze Press", "muscle": "chest", "equip": ["dumbbell"], "desc": "ضغط دمبل مع عصر الدمبلين معًا لزيادة انقباض الصدر الداخلي.", "image": "images/exercises/dumbbell-squeeze-press.webp", "targets": ["الصدر"], "synergists": ["الترايسبس", "الأكتاف الأمامية"], "stabilizers": ["الظهر العلوي", "الكور"], "keywords": ["squeeze press", "دمبل", "صدر"]}
+        ,{"name": "Hex Press", "muscle": "chest", "equip": ["dumbbell"], "desc": "ضغط دمبل سداسي حيث تضغط الدمبلين معًا طوال الحركة لزيادة التوتر على الصدر.", "image": "images/exercises/hex-press.webp", "targets": ["الصدر"], "synergists": ["الترايسبس", "الأكتاف الأمامية"], "stabilizers": ["الظهر العلوي", "الكور"], "keywords": ["hex press", "دمبل", "صدر"]}
+        ,{"name": "Floor Press", "muscle": "chest", "equip": ["barbell", "dumbbell"], "desc": "ضغط من الأرض يقلل مدى الحركة ويركز على الصدر والترايسبس ويقلل إجهاد الكتف.", "image": "images/exercises/floor-press.webp", "targets": ["الصدر"], "synergists": ["الترايسبس", "الأكتاف الأمامية"], "stabilizers": ["الظهر العلوي", "الكور"], "keywords": ["floor press", "صدر", "بار", "دمبل"]}
+        ,{"name": "Spoto Press", "muscle": "chest", "equip": ["barbell"], "desc": "ضغط بار مع توقف قصير فوق الصدر لزيادة التحكم والتوتر المستمر على الصدر.", "image": "images/exercises/spoto-press.webp", "targets": ["الصدر"], "synergists": ["الترايسبس", "الأكتاف الأمامية"], "stabilizers": ["الظهر العلوي", "الكور"], "keywords": ["spoto press", "ضغط", "بار", "صدر"]}
+        ,{"name": "Pause Bench Press", "muscle": "chest", "equip": ["barbell"], "desc": "ضغط الصدر مع التوقف لثانية على الصدر لزيادة القوة والتحكم.", "image": "images/exercises/pause-bench-press.webp", "targets": ["الصدر"], "synergists": ["الترايسبس", "الأكتاف الأمامية"], "stabilizers": ["الظهر العلوي", "الكور"], "keywords": ["pause bench", "صدر", "بار"]}
+        ,{"name": "Larsen Press", "muscle": "chest", "equip": ["barbell"], "desc": "نسخة من البنش بريس بدون وضع القدمين على الأرض لزيادة الاعتماد على الجزء العلوي والجذع.", "image": "images/exercises/larsen-press.webp", "targets": ["الصدر"], "synergists": ["الترايسبس", "الأكتاف الأمامية"], "stabilizers": ["الكور", "الظهر العلوي"], "keywords": ["larsen press", "صدر", "بار"]}
+        ,{"name": "Single-Arm Dumbbell Press", "muscle": "chest", "equip": ["dumbbell"], "desc": "ضغط دمبل بذراع واحدة لتحسين التوازن وتقليل الاختلالات وتقوية الكور.", "image": "images/exercises/single-arm-dumbbell-press.webp", "targets": ["الصدر"], "synergists": ["الترايسبس", "الأكتاف الأمامية"], "stabilizers": ["الكور", "الظهر العلوي"], "keywords": ["single arm press", "دمبل", "صدر"]}
+        ,{"name": "Resistance Band Chest Press", "muscle": "chest", "equip": ["bands"], "desc": "ضغط بالرباط المطاطي لمحاكاة حركة البنش بريس مع مقاومة تدريجية وسهولة في المنزل.", "image": "images/exercises/resistance-band-chest-press.webp", "targets": ["الصدر"], "synergists": ["الترايسبس", "الأكتاف الأمامية"], "stabilizers": ["الكور"], "keywords": ["band chest press", "مطاط", "صدر"]}
+        ,{"name": "Smith Machine Bench Press", "muscle": "chest", "equip": ["machine"], "desc": "ضغط بنش على آلة سميث يوفر مسارًا ثابتًا ويقلل من الحاجة للتوازن.", "image": "images/exercises/smith-machine-bench-press.webp", "targets": ["الصدر"], "synergists": ["الترايسبس", "الأكتاف الأمامية"], "stabilizers": ["الكور"], "keywords": ["smith machine press", "آلة", "صدر"]}
+        ,{"name": "Smith Machine Incline Press", "muscle": "chest", "equip": ["machine"], "desc": "ضغط مائل على آلة سميث يركز على الجزء العلوي من الصدر مع مسار مقيد.", "image": "images/exercises/smith-machine-incline-press.webp", "targets": ["الصدر العلوي"], "synergists": ["الترايسبس", "الأكتاف الأمامية"], "stabilizers": ["الكور"], "keywords": ["smith incline press", "آلة", "صدر"]}
+        ,{"name": "Machine Chest Fly", "muscle": "chest", "equip": ["machine"], "desc": "رفرفة على آلة لعزل الصدر بالكامل مع دعم الظهر وثبات الحركة.", "image": "images/exercises/machine-chest-fly.webp", "targets": ["الصدر"], "synergists": ["الأكتاف الأمامية"], "stabilizers": ["الكور"], "keywords": ["machine fly", "آلة", "صدر"]}
+        ,{"name": "Ring Push-Up", "muscle": "chest", "equip": ["bodyweight"], "desc": "ضغط بإستخدام الحلقات يضيف عنصر عدم الاستقرار لتحدي الصدر والترايسبس والكور.", "image": "images/exercises/ring-push-up.webp", "targets": ["الصدر"], "synergists": ["الترايسبس", "الأكتاف الأمامية"], "stabilizers": ["الكور", "الكتف"], "keywords": ["ring push up", "وزن الجسم", "صدر"]}
+        ,{"name": "Archer Push-Up", "muscle": "chest", "equip": ["bodyweight"], "desc": "نسخة من الضغط حيث تتحمل ذراع واحدة أغلب الوزن لتقوية الصدر والترايسبس وزيادة المرونة.", "image": "images/exercises/archer-push-up.webp", "targets": ["الصدر"], "synergists": ["الترايسبس", "الأكتاف الأمامية"], "stabilizers": ["الكور"], "keywords": ["archer push up", "وزن الجسم", "صدر"]}
+
+        // ==== New Back exercises ====
+        ,{"name": "Meadows Row", "muscle": "back", "equip": ["barbell"], "desc": "تمرين صف يستخدم بار الأرض مع مقبض أحادي لتطوير اللاتس وسماكة منتصف الظهر.", "image": "images/exercises/meadows-row.webp", "targets": ["اللاتس", "منتصف الظهر"], "synergists": ["البايسبس"], "stabilizers": ["الكور", "أوتار خلفية"], "keywords": ["meadows row", "row", "بار", "ظهر"]}
+        ,{"name": "Pendlay Row", "muscle": "back", "equip": ["barbell"], "desc": "صف بيندلاي يبدأ من الأرض في كل تكرار لزيادة القوة والاندفاع في الظهر.", "image": "images/exercises/pendlay-row.webp", "targets": ["منتصف الظهر", "اللاتس"], "synergists": ["البايسبس"], "stabilizers": ["الكور", "أوتار خلفية"], "keywords": ["pendlay row", "row", "بار", "ظهر"]}
+        ,{"name": "Seal Row", "muscle": "back", "equip": ["barbell"], "desc": "صف يؤدي على بنش مسطح حيث يكون الصدر مدعومًا بالكامل لعزل عضلات الظهر.", "image": "images/exercises/seal-row.webp", "targets": ["منتصف الظهر"], "synergists": ["البايسبس"], "stabilizers": ["الكور"], "keywords": ["seal row", "row", "بار", "ظهر"]}
+        ,{"name": "Dumbbell Pullover", "muscle": "back", "equip": ["dumbbell"], "desc": "حركة سحب فوق الرأس تقوي اللاتس والصدر مع مدى حركة واسع.", "image": "images/exercises/dumbbell-pullover.webp", "targets": ["اللاتس", "الصدر"], "synergists": ["الترايسبس"], "stabilizers": ["الكور"], "keywords": ["dumbbell pullover", "دمبل", "ظهر", "صدر"]}
+        ,{"name": "Lat Prayer (Cable Kneeling Pulldown)", "muscle": "back", "equip": ["cable"], "desc": "سحب كابل من وضع الركوع مع الذراعين ممدودتين لأسفل يستهدف اللاتس مع تقليل مشاركة الذراع.", "image": "images/exercises/lat-prayer.webp", "targets": ["اللاتس"], "synergists": ["البايسبس", "الأكتاف الخلفية"], "stabilizers": ["الكور"], "keywords": ["lat prayer", "cable pulldown", "كابل", "ظهر"]}
+        ,{"name": "Neutral-Grip Lat Pulldown", "muscle": "back", "equip": ["cable", "machine"], "desc": "سحب عالي بمقبض محايد لتقليل الضغط على المعصم وزيادة تحفيز اللاتس والبايسبس.", "image": "images/exercises/neutral-grip-lat-pulldown.webp", "targets": ["اللاتس"], "synergists": ["البايسبس", "الظهر العلوي"], "stabilizers": ["الكور"], "keywords": ["neutral grip pulldown", "lat pulldown", "كابل", "ظهر"]}
+        ,{"name": "Wide-Grip Pulldown", "muscle": "back", "equip": ["cable", "machine"], "desc": "سحب بمقبض واسع يركز على اللاتس والظهر العلوي ويقلل مشاركة البايسبس.", "image": "images/exercises/wide-grip-pulldown.webp", "targets": ["اللاتس", "الظهر العلوي"], "synergists": ["البايسبس"], "stabilizers": ["الكور"], "keywords": ["wide grip pulldown", "كابل", "ظهر"]}
+        ,{"name": "Rope Pulldown", "muscle": "back", "equip": ["cable"], "desc": "سحب كابل بحبل يتيح مجال حركة أكبر ويعزل اللاتس مع مشاركة طفيفة للبايسبس.", "image": "images/exercises/rope-pulldown.webp", "targets": ["اللاتس"], "synergists": ["البايسبس"], "stabilizers": ["الكور"], "keywords": ["rope pulldown", "كابل", "ظهر"]}
+        ,{"name": "Machine Row (Hammer Strength)", "muscle": "back", "equip": ["machine"], "desc": "صف على آلة هامر سترينث يوفر مقاومة متوازنة لكل جانب ويزيد من عزل الظهر.", "image": "images/exercises/machine-row.webp", "targets": ["منتصف الظهر"], "synergists": ["البايسبس"], "stabilizers": ["الكور"], "keywords": ["machine row", "آلة", "ظهر"]}
+        ,{"name": "Iso-Lateral Row Machine", "muscle": "back", "equip": ["machine"], "desc": "آلة صف أحادية الجانب تسمح لكل ذراع بالتحرك بشكل مستقل لتصحيح الاختلالات.", "image": "images/exercises/iso-lateral-row-machine.webp", "targets": ["اللاتس", "منتصف الظهر"], "synergists": ["البايسبس"], "stabilizers": ["الكور"], "keywords": ["iso lateral row", "آلة", "ظهر"]}
+        ,{"name": "Assisted Pull-Up Machine", "muscle": "back", "equip": ["machine"], "desc": "آلة مساعدة للسحب تساعد في تعلم السحب بوزن الجسم مع ضبط المقاومة.", "image": "images/exercises/assisted-pull-up-machine.webp", "targets": ["اللاتس"], "synergists": ["البايسبس", "الظهر العلوي"], "stabilizers": ["الكور"], "keywords": ["assisted pull up", "آلة", "ظهر"]}
+        ,{"name": "Trap Bar Deadlift", "muscle": "back", "equip": ["barbell"], "desc": "تمرين شامل باستخدام بار التراب يستهدف المؤخرة وأوتار الركبة والكوادر مع تقليل الضغط على أسفل الظهر.", "image": "images/exercises/trap-bar-deadlift.webp", "targets": ["المؤخرة", "أوتار خلفية", "الكوادر"], "synergists": ["الترابيس", "الظهر العلوي"], "stabilizers": ["الكور", "الظهر السفلي"], "keywords": ["trap bar deadlift", "ديدليفت", "بار", "ظهر"]}
+        ,{"name": "Rack Pull", "muscle": "back", "equip": ["barbell"], "desc": "سحب من الرف بمدى حركة قصير يركز على عضلات الظهر العلوية والجزء العلوي من الديدليفت.", "image": "images/exercises/rack-pull.webp", "targets": ["الظهر العلوي", "الترابيس"], "synergists": ["المؤخرة", "أوتار خلفية"], "stabilizers": ["الكور", "الظهر السفلي"], "keywords": ["rack pull", "بار", "ظهر"]}
+        ,{"name": "Snatch-Grip Deadlift", "muscle": "back", "equip": ["barbell"], "desc": "ديدليفت بمقبض واسع يزيد من مدى الحركة ويقوي أوتار الركبة والمقعدة والظهر العلوي.", "image": "images/exercises/snatch-grip-deadlift.webp", "targets": ["أوتار خلفية", "المؤخرة", "الظهر العلوي"], "synergists": ["الكوادر"], "stabilizers": ["الكور", "الترابيس"], "keywords": ["snatch grip deadlift", "ديدليفت", "بار", "ظهر"]}
+        ,{"name": "Band Pulldown", "muscle": "back", "equip": ["bands"], "desc": "سحب مقاومة باستخدام رباط مطاطي مناسب للتدريب في المنزل لتمرين اللاتس.", "image": "images/exercises/band-pulldown.webp", "targets": ["اللاتس"], "synergists": ["البايسبس"], "stabilizers": ["الكور"], "keywords": ["band pulldown", "مطاط", "ظهر"]}
+        ,{"name": "Scapular Pull-Up", "muscle": "back", "equip": ["bodyweight"], "desc": "سحب مع التركيز على حركة لوح الكتف لتقوية عضلات الترابيس والرومبودز وتحسين وضعية الكتف.", "image": "images/exercises/scapular-pull-up.webp", "targets": ["الترابيس", "الرومبودز"], "synergists": ["اللاتس", "البايسبس"], "stabilizers": ["الكور"], "keywords": ["scapular pull up", "وزن الجسم", "ظهر"]}
+
+        // ==== New Shoulders exercises ====
+        ,{"name": "Machine Shoulder Press", "muscle": "shoulders", "equip": ["machine"], "desc": "ضغط كتف على آلة يركز على الأكتاف الأمامية والجانبية مع مسار ثابت.", "image": "images/exercises/machine-shoulder-press.webp", "targets": ["الأكتاف الأمامية", "الأكتاف الجانبية"], "synergists": ["الترايسبس"], "stabilizers": ["الكور"], "keywords": ["machine shoulder press", "آلة", "كتف"]}
+        ,{"name": "Smith Machine Shoulder Press", "muscle": "shoulders", "equip": ["machine"], "desc": "ضغط كتف باستخدام آلة سميث يوفر استقرارًا أكبر ويقلل من حاجة التوازن.", "image": "images/exercises/smith-machine-shoulder-press.webp", "targets": ["الأكتاف الأمامية", "الأكتاف الجانبية"], "synergists": ["الترايسبس"], "stabilizers": ["الكور"], "keywords": ["smith shoulder press", "آلة", "كتف"]}
+        ,{"name": "Dumbbell Z-Press", "muscle": "shoulders", "equip": ["dumbbell"], "desc": "ضغط من وضع الجلوس على الأرض بأرجل ممدودة يقوي الأكتاف ويعزز مرونة الورك والتوازن.", "image": "images/exercises/dumbbell-z-press.webp", "targets": ["الأكتاف الأمامية", "الأكتاف الجانبية"], "synergists": ["الترايسبس"], "stabilizers": ["الكور"], "keywords": ["z press", "دمبل", "كتف"]}
+        ,{"name": "Barbell Push Press", "muscle": "shoulders", "equip": ["barbell"], "desc": "ضغط بالبار مع دفعة من الأرجل لتطوير القوة الانفجارية وتحميل أكبر للأكتاف.", "image": "images/exercises/barbell-push-press.webp", "targets": ["الأكتاف الأمامية"], "synergists": ["الترايسبس", "الكوادر"], "stabilizers": ["الكور"], "keywords": ["push press", "بار", "كتف"]}
+        ,{"name": "Bradford Press", "muscle": "shoulders", "equip": ["barbell"], "desc": "ضغط متتابع أمامي وخلفي بدون قفل المرفقين لزيادة وقت التوتر على الأكتاف.", "image": "images/exercises/bradford-press.webp", "targets": ["الأكتاف الأمامية", "الأكتاف الجانبية"], "synergists": ["الترايسبس"], "stabilizers": ["الكور"], "keywords": ["bradford press", "بار", "كتف"]}
+        ,{"name": "Cuban Press", "muscle": "shoulders", "equip": ["dumbbell"], "desc": "حركة معقدة تجمع الرفع الجانبي والدوران الخارجي والضغط لتقوية الكفة المدورة والأكتاف الخلفية.", "image": "images/exercises/cuban-press.webp", "targets": ["الكتف الخلفية", "الكفة المدورة"], "synergists": ["الأكتاف الجانبية"], "stabilizers": ["الكور"], "keywords": ["cuban press", "دمبل", "كتف"]}
+        ,{"name": "Leaning Lateral Raise", "muscle": "shoulders", "equip": ["dumbbell"], "desc": "رفع جانبي أثناء الميلان لزيادة مدى الحركة وتحفيز الأكتاف الجانبية.", "image": "images/exercises/leaning-lateral-raise.webp", "targets": ["الأكتاف الجانبية"], "synergists": ["الكتف الخلفية"], "stabilizers": ["الكور"], "keywords": ["leaning lateral raise", "دمبل", "كتف"]}
+        ,{"name": "Incline Bench Lateral Raise", "muscle": "shoulders", "equip": ["dumbbell"], "desc": "رفع جانبي على مقعد مائل يقلل الغش ويزيد عزل الأكتاف الجانبية.", "image": "images/exercises/incline-bench-lateral-raise.webp", "targets": ["الأكتاف الجانبية"], "synergists": ["الكتف الخلفية"], "stabilizers": ["الكور"], "keywords": ["incline lateral raise", "دمبل", "كتف"]}
+        ,{"name": "Behind-the-Back Cable Lateral Raise", "muscle": "shoulders", "equip": ["cable"], "desc": "رفع جانبي بالكابل من خلف الجسم لزيادة التوتر المستمر على الأكتاف الجانبية.", "image": "images/exercises/behind-the-back-cable-lateral-raise.webp", "targets": ["الأكتاف الجانبية"], "synergists": ["الكتف الخلفية"], "stabilizers": ["الكور"], "keywords": ["behind the back lateral raise", "كابل", "كتف"]}
+        ,{"name": "Cable Y-Raise", "muscle": "shoulders", "equip": ["cable"], "desc": "رفع على شكل حرف Y بالكابل يقوي الأكتاف الأمامية والجانبية والكفة المدورة.", "image": "images/exercises/cable-y-raise.webp", "targets": ["الأكتاف الأمامية", "الأكتاف الجانبية"], "synergists": ["الكتف الخلفية"], "stabilizers": ["الكور"], "keywords": ["cable y raise", "كابل", "كتف"]}
+        ,{"name": "Dumbbell Y-Raise", "muscle": "shoulders", "equip": ["dumbbell"], "desc": "رفع حرف Y بالدمبل يعزز التوازن بين عضلات الكتف الأمامية والجانبية.", "image": "images/exercises/dumbbell-y-raise.webp", "targets": ["الأكتاف الأمامية", "الأكتاف الجانبية"], "synergists": ["الكتف الخلفية"], "stabilizers": ["الكور"], "keywords": ["y raise", "دمبل", "كتف"]}
+        ,{"name": "Rear Delt Cable Cross", "muscle": "shoulders", "equip": ["cable"], "desc": "تمرين كروس خلفي بالكابل يعزل الأكتاف الخلفية ويحسن وضعية الكتف.", "image": "images/exercises/rear-delt-cable-cross.webp", "targets": ["الكتف الخلفية"], "synergists": ["الرومبودز", "الترابيس الأوسط"], "stabilizers": ["الكور"], "keywords": ["rear delt cable cross", "كابل", "كتف"]}
+        ,{"name": "Band Pull Apart", "muscle": "shoulders", "equip": ["bands"], "desc": "سحب الشريط المطاطي للخارج لتقوية الأكتاف الخلفية والرومبودز وتحسين الوضعية.", "image": "images/exercises/band-pull-apart.webp", "targets": ["الكتف الخلفية"], "synergists": ["الرومبودز"], "stabilizers": ["الكور"], "keywords": ["band pull apart", "مطاط", "كتف"]}
+        ,{"name": "Scaption Raise", "muscle": "shoulders", "equip": ["dumbbell"], "desc": "رفع بزاوية 45° بين الرفع الجانبي والأمامي يقوي الكفة المدورة والأكتاف الأمامية.", "image": "images/exercises/scaption-raise.webp", "targets": ["الكفة المدورة", "الأكتاف الأمامية"], "synergists": ["الأكتاف الجانبية"], "stabilizers": ["الكور"], "keywords": ["scaption raise", "دمبل", "كتف"]}
+
+        // ==== New Biceps exercises ====
+        ,{"name": "EZ-Bar Curl", "muscle": "biceps", "equip": ["barbell"], "desc": "تمرين كيرل بالبار المقوس يقلل الضغط على المعصم ويستهدف البايسبس بشكل مباشر.", "image": "images/exercises/ez-bar-curl.webp", "targets": ["البايسبس"], "synergists": ["العضدية", "الساعد"], "stabilizers": ["الكور"], "keywords": ["ez bar curl", "بايسبس", "بار"]}
+        ,{"name": "Reverse EZ Curl", "muscle": "biceps", "equip": ["barbell"], "desc": "كيرل عكسي بالبار المقوس يركز على الساعد والعضدية مع مشاركة أقل للبايسبس.", "image": "images/exercises/reverse-ez-curl.webp", "targets": ["الساعد"], "synergists": ["العضدية", "البايسبس"], "stabilizers": ["الكور"], "keywords": ["reverse ez curl", "كيرل عكسي", "بار"]}
+        ,{"name": "Drag Curl", "muscle": "biceps", "equip": ["barbell"], "desc": "كيرل حيث تُسحب البار بمحاذاة الجسم لزيادة وقت التوتر على البايسبس.", "image": "images/exercises/drag-curl.webp", "targets": ["البايسبس"], "synergists": ["العضدية"], "stabilizers": ["الكور"], "keywords": ["drag curl", "بار", "بايسبس"]}
+        ,{"name": "Bayesian Curl", "muscle": "biceps", "equip": ["cable"], "desc": "كيرل بالكابل من خلف الجسم يستهدف الرأس الطويل من البايسبس ويوفر شدًا ثابتًا.", "image": "images/exercises/bayesian-curl.webp", "targets": ["البايسبس"], "synergists": ["العضدية"], "stabilizers": ["الكور"], "keywords": ["bayesian curl", "كابل", "بايسبس"]}
+        ,{"name": "Cross-Body Hammer Curl", "muscle": "biceps", "equip": ["dumbbell"], "desc": "كيرل بمطرقة عبر الجسم يعمل على العضدية والساعد ويعطي سماكة للذراع.", "image": "images/exercises/cross-body-hammer-curl.webp", "targets": ["العضدية", "الساعد"], "synergists": ["البايسبس"], "stabilizers": ["الكور"], "keywords": ["cross body hammer curl", "دمبل", "بايسبس"]}
+        ,{"name": "Rope Cable Curl", "muscle": "biceps", "equip": ["cable"], "desc": "كيرل بحبل على الكابل يسمح بتدوير المعصم والاستهداف المتساوي لكل جانب من البايسبس.", "image": "images/exercises/rope-cable-curl.webp", "targets": ["البايسبس"], "synergists": ["العضدية", "الساعد"], "stabilizers": ["الكور"], "keywords": ["rope curl", "كابل", "بايسبس"]}
+        ,{"name": "High Cable Curl", "muscle": "biceps", "equip": ["cable"], "desc": "كيرل عالٍ يشبه وضعية البايسبس المزدوجة ويزيد انقباض العضلة في نهاية الحركة.", "image": "images/exercises/high-cable-curl.webp", "targets": ["البايسبس"], "synergists": ["العضدية"], "stabilizers": ["الكور"], "keywords": ["high cable curl", "كابل", "بايسبس"]}
+        ,{"name": "Preacher Curl Machine", "muscle": "biceps", "equip": ["machine"], "desc": "كيرل على جهاز البريشر يمنع الغش ويعزل البايسبس بشكل كبير.", "image": "images/exercises/preacher-curl-machine.webp", "targets": ["البايسبس"], "synergists": ["العضدية"], "stabilizers": ["الساعد"], "keywords": ["preacher curl", "آلة", "بايسبس"]}
+        ,{"name": "Dumbbell Curl (Alternating Supinating)", "muscle": "biceps", "equip": ["dumbbell"], "desc": "كيرل بالدمبل مع تدوير الساعد أثناء الرفع لتفعيل أكبر لرأس البايسبس الخارجي.", "image": "images/exercises/dumbbell-curl-alternating-supinating.webp", "targets": ["البايسبس"], "synergists": ["العضدية", "الساعد"], "stabilizers": ["الكور"], "keywords": ["alternating curl", "supinating curl", "دمبل", "بايسبس"]}
+        ,{"name": "21s Curl", "muscle": "biceps", "equip": ["barbell"], "desc": "بروتوكول 21s يتضمن ثلاث نطاقات حركة متتالية لتفجير البايسبس.", "image": "images/exercises/21s-curl.webp", "targets": ["البايسبس"], "synergists": ["العضدية"], "stabilizers": ["الكور"], "keywords": ["21s curl", "بايسبس", "بار"]}
+        ,{"name": "Towel Chin-Up", "muscle": "biceps", "equip": ["bodyweight"], "desc": "سحب باستخدام منشفة يحسن قوة القبضة ويزيد من مشاركة البايسبس واللاتس.", "image": "images/exercises/towel-chin-up.webp", "targets": ["البايسبس"], "synergists": ["اللاتس"], "stabilizers": ["الكور", "الساعد"], "keywords": ["towel chin up", "وزن الجسم", "بايسبس"]}
+        ,{"name": "Band Curl", "muscle": "biceps", "equip": ["bands"], "desc": "كيرل باستخدام رباط مطاطي يقدم مقاومة متزايدة ويعزل البايسبس.", "image": "images/exercises/band-curl.webp", "targets": ["البايسبس"], "synergists": ["العضدية"], "stabilizers": ["الكور"], "keywords": ["band curl", "مطاط", "بايسبس"]}
+
+        // ==== New Triceps exercises ====
+        ,{"name": "EZ-Bar Skull Crushers", "muscle": "triceps", "equip": ["barbell"], "desc": "تمديد الترايسبس باستخدام بار مقوس يقلل الإجهاد على المعصم ويستهدف الرؤوس الثلاثة.", "image": "images/exercises/ez-bar-skull-crushers.webp", "targets": ["الترايسبس"], "synergists": ["الساعد"], "stabilizers": ["الأكتاف", "الكور"], "keywords": ["ez bar skull crusher", "ترايسبس", "بار"]}
+        ,{"name": "JM Press", "muscle": "triceps", "equip": ["barbell"], "desc": "تمرين هجيني بين الضغط والكراشر يركز على الترايسبس ويعزز قوة الإقفال في البنش.", "image": "images/exercises/jm-press.webp", "targets": ["الترايسبس"], "synergists": ["الصدر", "الأكتاف الأمامية"], "stabilizers": ["الكور"], "keywords": ["jm press", "ترايسبس", "بار"]}
+        ,{"name": "Close-Grip Push-Up", "muscle": "triceps", "equip": ["bodyweight"], "desc": "ضغط بقبضة ضيقة يضع عبئًا أكبر على الترايسبس مع مشاركة أقل للصدر.", "image": "images/exercises/close-grip-push-up.webp", "targets": ["الترايسبس"], "synergists": ["الصدر", "الأكتاف الأمامية"], "stabilizers": ["الكور"], "keywords": ["close grip push up", "وزن الجسم", "ترايسبس"]}
+        ,{"name": "Ring Dips", "muscle": "triceps", "equip": ["bodyweight"], "desc": "دبس بالحلقات يضيف عدم استقرار ويتطلب قوة كبيرة في الترايسبس والصدر.", "image": "images/exercises/ring-dips.webp", "targets": ["الترايسبس"], "synergists": ["الصدر", "الأكتاف الأمامية"], "stabilizers": ["الكور"], "keywords": ["ring dips", "وزن الجسم", "ترايسبس"]}
+        ,{"name": "Bench Dips", "muscle": "triceps", "equip": ["bodyweight"], "desc": "تمرين غطس باستخدام مقعد يركز على الترايسبس ويمكن وزنه لزيادة الشدة.", "image": "images/exercises/bench-dips.webp", "targets": ["الترايسبس"], "synergists": ["الصدر", "الأكتاف الأمامية"], "stabilizers": ["الكور"], "keywords": ["bench dips", "وزن الجسم", "ترايسبس"]}
+        ,{"name": "Cable Kickback", "muscle": "triceps", "equip": ["cable"], "desc": "ركلة بالكابل للخلف تسمح بتوتر ثابت طوال الحركة لعزل الترايسبس.", "image": "images/exercises/cable-kickback.webp", "targets": ["الترايسبس"], "synergists": [], "stabilizers": ["الكور"], "keywords": ["cable kickback", "كابل", "ترايسبس"]}
+        ,{"name": "Reverse Grip Pushdown", "muscle": "triceps", "equip": ["cable"], "desc": "دفع بالقبضة المعكوسة يغير الزاوية ويزيد من استهداف الرأس الطويل للترايسبس.", "image": "images/exercises/reverse-grip-pushdown.webp", "targets": ["الترايسبس"], "synergists": [], "stabilizers": ["الكور"], "keywords": ["reverse grip pushdown", "كابل", "ترايسبس"]}
+        ,{"name": "Straight Bar Pushdown", "muscle": "triceps", "equip": ["cable"], "desc": "دفع بالكابل باستخدام قضيب مستقيم تمرين كلاسيكي لعزل الترايسبس.", "image": "images/exercises/straight-bar-pushdown.webp", "targets": ["الترايسبس"], "synergists": [], "stabilizers": ["الكور"], "keywords": ["straight bar pushdown", "كابل", "ترايسبس"]}
+        ,{"name": "Single-Arm Cable Pushdown", "muscle": "triceps", "equip": ["cable"], "desc": "نسخة أحادية الذراع من دفع الكابل تساعد على تصحيح الاختلالات بين الذراعين.", "image": "images/exercises/single-arm-cable-pushdown.webp", "targets": ["الترايسبس"], "synergists": [], "stabilizers": ["الكور"], "keywords": ["single arm pushdown", "كابل", "ترايسبس"]}
+        ,{"name": "Dumbbell Tate Press", "muscle": "triceps", "equip": ["dumbbell"], "desc": "تمرين فريد حيث يوجه الدمبلان نحو بعضهما لزيادة ضغط الترايسبس وتهدئة المعصم.", "image": "images/exercises/dumbbell-tate-press.webp", "targets": ["الترايسبس"], "synergists": ["الصدر"], "stabilizers": ["الأكتاف الأمامية", "الكور"], "keywords": ["tate press", "دمبل", "ترايسبس"]}
+        ,{"name": "Dumbbell Floor Press (Triceps Emphasis)", "muscle": "triceps", "equip": ["dumbbell"], "desc": "ضغط من الأرض بالدمبل يحد مدى الحركة ويجبر الترايسبس على العمل بجد.", "image": "images/exercises/dumbbell-floor-press-triceps.webp", "targets": ["الترايسبس"], "synergists": ["الصدر", "الأكتاف الأمامية"], "stabilizers": ["الكور"], "keywords": ["floor press triceps", "دمبل", "ترايسبس"]}
+        ,{"name": "Band Pushdown", "muscle": "triceps", "equip": ["bands"], "desc": "دفع برباط مطاطي تمرين بسيط يضيف مقاومة متزايدة لعزل الترايسبس.", "image": "images/exercises/band-pushdown.webp", "targets": ["الترايسبس"], "synergists": [], "stabilizers": ["الكور"], "keywords": ["band pushdown", "مطاط", "ترايسبس"]}
+        ,{"name": "Overhead Cable Extension (Single Arm)", "muscle": "triceps", "equip": ["cable"], "desc": "تمديد فوق الرأس بيد واحدة يركز على الرأس الطويل للترايسبس ويوفر شدًا ثابتًا.", "image": "images/exercises/overhead-cable-extension-single-arm.webp", "targets": ["الترايسبس"], "synergists": [], "stabilizers": ["الكور"], "keywords": ["overhead extension", "كابل", "ترايسبس"]}
+
+        // ==== New Legs (Compound) exercises ====
+        ,{"name": "Smith Machine Squat", "muscle": "legs", "equip": ["machine"], "desc": "سكوات باستخدام آلة سميث يوفر مسارًا ثابتًا ويركز على الكوادر والمقعدة.", "image": "images/exercises/smith-machine-squat.webp", "targets": ["الكوادر", "المؤخرة"], "synergists": ["أوتار خلفية"], "stabilizers": ["الكور"], "keywords": ["smith squat", "آلة", "سكوات"]}
+        ,{"name": "Safety Bar Squat", "muscle": "legs", "equip": ["barbell"], "desc": "سكوات ببار سلامة يقلل الضغط على الكتفين ويغير مركز الثقل نحو الأمام.", "image": "images/exercises/safety-bar-squat.webp", "targets": ["الكوادر", "المؤخرة"], "synergists": ["أوتار خلفية"], "stabilizers": ["الكور"], "keywords": ["safety bar squat", "بار", "سكوات"]}
+        ,{"name": "Box Squat", "muscle": "legs", "equip": ["barbell"], "desc": "سكوات مع الجلوس على صندوق للحظة لتطوير القوة في النهوض وتحسين التقنية.", "image": "images/exercises/box-squat.webp", "targets": ["المؤخرة", "أوتار خلفية"], "synergists": ["الكوادر"], "stabilizers": ["الكور"], "keywords": ["box squat", "سكوات", "بار"]}
+        ,{"name": "Pause Squat", "muscle": "legs", "equip": ["barbell"], "desc": "سكوات مع توقف في القاع لثانية لزيادة التحكم والقوة في الجزء السفلي.", "image": "images/exercises/pause-squat.webp", "targets": ["الكوادر", "المؤخرة"], "synergists": ["أوتار خلفية"], "stabilizers": ["الكور"], "keywords": ["pause squat", "سكوات", "بار"]}
+        ,{"name": "Zercher Squat", "muscle": "legs", "equip": ["barbell"], "desc": "سكوات يحمل فيه البار في مرفقيك مما يزيد من مشاركة الكور والجزء العلوي للجسم.", "image": "images/exercises/zercher-squat.webp", "targets": ["الكوادر"], "synergists": ["المؤخرة", "أوتار خلفية"], "stabilizers": ["الكور", "الظهر العلوي"], "keywords": ["zercher squat", "بار", "سكوات"]}
+        ,{"name": "Hack Squat (Free)", "muscle": "legs", "equip": ["barbell"], "desc": "إصدار حر من السكوات الهاك باستخدام البار خلف الجسم يركز على الكوادر مع تقليل الضغط على الركبة.", "image": "images/exercises/hack-squat-free-weight.webp", "targets": ["الكوادر"], "synergists": ["المؤخرة", "أوتار خلفية"], "stabilizers": ["الكور"], "keywords": ["hack squat", "حر", "بار", "سكوات"]}
+        ,{"name": "Belt Squat", "muscle": "legs", "equip": ["machine"], "desc": "سكوات بواسطة حزام يعلق الوزن عند الورك لزيادة تحفيز الجزء السفلي مع تقليل إجهاد الظهر.", "image": "images/exercises/belt-squat.webp", "targets": ["الكوادر", "المؤخرة"], "synergists": ["أوتار خلفية"], "stabilizers": ["الكور"], "keywords": ["belt squat", "آلة", "سكوات"]}
+        ,{"name": "Trap Bar Squat", "muscle": "legs", "equip": ["barbell"], "desc": "سكوات باستخدام بار التراب يجمع بين خصائص الديدليفت والسكوات لزيادة تنوع التحفيز.", "image": "images/exercises/trap-bar-squat.webp", "targets": ["الكوادر", "المؤخرة"], "synergists": ["أوتار خلفية"], "stabilizers": ["الكور"], "keywords": ["trap bar squat", "بار", "سكوات"]}
+        ,{"name": "Reverse Lunge", "muscle": "legs", "equip": ["bodyweight", "dumbbell", "barbell"], "desc": "لونج عكسي يخفف الضغط على الركبة ويعمل على الكوادر والمؤخرة بشكل متوازن.", "image": "images/exercises/reverse-lunge.webp", "targets": ["الكوادر", "المؤخرة"], "synergists": ["أوتار خلفية"], "stabilizers": ["الكور"], "keywords": ["reverse lunge", "لونج", "أرجل"]}
+        ,{"name": "Curtsy Lunge (Adductors)", "muscle": "legs", "equip": ["bodyweight", "dumbbell"], "desc": "لونج متقاطع يعمل على عضلات المقربة والمؤخرة ويزيد من استقرار الورك.", "image": "images/exercises/curtsy-lunge.webp", "targets": ["المؤخرة", "الأدكتور"], "synergists": ["أوتار خلفية"], "stabilizers": ["الكور"], "keywords": ["curtsy lunge", "لونج", "أرجل"]}
+        ,{"name": "Cossack Squat", "muscle": "legs", "equip": ["bodyweight", "dumbbell"], "desc": "سكوات جانبي عميق يطور مرونة الورك ويقوي الكوادر والمقربين.", "image": "images/exercises/cossack-squat.webp", "targets": ["الكوادر", "الأدكتور", "أوتار خلفية"], "synergists": ["المؤخرة"], "stabilizers": ["الكور"], "keywords": ["cossack squat", "سكوات جانبي", "أرجل"]}
+        ,{"name": "Pistol Squat (Assisted)", "muscle": "legs", "equip": ["bodyweight"], "desc": "سكوات بقدم واحدة مع دعم يساعد على تطوير القوة والتوازن في الساقين.", "image": "images/exercises/pistol-squat-assisted.webp", "targets": ["الكوادر", "المؤخرة"], "synergists": ["أوتار خلفية"], "stabilizers": ["الكور"], "keywords": ["pistol squat", "وزن الجسم", "أرجل"]}
+        ,{"name": "Barbell Step-Up (Heavy)", "muscle": "legs", "equip": ["barbell"], "desc": "صعود على صندوق أو مقعد بحمل ثقيل لتقوية الكوادر والمؤخرة وزيادة التوازن.", "image": "images/exercises/barbell-step-up-heavy.webp", "targets": ["الكوادر", "المؤخرة"], "synergists": ["أوتار خلفية"], "stabilizers": ["الكور"], "keywords": ["barbell step up", "أرجل", "سكوات"]}
+        ,{"name": "Reverse Hack Squat Machine", "muscle": "legs", "equip": ["machine"], "desc": "نسخة عكسية من الهاك سكوات حيث تدفع للخلف لاستهداف المؤخرة وأوتار الخلفية.", "image": "images/exercises/reverse-hack-squat-machine.webp", "targets": ["المؤخرة", "أوتار خلفية"], "synergists": ["الكوادر"], "stabilizers": ["الكور"], "keywords": ["reverse hack squat", "آلة", "أرجل"]}
+
+        // ==== New Quads exercises ====
+        ,{"name": "Heel-Elevated Goblet Squat", "muscle": "quads", "equip": ["dumbbell", "kettlebell"], "desc": "سكوات بغوبلت مع رفع الكعب لزيادة تركيز التحفيز على عضلة الكوادز.", "image": "images/exercises/heel-elevated-goblet-squat.webp", "targets": ["الكوادر"], "synergists": ["المؤخرة"], "stabilizers": ["الكور"], "keywords": ["heel elevated goblet squat", "كوادز", "دمبل"]}
+        ,{"name": "Heel-Elevated Back Squat", "muscle": "quads", "equip": ["barbell"], "desc": "سكوات خلفي مع رفع الكعبين يغير مركز الثقل إلى الأمام لعزل الكوادز.", "image": "images/exercises/heel-elevated-back-squat.webp", "targets": ["الكوادر"], "synergists": ["المؤخرة"], "stabilizers": ["الكور"], "keywords": ["heel elevated back squat", "كوادز", "بار"]}
+        ,{"name": "Narrow-Stance Leg Press", "muscle": "quads", "equip": ["machine"], "desc": "ضغط الأرجل بمسافة ضيقة بين القدمين يزيد من تفعيل الكوادز.", "image": "images/exercises/narrow-stance-leg-press.webp", "targets": ["الكوادر"], "synergists": ["المؤخرة"], "stabilizers": ["الكور"], "keywords": ["narrow leg press", "آلة", "كوادز"]}
+        ,{"name": "Banded Leg Extension", "muscle": "quads", "equip": ["machine", "bands"], "desc": "تمديد الرجل مع إضافة رباط مطاطي لزيادة المقاومة في النهاية.", "image": "images/exercises/banded-leg-extension.webp", "targets": ["الكوادر"], "synergists": [], "stabilizers": ["الكور"], "keywords": ["banded leg extension", "كوادز", "آلة"]}
+        ,{"name": "Cyclist Squat", "muscle": "quads", "equip": ["barbell"], "desc": "سكوات بموقف ضيق وكعبين مرتفعين مشابه لوضعية راكب الدراجة لعزل الكوادز.", "image": "images/exercises/cyclist-squat.webp", "targets": ["الكوادر"], "synergists": ["المؤخرة"], "stabilizers": ["الكور"], "keywords": ["cyclist squat", "كوادز", "بار"]}
+        ,{"name": "Spanish Squat", "muscle": "quads", "equip": ["bands"], "desc": "سكوات مع رباط حول الركبتين يبقي الجذع عموديًا ويزيد تفعيل الكوادز مع تقليل الضغط على الركبة.", "image": "images/exercises/spanish-squat.webp", "targets": ["الكوادر"], "synergists": [], "stabilizers": ["الكور"], "keywords": ["spanish squat", "مطاط", "كوادز"]}
+        ,{"name": "Hack Squat (Feet Low)", "muscle": "quads", "equip": ["machine"], "desc": "وضع القدمين في أسفل منصة الهاك سكوات لزيادة استهداف الكوادز.", "image": "images/exercises/hack-squat-feet-low.webp", "targets": ["الكوادر"], "synergists": ["المؤخرة"], "stabilizers": ["الكور"], "keywords": ["hack squat low feet", "آلة", "كوادز"]}
+        ,{"name": "Reverse Nordic Curl", "muscle": "quads", "equip": ["bodyweight"], "desc": "تمرين يتم فيه النزول للخلف على الركبتين لتقوية عضلة الكوادز وتمديدها في آن واحد.", "image": "images/exercises/reverse-nordic-curl.webp", "targets": ["الكوادر"], "synergists": ["مثنيات الورك"], "stabilizers": ["الكور"], "keywords": ["reverse nordic curl", "كوادز", "وزن الجسم"]}
+        ,{"name": "Step-Down (Quad Bias)", "muscle": "quads", "equip": ["bodyweight"], "desc": "نزول متحكم من منصة يضع التركيز على عضلات الكوادز ويحسن السيطرة على الركبة.", "image": "images/exercises/step-down.webp", "targets": ["الكوادر"], "synergists": ["المؤخرة"], "stabilizers": ["الكور"], "keywords": ["step down", "كوادز", "وزن الجسم"]}
+        ,{"name": "Smith Machine Sissy Squat", "muscle": "quads", "equip": ["machine"], "desc": "نسخة سيسي سكوات على آلة سميث تسمح بالتوازن وتزيد من عزل الكوادز.", "image": "images/exercises/smith-machine-sissy-squat.webp", "targets": ["الكوادر"], "synergists": [], "stabilizers": ["الكور"], "keywords": ["smith sissy squat", "آلة", "كوادز"]}
+
+        // ==== New Glutes exercises ====
+        ,{"name": "Romanian Deadlift (Glute Bias)", "muscle": "glutes", "equip": ["barbell", "dumbbell"], "desc": "ديدليفت روماني مع التركيز على دفع الورك للخلف لزيادة تفعيل المؤخرة وأوتار الخلفية.", "image": "images/exercises/romanian-deadlift-glute-bias.webp", "targets": ["المؤخرة", "أوتار خلفية"], "synergists": ["أسفل الظهر"], "stabilizers": ["الكور"], "keywords": ["romanian deadlift", "glute bias", "بار", "دمبل"]}
+        ,{"name": "Frog Pumps", "muscle": "glutes", "equip": ["bodyweight"], "desc": "تمرين قصير المدى حيث توضع القدمان معًا على شكل ضفدع لدفع الوركين للأعلى وتقوية المؤخرة.", "image": "images/exercises/frog-pumps.webp", "targets": ["المؤخرة"], "synergists": ["أوتار خلفية"], "stabilizers": ["الكور"], "keywords": ["frog pumps", "مؤخرة", "وزن الجسم"]}
+        ,{"name": "Hip Thrust Machine", "muscle": "glutes", "equip": ["machine"], "desc": "آلة هيب ثراست مخصصة توفر مسارًا محددًا وعزلًا لعضلات المؤخرة.", "image": "images/exercises/hip-thrust-machine.webp", "targets": ["المؤخرة"], "synergists": ["أوتار خلفية", "الكوادر"], "stabilizers": ["الكور"], "keywords": ["hip thrust machine", "آلة", "مؤخرة"]}
+        ,{"name": "Smith Machine Hip Thrust", "muscle": "glutes", "equip": ["machine"], "desc": "هيب ثراست باستخدام آلة سميث يسمح بتحميل ثقيل مع استقرار عالي.", "image": "images/exercises/smith-machine-hip-thrust.webp", "targets": ["المؤخرة"], "synergists": ["أوتار خلفية", "الكوادر"], "stabilizers": ["الكور"], "keywords": ["smith hip thrust", "آلة", "مؤخرة"]}
+        ,{"name": "Banded Hip Thrust", "muscle": "glutes", "equip": ["bands"], "desc": "نسخة من الهيب ثراست باستخدام رباط مطاطي تعطي مقاومة متزايدة في نهاية الحركة.", "image": "images/exercises/banded-hip-thrust.webp", "targets": ["المؤخرة"], "synergists": ["أوتار خلفية"], "stabilizers": ["الكور"], "keywords": ["band hip thrust", "مطاط", "مؤخرة"]}
+        ,{"name": "Single-Leg Hip Thrust", "muscle": "glutes", "equip": ["bodyweight"], "desc": "هيب ثراست بقدم واحدة يزيد من تفعيل المؤخرة ويعالج الاختلالات بين الجانبين.", "image": "images/exercises/single-leg-hip-thrust.webp", "targets": ["المؤخرة"], "synergists": ["أوتار خلفية"], "stabilizers": ["الكور"], "keywords": ["single leg hip thrust", "وزن الجسم", "مؤخرة"]}
+        ,{"name": "Deficit Reverse Lunge", "muscle": "glutes", "equip": ["bodyweight", "dumbbell", "barbell"], "desc": "لونج عكسي من منصة مرتفعة يزيد مدى الحركة ويحفز المؤخرة والأوتار الخلفية.", "image": "images/exercises/deficit-reverse-lunge.webp", "targets": ["المؤخرة", "أوتار خلفية"], "synergists": ["الكوادر"], "stabilizers": ["الكور"], "keywords": ["deficit reverse lunge", "لونج", "مؤخرة"]}
+        ,{"name": "Glute Medius Cable Abduction", "muscle": "glutes", "equip": ["cable"], "desc": "خطف الورك بالكابل أثناء الوقوف يركز على الألوية المتوسطة ويعزز الاستقرار الجانبي.", "image": "images/exercises/glute-medius-cable-abduction.webp", "targets": ["الألوية المتوسطة"], "synergists": ["الألوية الصغرى"], "stabilizers": ["الكور"], "keywords": ["cable abduction", "مؤخرة", "كابل"]}
+        ,{"name": "Fire Hydrant", "muscle": "glutes", "equip": ["bands"], "desc": "رفع الساق الجانبي مع رباط مطاطي يشبه حركة الكلب لتقوية الألوية المتوسطة.", "image": "images/exercises/fire-hydrant.webp", "targets": ["الألوية المتوسطة"], "synergists": ["الألوية الصغرى"], "stabilizers": ["الكور"], "keywords": ["fire hydrant", "مطاط", "مؤخرة"]}
+        ,{"name": "Lateral Band Walk", "muscle": "glutes", "equip": ["bands"], "desc": "المشي الجانبي برباط مطاطي يحسن استقرار الورك ويقوي الألوية المتوسطة.", "image": "images/exercises/lateral-band-walk.webp", "targets": ["الألوية المتوسطة"], "synergists": ["الألوية الصغرى"], "stabilizers": ["الكور"], "keywords": ["lateral band walk", "مطاط", "مؤخرة"]}
+        ,{"name": "Curtsy Lunge (Glute Bias)", "muscle": "glutes", "equip": ["bodyweight", "dumbbell"], "desc": "لونج متقاطع يركز على الألوية المتوسطة مع إضافة عمل المقربين.", "image": "images/exercises/curtsy-lunge-glute.webp", "targets": ["الألوية المتوسطة", "المؤخرة"], "synergists": ["أوتار خلفية"], "stabilizers": ["الكور"], "keywords": ["curtsy lunge glute", "مؤخرة", "لونج"]}
+        ,{"name": "Kneeling Squat (Glutes)", "muscle": "glutes", "equip": ["barbell", "bodyweight"], "desc": "سكوات من وضع الركوع يحفز المؤخرة بشكل مباشر مع تقليل حمل الظهر.", "image": "images/exercises/kneeling-squat-glutes.webp", "targets": ["المؤخرة"], "synergists": ["أوتار خلفية"], "stabilizers": ["الكور"], "keywords": ["kneeling squat", "مؤخرة", "سكوات"]}
+        ,{"name": "Glute Pull Through", "muscle": "glutes", "equip": ["cable"], "desc": "سحب من بين الأرجل بالكابل يعمل على تمديد الورك وتقوية المؤخرة.", "image": "images/exercises/glute-pull-through.webp", "targets": ["المؤخرة"], "synergists": ["أوتار خلفية"], "stabilizers": ["الكور"], "keywords": ["glute pull through", "كابل", "مؤخرة"]}
+        ,{"name": "Reverse Hyperextension", "muscle": "glutes", "equip": ["machine"], "desc": "تمرين تمديد عكسي للورك على جهاز خاص يقوي المؤخرة وأوتار الخلفية ويحسن صحة أسفل الظهر.", "image": "images/exercises/reverse-hyperextension.webp", "targets": ["المؤخرة", "أوتار خلفية"], "synergists": ["أسفل الظهر"], "stabilizers": ["الكور"], "keywords": ["reverse hyperextension", "آلة", "مؤخرة"]}
+
+        // ==== New Abs / Core exercises ====
+        ,{"name": "Decline Sit-Up", "muscle": "abs", "equip": ["bodyweight"], "desc": "تمرين جلوس على مقعد مائل يزيد المقاومة على عضلات البطن.", "image": "images/exercises/decline-sit-up.webp", "targets": ["البطن"], "synergists": ["مثنيات الورك"], "stabilizers": ["الكور"], "keywords": ["decline sit up", "بطن", "وزن الجسم"]}
+        ,{"name": "Decline Weighted Sit-Up", "muscle": "abs", "equip": ["dumbbell"], "desc": "نفس تمرين الجلوس المائل لكن مع حمل وزن لزيادة التحدي على عضلات البطن.", "image": "images/exercises/decline-weighted-sit-up.webp", "targets": ["البطن"], "synergists": ["مثنيات الورك"], "stabilizers": ["الكور"], "keywords": ["weighted decline sit up", "بطن", "دمبل"]}
+        ,{"name": "Toe Touch Crunch", "muscle": "abs", "equip": ["bodyweight"], "desc": "تمرين لملامسة أصابع القدمين أثناء الاستلقاء يقوي الجزء العلوي من البطن.", "image": "images/exercises/toe-touch-crunch.webp", "targets": ["البطن العلوي"], "synergists": ["مثنيات الورك"], "stabilizers": ["الكور"], "keywords": ["toe touch crunch", "بطن", "وزن الجسم"]}
+        ,{"name": "Dead Bug", "muscle": "abs", "equip": ["bodyweight"], "desc": "تمرين تحريك الأطراف المتعاكسة بينما يظل الكور مستقراً لتقوية العضلات العميقة.", "image": "images/exercises/dead-bug.webp", "targets": ["الكور"], "synergists": ["المائلين"], "stabilizers": [], "keywords": ["dead bug", "كور", "وزن الجسم"]}
+        ,{"name": "Hollow Body Hold", "muscle": "abs", "equip": ["bodyweight"], "desc": "وضعية مجوفة يتم فيها شد الجسم بالكامل لزيادة قوة الكور والتحمل.", "image": "images/exercises/hollow-body-hold.webp", "targets": ["الكور"], "synergists": ["مثنيات الورك"], "stabilizers": [], "keywords": ["hollow hold", "كور", "وزن الجسم"]}
+        ,{"name": "Hollow Body Rock", "muscle": "abs", "equip": ["bodyweight"], "desc": "تأرجح في وضعية الجسم المجوف يحافظ على الشد المستمر على عضلات الكور.", "image": "images/exercises/hollow-body-rock.webp", "targets": ["الكور"], "synergists": ["مثنيات الورك"], "stabilizers": [], "keywords": ["hollow rock", "كور", "وزن الجسم"]}
+        ,{"name": "Lying Leg Raise", "muscle": "abs", "equip": ["bodyweight"], "desc": "رفع الأرجل أثناء الاستلقاء يقوي عضلات البطن السفلية ومثنيات الورك.", "image": "images/exercises/lying-leg-raise.webp", "targets": ["البطن السفلي"], "synergists": ["مثنيات الورك"], "stabilizers": ["الكور"], "keywords": ["lying leg raise", "بطن", "وزن الجسم"]}
+        ,{"name": "Reverse Crunch", "muscle": "abs", "equip": ["bodyweight"], "desc": "تمرين سحب الركبتين نحو الصدر أثناء الاستلقاء يركز على البطن السفلي.", "image": "images/exercises/reverse-crunch.webp", "targets": ["البطن السفلي"], "synergists": ["مثنيات الورك"], "stabilizers": ["الكور"], "keywords": ["reverse crunch", "بطن", "وزن الجسم"]}
+        ,{"name": "Cable Woodchopper", "muscle": "abs", "equip": ["cable"], "desc": "حركة قطع الخشب بالكابل تعمل على العضلات المائلة وتزيد قوة الدوران.", "image": "images/exercises/cable-woodchopper.webp", "targets": ["المائلين"], "synergists": ["البطن"], "stabilizers": ["الكور"], "keywords": ["woodchopper", "كابل", "بطن"]}
+        ,{"name": "Landmine Rotation", "muscle": "abs", "equip": ["barbell"], "desc": "دوران البار الثابت (لاندماين) يحسن القوة الدورانية للكور ويعمل على المائلين.", "image": "images/exercises/landmine-rotation.webp", "targets": ["المائلين"], "synergists": ["الأكتاف", "الظهر العلوي"], "stabilizers": ["الكور"], "keywords": ["landmine rotation", "بطن", "بار"]}
+        ,{"name": "Hanging Knee Raise", "muscle": "abs", "equip": ["bodyweight"], "desc": "رفع الركبتين أثناء التعلق تمرين أسهل من رفع الأرجل لكنه يركز على البطن السفلي.", "image": "images/exercises/hanging-knee-raise.webp", "targets": ["البطن السفلي"], "synergists": ["مثنيات الورك"], "stabilizers": ["الكتف", "الكور", "الساعد"], "keywords": ["hanging knee raise", "بطن", "وزن الجسم"]}
+        ,{"name": "Dragon Flag", "muscle": "abs", "equip": ["bodyweight"], "desc": "حركة متقدمة تتطلب رفع الجسم بالكامل على كتفيك لتمرين الكور بشكل شامل.", "image": "images/exercises/dragon-flag.webp", "targets": ["الكور"], "synergists": ["مثنيات الورك"], "stabilizers": ["الكتف", "الساعد"], "keywords": ["dragon flag", "بطن", "وزن الجسم"]}
+        ,{"name": "Suitcase Carry", "muscle": "abs", "equip": ["dumbbell"], "desc": "حمل وزن بيد واحدة والمشي به يقوي العضلات المائلة ويعزز الثبات الجانبي.", "image": "images/exercises/suitcase-carry.webp", "targets": ["المائلين"], "synergists": ["الأكتاف", "الساعد"], "stabilizers": ["الكور"], "keywords": ["suitcase carry", "كور", "دمبل"]}
+        ,{"name": "Turkish Get-Up", "muscle": "abs", "equip": ["dumbbell", "kettlebell"], "desc": "حركة معقدة يتم فيها الانتقال من الاستلقاء إلى الوقوف مع حمل وزن لتقوية الكور والكتف.", "image": "images/exercises/turkish-get-up.webp", "targets": ["الكور"], "synergists": ["الأكتاف", "المؤخرة"], "stabilizers": ["الكور"], "keywords": ["turkish get up", "كور", "دمبل"]}
+
+        // ==== New Calves exercises ====
+        ,{"name": "Single-Leg Calf Raise", "muscle": "calves", "equip": ["bodyweight"], "desc": "رفع الساق الواحدة على أطراف الأصابع يقوي عضلة السمانة بشكل منفرد.", "image": "images/exercises/single-leg-calf-raise.webp", "targets": ["السمانة"], "synergists": [], "stabilizers": ["القدم/الكاحل"], "keywords": ["single leg calf raise", "سمانة", "وزن الجسم"]}
+        ,{"name": "Leg Press Calf Press", "muscle": "calves", "equip": ["machine"], "desc": "تمرين السمانة على جهاز ضغط الأرجل يسمح بتحميل ثقيل مع استقرار الظهر.", "image": "images/exercises/leg-press-calf-press.webp", "targets": ["السمانة"], "synergists": [], "stabilizers": ["القدم/الكاحل"], "keywords": ["leg press calf", "سمانة", "آلة"]}
+        ,{"name": "Calf Raise on Hack Squat Machine", "muscle": "calves", "equip": ["machine"], "desc": "استخدام آلة الهاك سكوات لأداء رفع السمانة يوفر مدى حركة كامل وتحميل كبير.", "image": "images/exercises/calf-raise-hack-squat-machine.webp", "targets": ["السمانة"], "synergists": [], "stabilizers": ["القدم/الكاحل"], "keywords": ["hack squat calf raise", "سمانة", "آلة"]}
+        ,{"name": "Calf Raise on Smith Machine", "muscle": "calves", "equip": ["machine"], "desc": "رفع السمانة باستخدام آلة سميث يسمح بضبط الوزن بسهولة والحفاظ على التوازن.", "image": "images/exercises/calf-raise-smith-machine.webp", "targets": ["السمانة"], "synergists": [], "stabilizers": ["القدم/الكاحل"], "keywords": ["smith machine calf raise", "سمانة", "آلة"]}
+        ,{"name": "Tibialis Raise", "muscle": "calves", "equip": ["bodyweight"], "desc": "رفع مقدمة القدم لتقوية عضلة الظنبوب الأمامية وتحسين توازن الكاحل.", "image": "images/exercises/tibialis-raise.webp", "targets": ["عضلة الظنبوب الأمامية"], "synergists": [], "stabilizers": ["القدم/الكاحل"], "keywords": ["tibialis raise", "سمانة", "وزن الجسم"]}
+        ,{"name": "Jump Rope", "muscle": "calves", "equip": ["bodyweight"], "desc": "القفز بالحبل تمرين تحمل للسمانة يحسن القدرة الهوائية والتحمل العضلي.", "image": "images/exercises/jump-rope.webp", "targets": ["السمانة"], "synergists": ["الساعد"], "stabilizers": ["الكور"], "keywords": ["jump rope", "سمانة", "وزن الجسم"]}
+        ,{"name": "Seated Calf Raise (Single Leg)", "muscle": "calves", "equip": ["machine"], "desc": "رفع السمانة أثناء الجلوس بقدم واحدة يركز على عضلة الساق العميقة (النعلية).", "image": "images/exercises/seated-calf-raise-single-leg.webp", "targets": ["السمانة"], "synergists": [], "stabilizers": ["القدم/الكاحل"], "keywords": ["single leg seated calf raise", "سمانة", "آلة"]}
+        ,{"name": "Bent-Knee Calf Raise", "muscle": "calves", "equip": ["dumbbell"], "desc": "رفع السمانة بإنثناء الركبة يستهدف العضلة النعلية أكثر من وضعية الساق المستقيمة.", "image": "images/exercises/bent-knee-calf-raise.webp", "targets": ["السمانة"], "synergists": [], "stabilizers": ["القدم/الكاحل"], "keywords": ["bent knee calf raise", "سمانة", "دمبل"]}
+        ,{"name": "Farmer Walk on Toes", "muscle": "calves", "equip": ["bodyweight", "dumbbell"], "desc": "المشي على أطراف الأصابع مع حمل وزن يقوي السمانة ويعزز الثبات الكور.", "image": "images/exercises/farmer-walk-on-toes.webp", "targets": ["السمانة"], "synergists": ["الساعد"], "stabilizers": ["الكور"], "keywords": ["farmer walk toes", "سمانة", "دمبل"]}
+
+        // ==== New Forearms / Grip exercises ====
+        ,{"name": "Wrist Roller", "muscle": "forearms", "equip": ["dumbbell"], "desc": "استخدم أسطوانة المعصم لتمرين عضلات الساعد عن طريق لف الحبل وسحبه.", "image": "images/exercises/wrist-roller.webp", "targets": ["الساعد"], "synergists": [], "stabilizers": ["الأكتاف"], "keywords": ["wrist roller", "ساعد", "قبضة"]}
+        ,{"name": "Plate Pinch Hold", "muscle": "forearms", "equip": ["dumbbell"], "desc": "إمساك قرصين باليدين والضغط عليهما لتقوية قوة القبضة والساعد.", "image": "images/exercises/plate-pinch-hold.webp", "targets": ["الساعد"], "synergists": [], "stabilizers": ["الأكتاف"], "keywords": ["plate pinch", "ساعد", "قبضة"]}
+        ,{"name": "Captains of Crush Grippers", "muscle": "forearms", "equip": ["dumbbell"], "desc": "استخدام مقبض قبضة قوي لتقوية عضلات الساعد والانقباض.", "image": "images/exercises/captains-of-crush-grippers.webp", "targets": ["الساعد"], "synergists": [], "stabilizers": [], "keywords": ["grippers", "ساعد", "قبضة"]}
+        ,{"name": "Towel Dead Hang", "muscle": "forearms", "equip": ["bodyweight"], "desc": "تعليق الجسم باستخدام منشفة لتقوية القبضة والساعد وتحمّل الذراعين.", "image": "images/exercises/towel-dead-hang.webp", "targets": ["الساعد"], "synergists": ["الظهر", "البايسبس"], "stabilizers": ["الكتف"], "keywords": ["towel dead hang", "ساعد", "وزن الجسم"]}
+        ,{"name": "Fat Grip Dumbbell Hold", "muscle": "forearms", "equip": ["dumbbell"], "desc": "حمل دمبل بقبضة سميكة لتحدي عضلات الساعد وتحسين قوة القبضة.", "image": "images/exercises/fat-grip-dumbbell-hold.webp", "targets": ["الساعد"], "synergists": [], "stabilizers": ["الأكتاف"], "keywords": ["fat grip hold", "ساعد", "دمبل"]}
+        ,{"name": "Barbell Static Hold", "muscle": "forearms", "equip": ["barbell"], "desc": "إمساك البار بثبات لفترة زمنية لتقوية الساعد والقبضة والتحمل.", "image": "images/exercises/barbell-static-hold.webp", "targets": ["الساعد"], "synergists": [], "stabilizers": ["الأكتاف", "الكور"], "keywords": ["static hold", "ساعد", "بار"]}
+        ,{"name": "Reverse Wrist Curl", "muscle": "forearms", "equip": ["barbell"], "desc": "حركة عكسية لمعصم اليد تعمل على تقوية العضلات الباسطة للساعد.", "image": "images/exercises/reverse-wrist-curl.webp", "targets": ["الساعد"], "synergists": [], "stabilizers": [], "keywords": ["reverse wrist curl", "ساعد", "بار"]}
+        ,{"name": "Hammer Rotation", "muscle": "forearms", "equip": ["dumbbell"], "desc": "تناوب القبضة للأعلى والأسفل (برونايشن وسوبينيشن) لتقوية عضلات الساعد الدوارة.", "image": "images/exercises/hammer-rotation.webp", "targets": ["الساعد"], "synergists": [], "stabilizers": [], "keywords": ["hammer rotation", "ساعد", "دمبل"]}
+        ,{"name": "Rice Bucket Drill", "muscle": "forearms", "equip": ["bodyweight"], "desc": "غمس اليد في دلو من الأرز وتحريكها في جميع الاتجاهات لتمرين الساعد بشكل شامل.", "image": "images/exercises/rice-bucket-drill.webp", "targets": ["الساعد"], "synergists": [], "stabilizers": [], "keywords": ["rice bucket drill", "ساعد", "قبضة"]}
+        ,{"name": "Towel Row", "muscle": "forearms", "equip": ["bodyweight"], "desc": "صف باستخدام منشفة يضيف تحديًا للقبضة ويعمل على عضلات الظهر والبايسبس.", "image": "images/exercises/towel-row.webp", "targets": ["الظهر", "البايسبس"], "synergists": ["الساعد"], "stabilizers": ["الكور"], "keywords": ["towel row", "ساعد", "صف"]}
+
+        // ==== New Traps exercises ====
+        ,{"name": "Cable Shrug", "muscle": "traps", "equip": ["cable"], "desc": "هز الكتفين بالكابل يوفر توترًا ثابتًا ويقوي عضلات الترابيس.", "image": "images/exercises/cable-shrug.webp", "targets": ["الترابيس"], "synergists": ["الرومبودز"], "stabilizers": ["الساعد"], "keywords": ["cable shrug", "ترابيس", "كابل"]}
+        ,{"name": "Smith Machine Shrug", "muscle": "traps", "equip": ["machine"], "desc": "هز الكتفين على آلة سميث يسمح بتحميل ثقيل وتحريك آمن.", "image": "images/exercises/smith-machine-shrug.webp", "targets": ["الترابيس"], "synergists": ["الرومبودز"], "stabilizers": ["الساعد"], "keywords": ["smith shrug", "ترابيس", "آلة"]}
+        ,{"name": "Dumbbell Farmer Shrug Walk", "muscle": "traps", "equip": ["dumbbell"], "desc": "المشي مع حمل دمبلين ثقيلين مع هز خفيف للكتفين يطور الترابيس وقوة القبضة.", "image": "images/exercises/dumbbell-farmer-shrug-walk.webp", "targets": ["الترابيس"], "synergists": ["الساعد"], "stabilizers": ["الكور"], "keywords": ["farmer shrug walk", "ترابيس", "دمبل"]}
+        ,{"name": "Rack Pull (Trap Emphasis)", "muscle": "traps", "equip": ["barbell"], "desc": "سحب من الرف بقبضة واسعة يضع تركيزًا أكبر على الترابيس مقارنة بالظهر.", "image": "images/exercises/rack-pull-trap-emphasis.webp", "targets": ["الترابيس"], "synergists": ["أوتار خلفية", "المؤخرة"], "stabilizers": ["الكور"], "keywords": ["rack pull traps", "ترابيس", "بار"]}
+        ,{"name": "High Pull", "muscle": "traps", "equip": ["barbell"], "desc": "سحب عالٍ يبدأ من الأرض أو من الركبة ويستخدم لزيادة قوة الترابيس والقوة الانفجارية.", "image": "images/exercises/high-pull.webp", "targets": ["الترابيس"], "synergists": ["الأكتاف", "الكتف الخلفية"], "stabilizers": ["الكور"], "keywords": ["high pull", "ترابيس", "بار"]}
+        ,{"name": "Power Shrug", "muscle": "traps", "equip": ["barbell"], "desc": "نسخة ديناميكية من هز الكتف حيث تستخدم الأرجل لبدء الحركة لتحقيق رفع أكبر.", "image": "images/exercises/power-shrug.webp", "targets": ["الترابيس"], "synergists": ["المؤخرة"], "stabilizers": ["الكور"], "keywords": ["power shrug", "ترابيس", "بار"]}
+        ,{"name": "Snatch-Grip High Pull", "muscle": "traps", "equip": ["barbell"], "desc": "سحب عالٍ بمقبض واسع يشبه قبضة السناتش لتقوية الترابيس والكتفين.", "image": "images/exercises/snatch-grip-high-pull.webp", "targets": ["الترابيس"], "synergists": ["الأكتاف", "الظهر العلوي"], "stabilizers": ["الكور"], "keywords": ["snatch grip high pull", "ترابيس", "بار"]}
+        ,{"name": "Face Pull Shrug Combo", "muscle": "traps", "equip": ["cable"], "desc": "دمج بين سحب الوجه وهز الكتف لتعزيز الترابيس والأكتاف الخلفية في حركة واحدة.", "image": "images/exercises/face-pull-shrug-combo.webp", "targets": ["الترابيس", "الكتف الخلفية"], "synergists": ["الرومبودز"], "stabilizers": ["الكور"], "keywords": ["face pull shrug", "ترابيس", "كابل"]}
+        ,{"name": "Incline Bench Shrug", "muscle": "traps", "equip": ["dumbbell"], "desc": "هز الكتفين أثناء الاستلقاء على مقعد مائل يغير زاوية العمل ويستهدف الجزء العلوي من الترابيس.", "image": "images/exercises/incline-bench-shrug.webp", "targets": ["الترابيس العلوية"], "synergists": ["الرقبة"], "stabilizers": ["الكور"], "keywords": ["incline bench shrug", "ترابيس", "دمبل"]}
+        ,{"name": "Overhead Shrug", "muscle": "traps", "equip": ["dumbbell"], "desc": "رفع الكتفين أثناء حمل الوزن فوق الرأس يعمل على الترابيس العلوية والعضلة المسننة الأمامية.", "image": "images/exercises/overhead-shrug.webp", "targets": ["الترابيس العلوية", "العضلة المسننة الأمامية"], "synergists": ["الأكتاف", "الرومبودز"], "stabilizers": ["الكور"], "keywords": ["overhead shrug", "ترابيس", "دمبل"]}
+      ];
+
+      // =========================
+      // 3) Rendering + filtering
+      // =========================
+      const $ = (s) => document.querySelector(s);
+      const $$ = (s) => Array.from(document.querySelectorAll(s));
+
+      // State: allow selecting multiple muscles and equipments simultaneously.
+      const state = {
+        muscles: [],
+        equips: [],
+        q: "",
+      };
+
+      function normalize(str) {
+        return (str || "").toString().toLowerCase().trim();
+      }
+
+      function tokenizeQuery(q) {
+        const nq = normalize(q);
+        if (!nq) return [];
+        return nq.split(/[\s,،\/]+/).map(s => s.trim()).filter(Boolean);
+      }
+
+      function exerciseSearchHay(ex) {
+        const muscle = MUSCLES.find(m => m.key === ex.muscle);
+        const equipmentLabels = (ex.equip || []).map(labelForEquip);
+        return normalize([
+          ex.name,
+          ex.desc || "",
+          ex.muscle,
+          muscle?.ar || "",
+          muscle?.en || "",
+          ...(ex.equip || []),
+          ...equipmentLabels,
+          ...(ex.targets || []),
+          ...(ex.synergists || []),
+          ...(ex.stabilizers || []),
+          ...(ex.keywords || []),
+        ].join(" "));
+      }
+
+      function labelForEquip(key) {
+        const item = EQUIPMENT.find(e => e.key === key);
+        return item ? item.ar : key;
+      }
+
+      function muscleFor(key) {
+        return MUSCLES.find(m => m.key === key);
+      }
+
+      function totalForMuscle(key) {
+        return EXERCISES.filter(ex => ex.muscle === key).length;
+      }
+
+      function totalForEquip(key) {
+        return EXERCISES.filter(ex => (ex.equip || []).includes(key)).length;
+      }
+
+      function filteredExercises() {
+        const tokens = tokenizeQuery(state.q);
+
+        return EXERCISES.filter((ex) => {
+          const okMuscle =
+            state.muscles.length === 0 ||
+            state.muscles.includes(ex.muscle);
+
+          const okEquip =
+            state.equips.length === 0 ||
+            (ex.equip || []).some(key => state.equips.includes(key));
+
+          const hay = exerciseSearchHay(ex);
+          const okSearch =
+            tokens.length === 0 ||
+            tokens.every(token => hay.includes(token));
+
+          return okMuscle && okEquip && okSearch;
+        });
+      }
+
+      function hasActiveFilters() {
+        return Boolean(
+          state.q.trim() ||
+          state.muscles.length ||
+          state.equips.length
+        );
+      }
+
+      function buildChips() {
+        const musWrap = document.getElementById("muscleChips");
+        const eqWrap = document.getElementById("equipChips");
+
+        musWrap.innerHTML = MUSCLES.map((m) => {
+          const isActive =
+            m.key === "all"
+              ? state.muscles.length === 0
+              : state.muscles.includes(m.key);
+
+          const count = m.key === "all" ? EXERCISES.length : totalForMuscle(m.key);
+
+          return `
+            <button
+              type="button"
+              class="exlib-chip ${isActive ? "active" : ""}"
+              data-filter-type="muscle"
+              data-key="${m.key}"
+              aria-pressed="${isActive}"
+              title="${m.en || m.ar}"
+            >
+              <span>${m.ar}</span>
+              <small>${count}</small>
+            </button>
+          `;
+        }).join("");
+
+        eqWrap.innerHTML = EQUIPMENT.map((e) => {
+          const isActive =
+            e.key === "all"
+              ? state.equips.length === 0
+              : state.equips.includes(e.key);
+
+          const count = e.key === "all" ? EXERCISES.length : totalForEquip(e.key);
+
+          return `
+            <button
+              type="button"
+              class="exlib-chip ${isActive ? "active" : ""}"
+              data-filter-type="equip"
+              data-key="${e.key}"
+              aria-pressed="${isActive}"
+            >
+              <span>${e.ar}</span>
+              <small>${count}</small>
+            </button>
+          `;
+        }).join("");
+
+        document.querySelectorAll('[data-filter-type="muscle"]').forEach(btn => {
+          btn.addEventListener("click", () => toggleFilter("muscle", btn.dataset.key));
+        });
+
+        document.querySelectorAll('[data-filter-type="equip"]').forEach(btn => {
+          btn.addEventListener("click", () => toggleFilter("equip", btn.dataset.key));
+        });
+
+        updateActiveFilterUI();
+      }
+
+      function toggleFilter(type, key) {
+        const list = type === "muscle" ? state.muscles : state.equips;
+
+        if (key === "all") {
+          list.splice(0, list.length);
+        } else {
+          const index = list.indexOf(key);
+          if (index >= 0) list.splice(index, 1);
+          else list.push(key);
+        }
+
+        buildChips();
+        render();
+      }
+
+      function removeFilter(type, key) {
+        const list = type === "muscle" ? state.muscles : state.equips;
+        const index = list.indexOf(key);
+        if (index >= 0) list.splice(index, 1);
+        buildChips();
+        render();
+      }
+
+      function updateActiveFilterUI() {
+        const wrap = document.getElementById("activeFilters");
+        const reset = document.getElementById("resetFilters");
+        const countBadge = document.getElementById("activeFilterCount");
+        const toggle = document.getElementById("filterPanelToggle");
+
+        const items = [
+          ...state.muscles.map(key => ({
+            type: "muscle",
+            key,
+            label: muscleFor(key)?.ar || key
+          })),
+          ...state.equips.map(key => ({
+            type: "equip",
+            key,
+            label: labelForEquip(key)
+          }))
+        ];
+
+        wrap.innerHTML = items.map(item => `
+          <button
+            type="button"
+            class="exlib-active-chip"
+            data-remove-type="${item.type}"
+            data-remove-key="${item.key}"
+            aria-label="حذف فلتر ${item.label}"
+          >
+            ${item.label}<span aria-hidden="true">×</span>
+          </button>
+        `).join("");
+
+        wrap.querySelectorAll("[data-remove-type]").forEach(btn => {
+          btn.addEventListener("click", () => {
+            removeFilter(btn.dataset.removeType, btn.dataset.removeKey);
+          });
+        });
+
+        const activeCount = state.muscles.length + state.equips.length;
+        const isFiltered = hasActiveFilters();
+        const resultsBack = document.getElementById("resultsBack");
+        const resultsHeading = document.querySelector(".exlib-results-heading");
+
+        countBadge.textContent = activeCount;
+        countBadge.hidden = activeCount === 0;
+        toggle.classList.toggle("has-active", activeCount > 0);
+        reset.hidden = !isFiltered;
+
+        if (resultsBack) {
+          resultsBack.hidden = !isFiltered;
+
+          const fullLabel = resultsBack.querySelector(".exlib-results-back-full");
+          const oneMuscleOnly =
+            state.muscles.length === 1 &&
+            state.equips.length === 0 &&
+            !state.q.trim();
+
+          if (fullLabel) {
+            fullLabel.textContent = oneMuscleOnly
+              ? "رجوع لكل العضلات"
+              : "مسح الفلاتر والرجوع";
+          }
+        }
+
+        resultsHeading?.classList.toggle("has-active", isFiltered);
+      }
+
+      function renderMuscleBrowser() {
+        const wrap = document.getElementById("muscleSections");
+        const title = document.getElementById("resultsTitle");
+        const kicker = document.getElementById("resultsKicker");
+
+        kicker.textContent = "تصفح حسب العضلة";
+        title.textContent = "اختار العضلة اللي باغي تمرّن";
+        wrap.className = "exlib-browser-grid";
+
+        wrap.innerHTML = MUSCLES
+          .filter(m => m.key !== "all")
+          .map(m => `
+            <button
+              type="button"
+              class="exlib-muscle-card"
+              data-browse-muscle="${m.key}"
+            >
+              <span class="exlib-muscle-card-image">
+                <img
+                  src="${m.img}"
+                  alt=""
+                  loading="lazy"
+                  onerror="this.style.display='none'; this.parentElement.classList.add('missing');"
+                />
+                <i aria-hidden="true">${m.ar.charAt(0)}</i>
+              </span>
+
+              <span class="exlib-muscle-card-copy">
+                <strong>${m.ar}</strong>
+                <small>${m.en} · ${totalForMuscle(m.key)} تمرين</small>
+              </span>
+
+              <span class="exlib-muscle-card-arrow" aria-hidden="true">↗</span>
+            </button>
+          `)
+          .join("");
+
+        wrap.querySelectorAll("[data-browse-muscle]").forEach(btn => {
+          btn.addEventListener("click", () => {
+            state.muscles = [btn.dataset.browseMuscle];
+            buildChips();
+            render();
+            document.querySelector(".exlib-results-heading")?.scrollIntoView({
+              behavior: "smooth",
+              block: "start"
+            });
+          });
+        });
+      }
+
+      function cardTemplate(ex) {
+        const muscle = muscleFor(ex.muscle);
+
+        const equipTags = (ex.equip || []).map(key => `
+          <button
+            type="button"
+            class="exlib-tag"
+            data-equip="${key}"
+            title="فلتر: ${labelForEquip(key)}"
+          >
+            ${labelForEquip(key)}
+          </button>
+        `).join("");
+
+        const targets = (ex.targets || []).filter(Boolean).map(item => `
+          <span class="exlib-role exlib-role--target">
+            <i class="exlib-role-dot" aria-hidden="true"></i>${item}
+          </span>
+        `).join("");
+
+        const synergists = (ex.synergists || []).filter(Boolean).map(item => `
+          <span class="exlib-role exlib-role--syn">
+            <i class="exlib-role-dot" aria-hidden="true"></i>${item}
+          </span>
+        `).join("");
+
+        const stabilizers = (ex.stabilizers || []).filter(Boolean).map(item => `
+          <span class="exlib-role exlib-role--stab">
+            <i class="exlib-role-dot" aria-hidden="true"></i>${item}
+          </span>
+        `).join("");
+
+        const secondaryDetails =
+          synergists || stabilizers
+            ? `
+              <details class="exlib-role-details">
+                <summary>عضلات مساعدة ومثبتة</summary>
+                <div class="exlib-role-details-body">
+                  ${synergists ? `<div><b>مساعدة</b><span>${synergists}</span></div>` : ""}
+                  ${stabilizers ? `<div><b>مثبتة</b><span>${stabilizers}</span></div>` : ""}
+                </div>
+              </details>
+            `
+            : "";
+
+        return `
+          <article class="exlib-card" data-hay="${exerciseSearchHay(ex)}">
+            <button
+              class="exlib-ex-img exlib-ex-media"
+              type="button"
+              data-exercise-image="${ex.image}"
+              data-exercise-name="${ex.name}"
+              aria-label="عرض حركة ${ex.name} بالحجم الكامل"
+            >
+              <img
+                src="${ex.image}"
+                alt="${ex.name}"
+                loading="lazy"
+                onerror="this.style.display='none'; this.parentElement.classList.add('missing');"
+              />
+              <span class="exlib-ex-placeholder" aria-hidden="true">${muscle?.ar || ""}</span>
+              <span class="exlib-image-expand" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </button>
+
+            <div class="exlib-ex-body">
+              <div class="exlib-card-eyebrow">
+                <span>${muscle?.ar || ""}</span>
+                <div class="exlib-tags">${equipTags}</div>
+              </div>
+
+              <h3 class="exlib-ex-name">${ex.name}</h3>
+              <p class="exlib-ex-desc">${ex.desc || ""}</p>
+
+              <div class="exlib-primary-roles" aria-label="العضلات المستهدفة">
+                ${targets}
+              </div>
+
+              ${secondaryDetails}
+            </div>
+          </article>
+        `;
+      }
+
+      function renderResults(filtered) {
+        const wrap = document.getElementById("muscleSections");
+        const title = document.getElementById("resultsTitle");
+        const kicker = document.getElementById("resultsKicker");
+
+        if (state.muscles.length === 1) {
+          const selectedMuscle = muscleFor(state.muscles[0]);
+          kicker.textContent = `${filtered.length} تمرين`;
+          title.textContent = `تمارين ${selectedMuscle?.ar || ""}`;
+        } else if (state.q.trim()) {
+          kicker.textContent = `${filtered.length} نتيجة`;
+          title.textContent = "نتائج البحث";
+        } else {
+          kicker.textContent = `${filtered.length} تمرين`;
+          title.textContent = "التمارين المناسبة";
+        }
+
+        wrap.className = "exlib-results-grid";
+        wrap.innerHTML = filtered.map(cardTemplate).join("");
+
+        wrap.querySelectorAll(".exlib-tag[data-equip]").forEach(tag => {
+          tag.addEventListener("click", () => {
+            state.equips = [tag.dataset.equip];
+            buildChips();
+            render();
+          });
+        });
+      }
+
+      function render() {
+        const filtered = filteredExercises();
+        const countEl = document.getElementById("resultCount");
+        const empty = document.getElementById("emptyState");
+        const wrap = document.getElementById("muscleSections");
+
+        countEl.textContent = `${filtered.length} تمرين`;
+
+        const mobileResultCount = document.querySelector("[data-mobile-result-count]");
+        if (mobileResultCount) {
+          mobileResultCount.textContent = filtered.length;
+        }
+
+        const browseMode = !hasActiveFilters();
+
+        if (browseMode) {
+          empty.hidden = true;
+          renderMuscleBrowser();
+        } else if (filtered.length === 0) {
+          wrap.innerHTML = "";
+          wrap.className = "exlib-results-grid";
+          empty.hidden = false;
+
+          document.getElementById("resultsKicker").textContent = "النتائج";
+          document.getElementById("resultsTitle").textContent = "ما لقّيناش نتائج";
+        } else {
+          empty.hidden = true;
+          renderResults(filtered);
+        }
+
+        updateActiveFilterUI();
+      }
+
+      function resetAll(options = {}) {
+        state.muscles = [];
+        state.equips = [];
+        state.q = "";
+
+        const search = document.getElementById("exSearch");
+        const clear = document.getElementById("clearSearch");
+
+        if (search) search.value = "";
+        if (clear) clear.hidden = true;
+
+        buildChips();
+        render();
+        hideSuggestions();
+
+        if (options.scroll) {
+          requestAnimationFrame(() => {
+            document.querySelector(".exlib-results-heading")?.scrollIntoView({
+              behavior: "smooth",
+              block: "start"
+            });
+          });
+        }
+      }
+
+      let hideSuggestions = () => {};
+
+      document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("totalExerciseCount").textContent = EXERCISES.length;
+        document.getElementById("totalMuscleCount").textContent = MUSCLES.filter(m => m.key !== "all").length;
+        document.getElementById("totalEquipCount").textContent = EQUIPMENT.filter(e => e.key !== "all").length;
+
+        const search = document.getElementById("exSearch");
+        const clear = document.getElementById("clearSearch");
+        const reset = document.getElementById("resetFilters");
+        const resultsBack = document.getElementById("resultsBack");
+        const suggestionsEl = document.getElementById("searchSuggestions");
+        const searchWrap = document.querySelector(".exlib-search-wrap");
+        const filterToggle = document.getElementById("filterPanelToggle");
+        const filterPanel = document.getElementById("filterPanel");
+
+        buildChips();
+        render();
+
+        function updateSuggestions() {
+          const query = normalize(search.value);
+          if (!query) {
+            suggestionsEl.innerHTML = "";
+            suggestionsEl.hidden = true;
+            return;
+          }
+
+          const matches = [];
+          const seen = new Set();
+
+          EXERCISES.forEach(ex => {
+            if (exerciseSearchHay(ex).includes(query) && !seen.has(ex.name)) {
+              seen.add(ex.name);
+              matches.push(ex.name);
+            }
+          });
+
+          const top = matches.slice(0, 6);
+          suggestionsEl.innerHTML = top.map(name => `
+            <li>
+              <button type="button" data-suggestion="${name}">${name}</button>
+            </li>
+          `).join("");
+
+          suggestionsEl.hidden = top.length === 0;
+        }
+
+        hideSuggestions = () => {
+          suggestionsEl.hidden = true;
+        };
+
+        function applySearch() {
+          state.q = search.value || "";
+          clear.hidden = !state.q.trim();
+          render();
+        }
+
+        search.addEventListener("input", () => {
+          updateSuggestions();
+          applySearch();
+        });
+
+        search.addEventListener("focus", updateSuggestions);
+
+        search.addEventListener("keydown", event => {
+          if (event.key === "Enter") {
+            hideSuggestions();
+            document.querySelector(".exlib-results-heading")?.scrollIntoView({
+              behavior: "smooth",
+              block: "start"
+            });
+          }
+
+          if (event.key === "Escape") hideSuggestions();
+        });
+
+        suggestionsEl.addEventListener("click", event => {
+          const btn = event.target.closest("[data-suggestion]");
+          if (!btn) return;
+
+          search.value = btn.dataset.suggestion;
+          applySearch();
+          hideSuggestions();
+
+          document.querySelector(".exlib-results-heading")?.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+        });
+
+        document.addEventListener("click", event => {
+          if (!searchWrap.contains(event.target)) hideSuggestions();
+        });
+
+        clear.addEventListener("click", () => {
+          search.value = "";
+          applySearch();
+          hideSuggestions();
+          search.focus();
+        });
+
+        reset.addEventListener("click", () => resetAll({ scroll: true }));
+
+        resultsBack?.addEventListener("click", () => {
+          resetAll({ scroll: true });
+        });
+
+        document.querySelectorAll("[data-reset-all]").forEach(btn => {
+          btn.addEventListener("click", () => resetAll({ scroll: true }));
+        });
+
+        // Full exercise movement viewer.
+        const exerciseViewer = document.getElementById("exerciseImageViewer");
+        const exerciseViewerImage = document.getElementById("exerciseViewerImage");
+        const exerciseViewerTitle = document.getElementById("exerciseViewerTitle");
+
+        function openExerciseViewer(image, name) {
+          if (!exerciseViewer || !exerciseViewerImage) return;
+
+          exerciseViewerImage.src = image;
+          exerciseViewerImage.alt = name || "صورة التمرين";
+          if (exerciseViewerTitle) {
+            exerciseViewerTitle.textContent = name || "الحركة كاملة";
+          }
+
+          exerciseViewer.classList.add("is-open");
+          exerciseViewer.setAttribute("aria-hidden", "false");
+          document.body.classList.add("exlib-viewer-open");
+        }
+
+        function closeExerciseViewer() {
+          if (!exerciseViewer) return;
+
+          exerciseViewer.classList.remove("is-open");
+          exerciseViewer.setAttribute("aria-hidden", "true");
+          document.body.classList.remove("exlib-viewer-open");
+
+          window.setTimeout(() => {
+            if (exerciseViewerImage && !exerciseViewer.classList.contains("is-open")) {
+              exerciseViewerImage.src = "";
+            }
+          }, 220);
+        }
+
+        muscleSections.addEventListener("click", event => {
+          const media = event.target.closest(".exlib-ex-media");
+          if (!media) return;
+
+          openExerciseViewer(
+            media.dataset.exerciseImage,
+            media.dataset.exerciseName
+          );
+        });
+
+        document.querySelectorAll("[data-close-exercise-viewer]").forEach(button => {
+          button.addEventListener("click", closeExerciseViewer);
+        });
+
+        document.addEventListener("keydown", event => {
+          if (event.key === "Escape" && exerciseViewer?.classList.contains("is-open")) {
+            closeExerciseViewer();
+          }
+        });
+
+        const closeFilterPanel = document.getElementById("closeFilterPanel");
+        const filterBackdrop = document.getElementById("filterBackdrop");
+        const mobileShowResults = document.getElementById("mobileShowResults");
+
+        const desktopQuery = window.matchMedia("(min-width: 901px)");
+
+        function setFilterPanel(open) {
+          if (desktopQuery.matches) {
+            filterPanel.classList.add("is-open");
+            filterToggle.setAttribute("aria-expanded", "true");
+            document.body.classList.remove("exlib-filter-sheet-open");
+            return;
+          }
+
+          filterPanel.classList.toggle("is-open", open);
+          filterToggle.setAttribute("aria-expanded", String(open));
+          document.body.classList.toggle("exlib-filter-sheet-open", open);
+        }
+
+        filterToggle.addEventListener("click", () => {
+          setFilterPanel(!filterPanel.classList.contains("is-open"));
+        });
+
+        closeFilterPanel?.addEventListener("click", () => setFilterPanel(false));
+        filterBackdrop?.addEventListener("click", () => setFilterPanel(false));
+
+        mobileShowResults?.addEventListener("click", () => {
+          setFilterPanel(false);
+          requestAnimationFrame(() => {
+            document.querySelector(".exlib-results-heading")?.scrollIntoView({
+              behavior: "smooth",
+              block: "start"
+            });
+          });
+        });
+
+        document.addEventListener("keydown", event => {
+          if (event.key === "Escape" && !desktopQuery.matches) {
+            setFilterPanel(false);
+          }
+        });
+
+        const syncPanel = () => {
+          if (desktopQuery.matches) setFilterPanel(true);
+          else setFilterPanel(false);
+        };
+
+        syncPanel();
+        desktopQuery.addEventListener?.("change", syncPanel);
+      });
+    </script>
+<!-- Script to copy email address to clipboard and display toast -->
+<script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const emailIcons = document.querySelectorAll('a[data-copy-email]');
+        emailIcons.forEach(function (icon) {
+          icon.addEventListener('click', function (ev) {
+            ev.preventDefault();
+            const mail = icon.getAttribute('data-copy-email');
+            if (!mail) return;
+            navigator.clipboard.writeText(mail).then(function () {
+              const existing = document.querySelector('.email-copy-toast');
+              if (existing) existing.remove();
+              const toast = document.createElement('div');
+              toast.className = 'email-copy-toast';
+              toast.textContent = 'تم نسخ البريد الإلكتروني!';
+              document.body.appendChild(toast);
+              setTimeout(function () {
+                toast.remove();
+              }, 3000);
+            });
+          });
+        });
+      });
+    </script>
+<!-- Additional script for legal modals and newsletter -->
+<script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const legalOverlay = document.getElementById('legalOverlay');
+        const legalModal = document.getElementById('legalModal');
+        const legalModalTitle = document.getElementById('legalModalTitle');
+        const legalModalBody = document.getElementById('legalModalBody');
+        const legalCloseBtn = document.getElementById('legalCloseBtn');
+        // Show modal with HTML content from hidden divs
+        function showLegal(title, html) {
+          if (legalModalTitle) legalModalTitle.textContent = title;
+          if (legalModalBody) legalModalBody.innerHTML = html;
+          if (legalOverlay) legalOverlay.style.display = 'flex';
+          if (legalModal) legalModal.style.display = 'block';
+        }
+        const termsLink = document.getElementById('terms-link');
+        const privacyLink = document.getElementById('privacy-link');
+        if (termsLink) {
+          termsLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            const termsEl = document.getElementById('terms-content');
+            const html = termsEl ? termsEl.innerHTML : '';
+            showLegal('شروط الخدمة', html);
+          });
+        }
+        if (privacyLink) {
+          privacyLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            const privacyEl = document.getElementById('privacy-content');
+            const html = privacyEl ? privacyEl.innerHTML : '';
+            showLegal('سياسة الخصوصية', html);
+          });
+        }
+        if (legalCloseBtn) {
+          legalCloseBtn.addEventListener('click', function() {
+            if (legalOverlay) legalOverlay.style.display = 'none';
+            if (legalModal) legalModal.style.display = 'none';
+          });
+        }
+        if (legalOverlay) {
+          legalOverlay.addEventListener('click', function() {
+            legalOverlay.style.display = 'none';
+            legalModal.style.display = 'none';
+          });
+        }
+        // Newsletter form submission is handled by Google Form. No client-side interception needed here.
+      });
+    </script>
+</body>
+</html>
